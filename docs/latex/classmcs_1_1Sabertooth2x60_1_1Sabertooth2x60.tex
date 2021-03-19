@@ -1,0 +1,143 @@
+\hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60}{}\section{mcs.\+Sabertooth2x60.\+Sabertooth2x60 Class Reference}
+\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60}\index{mcs.\+Sabertooth2x60.\+Sabertooth2x60@{mcs.\+Sabertooth2x60.\+Sabertooth2x60}}
+
+
+This class is the firmware used to control the wheel motors via the \hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60}{Sabertooth2x60} hardware.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a9597dc61239ea8dd6285999f7c3b8d2a}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_aa9937580058f87d4db9f70d3cd532760}{pin\+Number}, flags, debug\+Name)
+\begin{DoxyCompactList}\small\item\em Constructor for motor module. \end{DoxyCompactList}\item 
+def \hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_aef280facf9a0289a38b12075f4e66440}{stop} (self)
+\begin{DoxyCompactList}\small\item\em Stops motor by setting P\+WM to 50. \end{DoxyCompactList}\item 
+def \hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_ace6e29789475ce51e75dce8ef5fec1d6}{forward} (self, speed)
+\begin{DoxyCompactList}\small\item\em Engage motor forward using provided speed. \end{DoxyCompactList}\item 
+def \hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_afc1a0f66cf719a718910239cfca0cfda}{backward} (self, speed)
+\begin{DoxyCompactList}\small\item\em Engage motor backwards using provided speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a1a8a13f3eb95a45405803e8bb0b90d55}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a1a8a13f3eb95a45405803e8bb0b90d55}} 
+\hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a1a8a13f3eb95a45405803e8bb0b90d55}{debug}
+\begin{DoxyCompactList}\small\item\em Boolean indicating if debug info should be included for this module. \end{DoxyCompactList}\item 
+\hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a5841fe4acd53f784c65025697c4c81b6}{enabled}
+\begin{DoxyCompactList}\small\item\em Boolean to indicate if this motor should be used. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a76b731be11f7f02329441cac763e7cf6}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a76b731be11f7f02329441cac763e7cf6}} 
+\hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a76b731be11f7f02329441cac763e7cf6}{debug\+Prefix}
+\begin{DoxyCompactList}\small\item\em String used for debugging. \end{DoxyCompactList}\item 
+\hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_ab2a2769dcfc3d37e1b9c41592d854792}{duty\+Cycle}
+\begin{DoxyCompactList}\small\item\em Dutycycle used for P\+WM signal. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_aa9937580058f87d4db9f70d3cd532760}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_aa9937580058f87d4db9f70d3cd532760}} 
+\hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_aa9937580058f87d4db9f70d3cd532760}{pin\+Number}
+\begin{DoxyCompactList}\small\item\em Raspberry Pi G\+P\+IO board pin number for P\+WM output. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a29f8622d8ae224e4a37b612de3f9ab10}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a29f8622d8ae224e4a37b612de3f9ab10}} 
+\hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a29f8622d8ae224e4a37b612de3f9ab10}{motor\+P\+WM}
+\begin{DoxyCompactList}\small\item\em P\+WM controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the firmware used to control the wheel motors via the \hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60}{Sabertooth2x60} hardware. 
+
+A P\+WM signal is passed throug the low pass filter, converting it to an analog signal. The \hyperlink{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60}{Sabertooth2x60} then uses the signal to control a motor. This class controls only a single motor via one P\+WM signal. \begin{DoxyAuthor}{Author}
+Keith 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+11/26/2020\+: Added commenting to code. -\/\+KS 
+
+11/01/2020\+: Module tested. -\/\+KS 
+\end{DoxyNote}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a9597dc61239ea8dd6285999f7c3b8d2a}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a9597dc61239ea8dd6285999f7c3b8d2a}} 
+\index{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def mcs.\+Sabertooth2x60.\+Sabertooth2x60.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{pin\+Number,  }\item[{}]{flags,  }\item[{}]{debug\+Name }\end{DoxyParamCaption})}
+
+
+
+Constructor for motor module. 
+
+Motor is initalized with a speed of zero. 
+\begin{DoxyParams}{Parameters}
+{\em pin\+Number} & Raspberry Pi G\+P\+IO board pin number used for P\+WM to drive single motor \\
+\hline
+{\em flags} & System flags passed to module. Should be defined in test bench or System\+Flags module. \\
+\hline
+{\em debug\+Name} & Name of instance to be used for debugging output \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_afc1a0f66cf719a718910239cfca0cfda}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_afc1a0f66cf719a718910239cfca0cfda}} 
+\index{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}!backward@{backward}}
+\index{backward@{backward}!mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}}
+\subsubsection{\texorpdfstring{backward()}{backward()}}
+{\footnotesize\ttfamily def mcs.\+Sabertooth2x60.\+Sabertooth2x60.\+backward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{speed }\end{DoxyParamCaption})}
+
+
+
+Engage motor backwards using provided speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & Speed should be greater than zero or less than or equal to 100 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_ace6e29789475ce51e75dce8ef5fec1d6}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_ace6e29789475ce51e75dce8ef5fec1d6}} 
+\index{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}!forward@{forward}}
+\index{forward@{forward}!mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def mcs.\+Sabertooth2x60.\+Sabertooth2x60.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{speed }\end{DoxyParamCaption})}
+
+
+
+Engage motor forward using provided speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & Speed should be greater than zero or less than or equal to 100 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_aef280facf9a0289a38b12075f4e66440}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_aef280facf9a0289a38b12075f4e66440}} 
+\index{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}!stop@{stop}}
+\index{stop@{stop}!mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily def mcs.\+Sabertooth2x60.\+Sabertooth2x60.\+stop (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Stops motor by setting P\+WM to 50. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_ab2a2769dcfc3d37e1b9c41592d854792}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_ab2a2769dcfc3d37e1b9c41592d854792}} 
+\index{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}!duty\+Cycle@{duty\+Cycle}}
+\index{duty\+Cycle@{duty\+Cycle}!mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}}
+\subsubsection{\texorpdfstring{duty\+Cycle}{dutyCycle}}
+{\footnotesize\ttfamily mcs.\+Sabertooth2x60.\+Sabertooth2x60.\+duty\+Cycle}
+
+
+
+Dutycycle used for P\+WM signal. 
+
+Initally set to 50 (motors stopped) \mbox{\Hypertarget{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a5841fe4acd53f784c65025697c4c81b6}\label{classmcs_1_1Sabertooth2x60_1_1Sabertooth2x60_a5841fe4acd53f784c65025697c4c81b6}} 
+\index{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}!enabled@{enabled}}
+\index{enabled@{enabled}!mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60@{mcs\+::\+Sabertooth2x60\+::\+Sabertooth2x60}}
+\subsubsection{\texorpdfstring{enabled}{enabled}}
+{\footnotesize\ttfamily mcs.\+Sabertooth2x60.\+Sabertooth2x60.\+enabled}
+
+
+
+Boolean to indicate if this motor should be used. 
+
+If disabled, program will run but not attempt to operate motors. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/pi/\+E\+M5/mcs/Sabertooth2x60.\+py\end{DoxyCompactItemize}

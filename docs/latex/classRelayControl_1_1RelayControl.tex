@@ -1,0 +1,85 @@
+\hypertarget{classRelayControl_1_1RelayControl}{}\section{Relay\+Control.\+Relay\+Control Class Reference}
+\label{classRelayControl_1_1RelayControl}\index{Relay\+Control.\+Relay\+Control@{Relay\+Control.\+Relay\+Control}}
+
+
+This class is used to control individual normally open relays.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classRelayControl_1_1RelayControl_a2cfbdc8606b889bff3c9956c912071d6}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, pin\+Number, debug\+Flag, enabled\+Flag, debug\+Name)
+\begin{DoxyCompactList}\small\item\em Constructor for relay control module. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRelayControl_1_1RelayControl_ae8c4b29ded83c1e0844445491c256628}\label{classRelayControl_1_1RelayControl_ae8c4b29ded83c1e0844445491c256628}} 
+def \hyperlink{classRelayControl_1_1RelayControl_ae8c4b29ded83c1e0844445491c256628}{enable} (self)
+\begin{DoxyCompactList}\small\item\em Close relay by outputting high digital output to relay\textquotesingle{}s M\+O\+S\+F\+ET. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRelayControl_1_1RelayControl_a5a01718340f5477f31287ed0cc4fe171}\label{classRelayControl_1_1RelayControl_a5a01718340f5477f31287ed0cc4fe171}} 
+def \hyperlink{classRelayControl_1_1RelayControl_a5a01718340f5477f31287ed0cc4fe171}{disable} (self)
+\begin{DoxyCompactList}\small\item\em Open relay by outputtting low digital output to relay\textquotesingle{}s M\+O\+S\+F\+ET. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRelayControl_1_1RelayControl_a78f2bb3413b1a30e9d798b516b1cdbc9}\label{classRelayControl_1_1RelayControl_a78f2bb3413b1a30e9d798b516b1cdbc9}} 
+\hyperlink{classRelayControl_1_1RelayControl_a78f2bb3413b1a30e9d798b516b1cdbc9}{debug}
+\begin{DoxyCompactList}\small\item\em Boolean indicating if debug info should be included for this module. \end{DoxyCompactList}\item 
+\hyperlink{classRelayControl_1_1RelayControl_a2e1cc2648fbe560611f2eff54cb35aed}{enabled}
+\begin{DoxyCompactList}\small\item\em Boolean to indicate if this motor should be used. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRelayControl_1_1RelayControl_ab89195e1772f999497371cf3c2ff0b33}\label{classRelayControl_1_1RelayControl_ab89195e1772f999497371cf3c2ff0b33}} 
+\hyperlink{classRelayControl_1_1RelayControl_ab89195e1772f999497371cf3c2ff0b33}{debug\+Prefix}
+\begin{DoxyCompactList}\small\item\em String to differentiate different relays for debugging. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRelayControl_1_1RelayControl_a98ec3fccdd5f8558684a1ba8ea90e6c9}\label{classRelayControl_1_1RelayControl_a98ec3fccdd5f8558684a1ba8ea90e6c9}} 
+{\bfseries pin\+Number}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is used to control individual normally open relays. 
+
+If the relay is enabled, a simple digital out is sent triggering a M\+O\+S\+F\+ET controlled relay. \begin{DoxyAuthor}{Author}
+Keith 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+12/16/2020\+: Added commenting to code. -\/\+KS 
+\end{DoxyNote}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRelayControl_1_1RelayControl_a2cfbdc8606b889bff3c9956c912071d6}\label{classRelayControl_1_1RelayControl_a2cfbdc8606b889bff3c9956c912071d6}} 
+\index{Relay\+Control\+::\+Relay\+Control@{Relay\+Control\+::\+Relay\+Control}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!Relay\+Control\+::\+Relay\+Control@{Relay\+Control\+::\+Relay\+Control}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Relay\+Control.\+Relay\+Control.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{pin\+Number,  }\item[{}]{debug\+Flag,  }\item[{}]{enabled\+Flag,  }\item[{}]{debug\+Name }\end{DoxyParamCaption})}
+
+
+
+Constructor for relay control module. 
+
+Relays are normally open and disabled by default 
+\begin{DoxyParams}{Parameters}
+{\em pin\+Number} & Interger Raspberry Pi G\+P\+IO B\+CM pin number used for control signal \\
+\hline
+{\em debug\+Flag} & Boolean to indicate if debugging data should be printed \\
+\hline
+{\em enabled\+Flag} & Boolean to indicate if opeations should be carried out. If false, relays will always be open. \\
+\hline
+{\em debug\+Name} & String to indicate name for debugging information \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classRelayControl_1_1RelayControl_a2e1cc2648fbe560611f2eff54cb35aed}\label{classRelayControl_1_1RelayControl_a2e1cc2648fbe560611f2eff54cb35aed}} 
+\index{Relay\+Control\+::\+Relay\+Control@{Relay\+Control\+::\+Relay\+Control}!enabled@{enabled}}
+\index{enabled@{enabled}!Relay\+Control\+::\+Relay\+Control@{Relay\+Control\+::\+Relay\+Control}}
+\subsubsection{\texorpdfstring{enabled}{enabled}}
+{\footnotesize\ttfamily Relay\+Control.\+Relay\+Control.\+enabled}
+
+
+
+Boolean to indicate if this motor should be used. 
+
+If disabled, program will run but not attempt to operate motors 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/pi/\+E\+M5/mcs/firmware/Relay\+Control.\+py\end{DoxyCompactItemize}

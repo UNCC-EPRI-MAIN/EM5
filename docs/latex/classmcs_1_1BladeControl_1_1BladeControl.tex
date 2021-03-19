@@ -1,0 +1,77 @@
+\hypertarget{classmcs_1_1BladeControl_1_1BladeControl}{}\section{mcs.\+Blade\+Control.\+Blade\+Control Class Reference}
+\label{classmcs_1_1BladeControl_1_1BladeControl}\index{mcs.\+Blade\+Control.\+Blade\+Control@{mcs.\+Blade\+Control.\+Blade\+Control}}
+
+
+This class is the high level controller for the blade motors Provides high level control by integrating M\+D30C and relay control.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmcs_1_1BladeControl_1_1BladeControl_a37cb8ac7467a1274d14e267d6435d3e8}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\begin{DoxyCompactList}\small\item\em Constructor for \hyperlink{classmcs_1_1BladeControl_1_1BladeControl}{Blade\+Control} Blade motor relay is intially disengaged and speed set to 0. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1BladeControl_1_1BladeControl_a05859a242acdf999ed8903a9e93fe8ca}\label{classmcs_1_1BladeControl_1_1BladeControl_a05859a242acdf999ed8903a9e93fe8ca}} 
+def \hyperlink{classmcs_1_1BladeControl_1_1BladeControl_a05859a242acdf999ed8903a9e93fe8ca}{turn\+On} (self)
+\begin{DoxyCompactList}\small\item\em Spin motors by closing relay and setting blade motor speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1BladeControl_1_1BladeControl_a40b66a4f484600964f36b7f220e3d779}\label{classmcs_1_1BladeControl_1_1BladeControl_a40b66a4f484600964f36b7f220e3d779}} 
+def \hyperlink{classmcs_1_1BladeControl_1_1BladeControl_a40b66a4f484600964f36b7f220e3d779}{turn\+Off} (self)
+\begin{DoxyCompactList}\small\item\em Turn off blades by opening relay and setting blade motor speed to 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmcs_1_1BladeControl_1_1BladeControl_a6ebee023da9ad1fda94b73fee606f9d4}\label{classmcs_1_1BladeControl_1_1BladeControl_a6ebee023da9ad1fda94b73fee606f9d4}} 
+\hyperlink{classmcs_1_1BladeControl_1_1BladeControl_a6ebee023da9ad1fda94b73fee606f9d4}{debug}
+\begin{DoxyCompactList}\small\item\em Boolean indicating if debug info should be included for this module. \end{DoxyCompactList}\item 
+\hyperlink{classmcs_1_1BladeControl_1_1BladeControl_a6b4ee49331139f85b85153f54d9bc164}{enabled}
+\begin{DoxyCompactList}\small\item\em Boolean to indicate if blade motors should be used. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1BladeControl_1_1BladeControl_a49c3b63398c7fd7744eadb1205ee81bf}\label{classmcs_1_1BladeControl_1_1BladeControl_a49c3b63398c7fd7744eadb1205ee81bf}} 
+\hyperlink{classmcs_1_1BladeControl_1_1BladeControl_a49c3b63398c7fd7744eadb1205ee81bf}{debug\+Prefix}
+\begin{DoxyCompactList}\small\item\em String used for debugging. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1BladeControl_1_1BladeControl_a76a90ce485b59963ee9f10df0c80f136}\label{classmcs_1_1BladeControl_1_1BladeControl_a76a90ce485b59963ee9f10df0c80f136}} 
+{\bfseries relay}
+\item 
+\mbox{\Hypertarget{classmcs_1_1BladeControl_1_1BladeControl_ac032c4499f46d53b825462847570f4d4}\label{classmcs_1_1BladeControl_1_1BladeControl_ac032c4499f46d53b825462847570f4d4}} 
+{\bfseries blade}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the high level controller for the blade motors Provides high level control by integrating M\+D30C and relay control. 
+
+\begin{DoxyAuthor}{Author}
+Keith 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+12/16/2020\+: Added commenting to code. -\/\+KS 
+\end{DoxyNote}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmcs_1_1BladeControl_1_1BladeControl_a37cb8ac7467a1274d14e267d6435d3e8}\label{classmcs_1_1BladeControl_1_1BladeControl_a37cb8ac7467a1274d14e267d6435d3e8}} 
+\index{mcs\+::\+Blade\+Control\+::\+Blade\+Control@{mcs\+::\+Blade\+Control\+::\+Blade\+Control}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!mcs\+::\+Blade\+Control\+::\+Blade\+Control@{mcs\+::\+Blade\+Control\+::\+Blade\+Control}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def mcs.\+Blade\+Control.\+Blade\+Control.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Constructor for \hyperlink{classmcs_1_1BladeControl_1_1BladeControl}{Blade\+Control} Blade motor relay is intially disengaged and speed set to 0. 
+
+Pins numbers defined in Pin\+Assignments.\+py Enable/debug flags defined in Test\+Flags.\+py 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classmcs_1_1BladeControl_1_1BladeControl_a6b4ee49331139f85b85153f54d9bc164}\label{classmcs_1_1BladeControl_1_1BladeControl_a6b4ee49331139f85b85153f54d9bc164}} 
+\index{mcs\+::\+Blade\+Control\+::\+Blade\+Control@{mcs\+::\+Blade\+Control\+::\+Blade\+Control}!enabled@{enabled}}
+\index{enabled@{enabled}!mcs\+::\+Blade\+Control\+::\+Blade\+Control@{mcs\+::\+Blade\+Control\+::\+Blade\+Control}}
+\subsubsection{\texorpdfstring{enabled}{enabled}}
+{\footnotesize\ttfamily mcs.\+Blade\+Control.\+Blade\+Control.\+enabled}
+
+
+
+Boolean to indicate if blade motors should be used. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/pi/\+E\+M5/mcs/Blade\+Control.\+py\end{DoxyCompactItemize}

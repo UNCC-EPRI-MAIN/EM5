@@ -1,0 +1,1 @@
+The purpose of this directory is to upload/download files from the Pi to your PC
