@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['forward',['forward',['../classSabertooth2x60_1_1Sabertooth2x60.html#a94bd39afb0af0c75f71b1f0704e8abf2',1,'Sabertooth2x60::Sabertooth2x60']]]
+  ['pivotleft',['pivotLeft',['../classDriveControl_1_1DriveControl.html#a4a5762f08ec16832612e186149e124de',1,'DriveControl::DriveControl']]],
+  ['pivotright',['pivotRight',['../classDriveControl_1_1DriveControl.html#af921359cc81d2299b2ddb5078ed1d749',1,'DriveControl::DriveControl']]]
 ];

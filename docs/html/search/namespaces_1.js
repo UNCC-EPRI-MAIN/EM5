@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sabertooth2x60',['Sabertooth2x60',['../namespaceSabertooth2x60.html',1,'']]]
+  ['lsm303dlhc',['lsm303dlhc',['../namespacemcs_1_1firmware_1_1lsm303dlhc.html',1,'mcs::firmware']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['getx',['getX',['../classNEO__M8P_1_1NEO__M8P.html#ab17d9fb05484b44754676e9de00c608b',1,'NEO_M8P::NEO_M8P']]],
-  ['gety',['getY',['../classNEO__M8P_1_1NEO__M8P.html#a69779ad366f737d704563a4602360ca4',1,'NEO_M8P::NEO_M8P']]]
+  ['rapidstop',['rapidStop',['../classDriveControl_1_1DriveControl.html#ab6b666f6baba403c6eab6c31eea78dc3',1,'DriveControl::DriveControl']]]
 ];

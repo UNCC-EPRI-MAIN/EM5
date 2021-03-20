@@ -1,0 +1,92 @@
+\hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc}{}\section{mcs.\+firmware.\+lsm303dlhc Namespace Reference}
+\label{namespacemcs_1_1firmware_1_1lsm303dlhc}\index{mcs.\+firmware.\+lsm303dlhc@{mcs.\+firmware.\+lsm303dlhc}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_a1dd0dda685906d682fdc61b928daea0a}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_a1dd0dda685906d682fdc61b928daea0a}} 
+def {\bfseries get\+Raw\+\_\+\+Heading} ()
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_a3231badac60b0e0fb6c36cba62157075}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_a3231badac60b0e0fb6c36cba62157075}} 
+def {\bfseries get\+\_\+cal\+\_\+heading} (mag\+\_\+raw, acc\+\_\+raw)
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_aef240f31c29e78cbd547a16b0fa22898}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_aef240f31c29e78cbd547a16b0fa22898}} 
+def {\bfseries lp\+\_\+filter} (norm\+\_\+mag, norm\+\_\+acc)
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_ac63154e3c70fcbefcc0e16060fac99a8}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_ac63154e3c70fcbefcc0e16060fac99a8}} 
+def {\bfseries pitch\+\_\+roll} (filtered\+\_\+acc)
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_a626e3ce5e3a1602aa244be13e4b25f9b}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_a626e3ce5e3a1602aa244be13e4b25f9b}} 
+def {\bfseries tc\+\_\+heading} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_a2306e89ef0782283d496ce7141de2327}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_a2306e89ef0782283d496ce7141de2327}} 
+{\bfseries i2c} = busio.\+I2C(board.\+S\+CL, board.\+S\+DA)
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_aefaaa0ccd56bd1aaf195733637535400}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_aefaaa0ccd56bd1aaf195733637535400}} 
+{\bfseries accel} = adafruit\+\_\+lsm303\+\_\+accel.\+L\+S\+M303\+\_\+\+Accel(i2c)
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_aa61499d7e7a4675cc58185f941e1c4e2}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_aa61499d7e7a4675cc58185f941e1c4e2}} 
+{\bfseries mag} = adafruit\+\_\+lsm303dlh\+\_\+mag.\+L\+S\+M303\+D\+L\+H\+\_\+\+Mag(i2c)
+\item 
+{\bfseries mag\+\_\+transformation\+\_\+matrix}
+\item 
+{\bfseries acc\+\_\+transformation\+\_\+matrix}
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_a3307f6f7c39bd45e8af32a162a7e33f3}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_a3307f6f7c39bd45e8af32a162a7e33f3}} 
+{\bfseries mag\+\_\+bias} = np.\+array(\mbox{[}-\/15.\+156, -\/2.\+738, -\/53.\+182\mbox{]})
+\item 
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_a7b137ee76c2c5af6710bafd80baf6e63}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_a7b137ee76c2c5af6710bafd80baf6e63}} 
+{\bfseries acc\+\_\+bias} = np.\+array(\mbox{[}0.\+192, 0.\+054, -\/0.\+127\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Rev 1.0 
+11/XX/2020
+Rene Nicklich for EPRI_MAIN5 Senior Design Project at the University of North Carolina at Charlotte
+Contact: rene.nicklich92@gmail.com
+
+This Tilt Compensation Code is based on an Arduino Script found on the following website:
+https://www.instructables.com/Tilt-Compensated-Compass-With-LSM303DHLC/
+
+This code will return calibrated and tilt compensated compass heading values.
+
+This Code requires some libraries to be downloaded -->  run the following commands in bash on the rasPi:
+$ sudo pip3 install adafruit-circuitpython-lsm303-accel
+$ sudo pip3 install adafruit-circuitpython-lsm303dlh-mag
+
+if Pip is not install run:
+$ pip
+--> follow instructions
+OR:
+$ sudo apt install python3-pip
+\end{DoxyVerb}
+ 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_ab925a0fb1194bdf6a9a527bd8823ed7f}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_ab925a0fb1194bdf6a9a527bd8823ed7f}} 
+\index{mcs\+::firmware\+::lsm303dlhc@{mcs\+::firmware\+::lsm303dlhc}!acc\+\_\+transformation\+\_\+matrix@{acc\+\_\+transformation\+\_\+matrix}}
+\index{acc\+\_\+transformation\+\_\+matrix@{acc\+\_\+transformation\+\_\+matrix}!mcs\+::firmware\+::lsm303dlhc@{mcs\+::firmware\+::lsm303dlhc}}
+\subsubsection{\texorpdfstring{acc\+\_\+transformation\+\_\+matrix}{acc\_transformation\_matrix}}
+{\footnotesize\ttfamily mcs.\+firmware.\+lsm303dlhc.\+acc\+\_\+transformation\+\_\+matrix}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  np.array([[1.007, 0.003, 0.006], 
+2                             [-0.001, 0.988, -0.005], 
+3                             [-0.022, 0.008, 1.007]])
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemcs_1_1firmware_1_1lsm303dlhc_a521a25f0804dd3e1356dcd7a280e248e}\label{namespacemcs_1_1firmware_1_1lsm303dlhc_a521a25f0804dd3e1356dcd7a280e248e}} 
+\index{mcs\+::firmware\+::lsm303dlhc@{mcs\+::firmware\+::lsm303dlhc}!mag\+\_\+transformation\+\_\+matrix@{mag\+\_\+transformation\+\_\+matrix}}
+\index{mag\+\_\+transformation\+\_\+matrix@{mag\+\_\+transformation\+\_\+matrix}!mcs\+::firmware\+::lsm303dlhc@{mcs\+::firmware\+::lsm303dlhc}}
+\subsubsection{\texorpdfstring{mag\+\_\+transformation\+\_\+matrix}{mag\_transformation\_matrix}}
+{\footnotesize\ttfamily mcs.\+firmware.\+lsm303dlhc.\+mag\+\_\+transformation\+\_\+matrix}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  np.array([[1.383, 0.108, 0.127], 
+2                             [-0.034, 1.374, 0.025], 
+3                             [0.205, -0.025, 1.47]])
+\end{DoxyCode}

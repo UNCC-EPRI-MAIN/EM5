@@ -1,0 +1,83 @@
+\hypertarget{classmcs_1_1firmware_1_1AMT103_1_1AMT103}{}\section{mcs.\+firmware.\+A\+M\+T103.\+A\+M\+T103 Class Reference}
+\label{classmcs_1_1firmware_1_1AMT103_1_1AMT103}\index{mcs.\+firmware.\+A\+M\+T103.\+A\+M\+T103@{mcs.\+firmware.\+A\+M\+T103.\+A\+M\+T103}}
+
+
+This class is used to control and monitor a single encoder Enoceders may use up to 3 pins\+: Channels\+: X, A, B Various degrees of resolution are available Bewary of overloading Pi with aggressive resolution.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a11608d8fb67ad83c74feb8f81aa84391}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, pin\+X\+Number, pin\+A\+Number, debug\+Flag, enabled\+Flag, override\+Flag, debug\+Name)
+\begin{DoxyCompactList}\small\item\em Constructor for relay control module. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a97d6ba22a18b6d03cea5f6da60f1c6e8}\label{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a97d6ba22a18b6d03cea5f6da60f1c6e8}} 
+def \hyperlink{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a97d6ba22a18b6d03cea5f6da60f1c6e8}{count\+Down} (self, distance\+\_\+cm)
+\begin{DoxyCompactList}\small\item\em Prints out encoder readings Intended for testing only Standard precision using channel X only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmcs_1_1firmware_1_1AMT103_1_1AMT103_abfb2f694f17482ab6a917ce09c253edf}\label{classmcs_1_1firmware_1_1AMT103_1_1AMT103_abfb2f694f17482ab6a917ce09c253edf}} 
+\hyperlink{classmcs_1_1firmware_1_1AMT103_1_1AMT103_abfb2f694f17482ab6a917ce09c253edf}{debug}
+\begin{DoxyCompactList}\small\item\em Boolean indicating if debug info should be included for this module. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a7d444eb53c8b940b983bf9db19a5ca4a}\label{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a7d444eb53c8b940b983bf9db19a5ca4a}} 
+\hyperlink{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a7d444eb53c8b940b983bf9db19a5ca4a}{enabled}
+\begin{DoxyCompactList}\small\item\em Boolean to indicate if this device should be used. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1firmware_1_1AMT103_1_1AMT103_ab6dd8d34c9e9c61ef93dd64149860b6a}\label{classmcs_1_1firmware_1_1AMT103_1_1AMT103_ab6dd8d34c9e9c61ef93dd64149860b6a}} 
+\hyperlink{classmcs_1_1firmware_1_1AMT103_1_1AMT103_ab6dd8d34c9e9c61ef93dd64149860b6a}{debug\+Prefix}
+\begin{DoxyCompactList}\small\item\em String to differentiate different relays for debugging. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a04e3cc73731975718a15cc3a308729d8}\label{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a04e3cc73731975718a15cc3a308729d8}} 
+{\bfseries pin\+X\+Number}
+\item 
+\mbox{\Hypertarget{classmcs_1_1firmware_1_1AMT103_1_1AMT103_ab374525c7af3df81f314059b915e0687}\label{classmcs_1_1firmware_1_1AMT103_1_1AMT103_ab374525c7af3df81f314059b915e0687}} 
+{\bfseries pin\+A\+Number}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is used to control and monitor a single encoder Enoceders may use up to 3 pins\+: Channels\+: X, A, B Various degrees of resolution are available Bewary of overloading Pi with aggressive resolution. 
+
+\begin{DoxyAuthor}{Author}
+Keith 
+\end{DoxyAuthor}
+\begin{DoxyNote}{Note}
+12/17/2020\+: Redeveloped due to data loss. -\/\+KS 
+\end{DoxyNote}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a11608d8fb67ad83c74feb8f81aa84391}\label{classmcs_1_1firmware_1_1AMT103_1_1AMT103_a11608d8fb67ad83c74feb8f81aa84391}} 
+\index{mcs\+::firmware\+::\+A\+M\+T103\+::\+A\+M\+T103@{mcs\+::firmware\+::\+A\+M\+T103\+::\+A\+M\+T103}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!mcs\+::firmware\+::\+A\+M\+T103\+::\+A\+M\+T103@{mcs\+::firmware\+::\+A\+M\+T103\+::\+A\+M\+T103}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def mcs.\+firmware.\+A\+M\+T103.\+A\+M\+T103.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{pin\+X\+Number,  }\item[{}]{pin\+A\+Number,  }\item[{}]{debug\+Flag,  }\item[{}]{enabled\+Flag,  }\item[{}]{override\+Flag,  }\item[{}]{debug\+Name }\end{DoxyParamCaption})}
+
+
+
+Constructor for relay control module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+X\+Number} & Interger Raspberry Pi G\+P\+IO B\+CM pin number used channel X of encoder \\
+\hline
+{\em pin\+A\+Number} & Interger Raspberry Pi G\+P\+IO B\+CM pin number used channel X of encoder \\
+\hline
+{\em pin\+B\+Number} & Interger Raspberry Pi G\+P\+IO B\+CM pin number used channel X of encoder \\
+\hline
+{\em high\+Precision} & Boolean to indicate use of channel A for encoders \\
+\hline
+{\em ultra\+Precision} & Boolean to indicate use of channel A and B for encoders \\
+\hline
+{\em directional} & Boolean to indicate if direction should be considered. Uess channels A and B \\
+\hline
+{\em debug\+Flag} & Boolean to indicate if debugging data should be printed \\
+\hline
+{\em enabled\+Flag} & Boolean to indicate if opeations should be carried out. \\
+\hline
+{\em debug\+Name} & String to indicate name for debugging information \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/pi/\+E\+M5/mcs/firmware/A\+M\+T103.\+py\end{DoxyCompactItemize}

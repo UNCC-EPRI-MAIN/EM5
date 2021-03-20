@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['manualdrivecontrol',['ManualDriveControl',['../classmcs_1_1ManualDriveControl__old_1_1ManualDriveControl.html',1,'mcs::ManualDriveControl_old']]],
-  ['md30c',['MD30C',['../classMD30C_1_1MD30C.html',1,'MD30C']]],
-  ['motorpwm',['motorPWM',['../classMD30C_1_1MD30C.html#a134f26ab282e5dedf8ebfab240bac1e2',1,'MD30C.MD30C.motorPWM()'],['../classSabertooth2x60_1_1Sabertooth2x60.html#aefa0f24529e5785871a23f63a6e8cf2d',1,'Sabertooth2x60.Sabertooth2x60.motorPWM()']]]
+  ['rapidstop',['rapidStop',['../classDriveControl_1_1DriveControl.html#ab6b666f6baba403c6eab6c31eea78dc3',1,'DriveControl::DriveControl']]],
+  ['relaycontrol',['RelayControl',['../classmcs_1_1firmware_1_1RelayControl_1_1RelayControl.html',1,'mcs.firmware.RelayControl.RelayControl'],['../classtest_1_1routines_1_1test1_1_1RelayControl_1_1RelayControl.html',1,'test.routines.test1.RelayControl.RelayControl']]],
+  ['rplidar_5fa2m4_5fr4',['rpLiDAR_A2M4_R4',['../classmcs_1_1firmware_1_1rpLiDAR__A2M4__R4_1_1rpLiDAR__A2M4__R4.html',1,'mcs.firmware.rpLiDAR_A2M4_R4.rpLiDAR_A2M4_R4'],['../classmcs_1_1firmware_1_1rpLiDAR__A2M4__R4__backup_1_1rpLiDAR__A2M4__R4.html',1,'mcs.firmware.rpLiDAR_A2M4_R4_backup.rpLiDAR_A2M4_R4']]]
 ];
