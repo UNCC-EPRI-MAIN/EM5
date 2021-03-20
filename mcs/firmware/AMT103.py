@@ -1,4 +1,4 @@
-## @package hello
+## @package mcs.firmware.AMT103
 # Documentation for this module
 #
 # More details
