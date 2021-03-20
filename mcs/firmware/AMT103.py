@@ -1,3 +1,9 @@
+## @package hello
+# Documentation for this module
+#
+# More details
+
+
 import RPi.GPIO as GPIO
 
 
