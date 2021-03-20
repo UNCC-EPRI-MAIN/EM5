@@ -12,10 +12,10 @@ def \hyperlink{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_aefe5ade8212
 \begin{DoxyCompactList}\small\item\em Constructor for relay control module. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_a4429d108e4283b2daaeabd302a40616d}\label{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_a4429d108e4283b2daaeabd302a40616d}} 
 def \hyperlink{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_a4429d108e4283b2daaeabd302a40616d}{enable} (self)
-\begin{DoxyCompactList}\small\item\em Close relay by outputting high digital output to relay\textquotesingle{}s M\+O\+S\+F\+ET. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Closes relay by outputting high G\+P\+IO signal. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_ab1a16c37e9de0fab604ed2e27566bbac}\label{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_ab1a16c37e9de0fab604ed2e27566bbac}} 
 def \hyperlink{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_ab1a16c37e9de0fab604ed2e27566bbac}{disable} (self)
-\begin{DoxyCompactList}\small\item\em Open relay by outputtting low digital output to relay\textquotesingle{}s M\+O\+S\+F\+ET. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Open\textquotesingle{}s relay by outputting low G\+P\+IO signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,13 +35,7 @@ def \hyperlink{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_ab1a16c37e9d
 \subsection{Detailed Description}
 This class is used to control individual normally open relays. 
 
-If the relay is enabled, a simple digital out is sent triggering a M\+O\+S\+F\+ET controlled relay. \begin{DoxyAuthor}{Author}
-Keith 
-\end{DoxyAuthor}
-\begin{DoxyNote}{Note}
-12/16/2020\+: Added commenting to code. -\/\+KS 
-\end{DoxyNote}
-
+If the relay is enabled, a simple digital out is sent triggering a M\+O\+S\+F\+ET controlled relay. 
 
 \subsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_aefe5ade8212d8cd292790a65d1ddc539}\label{classmcs_1_1firmware_1_1RelayControl_1_1RelayControl_aefe5ade8212d8cd292790a65d1ddc539}} 
@@ -63,6 +57,8 @@ Relays are normally open and disabled by default
 {\em enabled\+Flag} & Boolean to indicate if opeations should be carried out. If false, relays will always be open. \\
 \hline
 {\em debug\+Name} & String to indicate name for debugging information \\
+\hline
+{\em override\+Flag} & Boolean to indicate module has been overridden \\
 \hline
 \end{DoxyParams}
 

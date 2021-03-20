@@ -59,7 +59,7 @@ class AMT103:
             #print(self.debugPrefix + "[__init__()]: Channel A BCM pin = " + str(pinANumber))
 
     ## Prints out encoder readings
-    # Intended for testing only
+    #
     # Standard precision using channel X only
     def countDown(self, distance_cm):
         stepCount = int(distance_cm / DISTANCE_PER_STEP)

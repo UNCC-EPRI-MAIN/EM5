@@ -1,9 +1,15 @@
+## @package mcs.firmware.RelayControl
+# Controls single GPIO output to drive relay
+#
+# More details
+# @author Keith
+# @note 03/19/2021: Updated documentation -KS
+
+# standard libraries
 import RPi.GPIO as GPIO
 
 ## This class is used to control individual normally open relays.
 # If the relay is enabled, a simple digital out is sent triggering a MOSFET controlled relay.
-# @author Keith
-# @note 12/16/2020: Added commenting to code. -KS
 class RelayControl:
 
     ##  Constructor for relay control module. 
@@ -12,6 +18,7 @@ class RelayControl:
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out. If false, relays will always be open.
     # @param debugName String to indicate name for debugging information
+    # @param overrideFlag Boolean to indicate module has been overridden 
     def __init__(self, pinNumber, debugFlag, enabledFlag, overrideFlag, debugName):
         ## Boolean indicating if debug info should be included for this module
         self.debug = debugFlag
@@ -32,14 +39,14 @@ class RelayControl:
         if self.debug:
             print(self.debugPrefix + "[__init__()]: BCM pin = " + str(pinNumber))
 
-    ## Close relay by outputting high digital output to relay's MOSFET
+    ## Closes relay by outputting high GPIO signal
     def enable(self):
         if self.enabled:
             GPIO.output(self.pinNumber, GPIO.HIGH)
         if self.debug:
             print(self.debugPrefix + "[enable()] closing relay")
 
-    ## Open relay by outputtting low digital output to relay's MOSFET
+    ## Open's relay by outputting low GPIO signal
     def disable(self):
         if self.enabled:
             GPIO.output(self.pinNumber, GPIO.LOW)
