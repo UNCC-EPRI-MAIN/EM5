@@ -41,6 +41,10 @@ CollisionDetection_over = False
 DriveControl_debug = True
 DriveControl_enabled = True
 DriveControl_over = False
+# Navigation
+Navigation_debug = True
+Navigation_enabled = True
+Navigation_over = False
 # Remote Control
 RemoteControl_debug = True
 RemoteControl_enabled = True

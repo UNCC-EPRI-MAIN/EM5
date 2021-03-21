@@ -88,7 +88,9 @@ class DriveControl:
     def veerRightDegrees(self, degrees):
         if degrees > 90 or degrees <= 0:
             print("!--- Invalid degrees in veer right ---!")
-        self.leftSpeed = int(COURSE_CORRECTION_FACTOR * NORMAL_DRIVE_SPEED)
+        #self.leftSpeed = int(COURSE_CORRECTION_FACTOR * NORMAL_DRIVE_SPEED)
+        #self.rightSpeed = NORMAL_DRIVE_SPEED
+        self.leftSpeed = NORMAL_DRIVE_SPEED + 10
         self.rightSpeed = NORMAL_DRIVE_SPEED
         if self.debug:
             print(self.debugPrefix + "[veerRight()]: ")
@@ -100,8 +102,10 @@ class DriveControl:
     def veerLeftDegrees(self, degrees):
         if degrees > 90 or degrees <= 0:
             print("!--- Invalid degrees in veer left ---!")
+        #self.leftSpeed = NORMAL_DRIVE_SPEED
+        #self.rightSpeed = int(COURSE_CORRECTION_FACTOR * NORMAL_DRIVE_SPEED)
         self.leftSpeed = NORMAL_DRIVE_SPEED
-        self.rightSpeed = int(COURSE_CORRECTION_FACTOR * NORMAL_DRIVE_SPEED)
+        self.rightSpeed = NORMAL_DRIVE_SPEED + 10
         if self.debug:
             print(self.debugPrefix + "[veerLeft()]: ")
         if self.enabled:

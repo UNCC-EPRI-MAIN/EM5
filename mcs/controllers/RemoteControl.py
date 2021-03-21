@@ -46,7 +46,7 @@ def updateSpeed(leftAxis, rightAxis):
     else:
         leftSpeed = 0
         rightSpeed = 0
-    print(str(leftSpeed) + " - " + str(rightSpeed))
+    #print(str(leftSpeed) + " - " + str(rightSpeed))
     return leftSpeed, rightSpeed
 
 

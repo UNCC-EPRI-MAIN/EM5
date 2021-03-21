@@ -50,13 +50,6 @@ def run(globals):
         thread_collisionDetection = threading.Thread(target = CollisionDetection.run, args = (globals, ))
         thread_collisionDetection.start()
 
-    # load batttery monitor
-    if tFlags.BatteryMonitor_over:
-        testDir = "test.routines.test" + str(testNum) + ".BatteryMonitor"
-        BatteryMonitor = importlib.import_module(testDir)
-    else:
-        import mcs.controllers.BatteryMonitor as BatteryMonitor
-
     # load object dection
     if tFlags.rpLiDAR_A2M4_R4_over:
         testDir = "test.routines.test" + str(testNum) + ".rpLiDAR_A2M4_R4"

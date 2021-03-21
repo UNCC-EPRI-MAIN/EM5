@@ -147,14 +147,15 @@ def run(globals):
         time.sleep(1)
 
     # wait 3 seconds, start driving
-    time.sleep(3)
-    driveSpeed = NORMAL_DRIVE_SPEED
-    drive.enable()
-    print("driving forward")
-    #drive.straight(driveSpeed)
-    drive.pivotRight(360)
-    
-    compassDrive = False
+    if globals['state1'] != 'shutdown':
+        time.sleep(3)
+        driveSpeed = NORMAL_DRIVE_SPEED
+        drive.enable()
+        print("driving forward")
+        drive.straight(driveSpeed)
+        #drive.pivotRight(360)
+        time.sleep(3)
+    compassDrive = True
 
     # main loop, run until program shutdown
     while globals['state1'] != 'shutdown':
@@ -186,6 +187,7 @@ def run(globals):
             if heading > destinationHeading:
                 veerTo = 'left'
             if degreesOff > 180:
+                print("------heading over 180")
                 # veering left
                 if 360 - heading + destinationHeading <= 180:
                     degreesOff = 360 - heading + destinationHeading
@@ -215,10 +217,12 @@ def run(globals):
                 # veering left
                 if veerTo == 'right':
                     drive.veerRightDegrees(degreesOff)
-                    print("veering left")
+                    print("veering left hey")
+                    print(str(degreesOff))
                 else:
                     drive.veerLeftDegrees(degreesOff)
-                    print("veering right")
+                    print("veering right hey")
+                    print(str(degreesOff))
             # invalid state
             else:
             #    continue

@@ -108,16 +108,16 @@ with multiproc.Manager() as manager:
     proc_DriveSysControl = multiproc.Process(target = mcs_dsc.run, args = (globals, ))
     proc_DriveSysControl.start()
 
-    # load GPS module
-    if tFlags.NEO_M8P_over:
-        testDir = "test.routines.test" + str(testNum) + ".NEO_M8P"
-        NEO_M8P = importlib.import_module(testDir)
+    # load Navigation module
+    if tFlags.Navigation_over:
+        testDir = "test.routines.test" + str(testNum) + ".Navigation"
+        Navigation = importlib.import_module(testDir)
     else:
-        import mcs.firmware.NEO_M8P as NEO_M8P
+        import mcs.controllers.Navigation as Navigation
     # start GPS thread
     if enabled:
-        thread_gps = threading.Thread(target = NEO_M8P.run, args = (tFlags.NEO_M8P_debug, tFlags.NEO_M8P_enabled, tFlags.NEO_M8P_RTK_enabled, tFlags.NEO_M8P_over, pins.rtkStatus, globals))
-        thread_gps.start()
+        thread_navigation = threading.Thread(target = Navigation.run, args = (globals, ))
+        thread_navigation.start()
 
     # load blade control module
     if tFlags.BladeControl_over:
@@ -143,7 +143,7 @@ with multiproc.Manager() as manager:
 
     # wait for threads to end
     if enabled:
-        thread_gps.join()
+        thread_navigation.join()
         thread_bladeControl.join()
     
     # wait for processes to end
