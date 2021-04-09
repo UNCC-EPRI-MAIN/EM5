@@ -30,7 +30,28 @@ class rpLiDAR_A2M4_R4:
             self.lidar = LD('/dev/ttyUSB0')
         if self.debug:
             print(self.debugPrefix + "[__init__()]: LiDAR Initialized]")
-
+    
+    # Self check function, restarting LiDAR if not functioning properly
+    def  startup(self):
+         up_status = False
+         status_string = ''
+         while !up_status:
+             self.lidar.connect()
+#              self.lidar.start_motor()  # may not be needed as get_health starts motor i think
+             if self.lidar.get_health() != 'Good':
+                  self.lidar.clear_input()
+                  self.lidar.reset()
+                  self.lidar.stop_motor()
+                  self.lidar.disconnect()
+                  status_string = 'LiDAR Not Good - Restarting'
+             elif self.lidar.get_health() == 'Good':
+                  up_status = True
+                  status_string = 'LiDAR up and Running - Proceed'
+             return status_string
+         
+                  
+   
+   
     # Helper fuction to run the LiDAR during docking operations, calculating distance from the guide rails, returning distance and angle
     def docking_guide_distance_helper(data):
         distance_to_middle = 31.115
@@ -44,7 +65,8 @@ class rpLiDAR_A2M4_R4:
             elif (distance_left_rail, distance_right_rail) == distance_to_middle:
                 turn_left, turn_right = False
                 go_straight = True
-
+    
+    # Function to find the closest tdistance in a given range of angles
     def clearance(self, start_angle, end_angle, data, distance_minimum): 
         for angle in range(start_angle, end_angle, 1):
             # found an object
@@ -52,11 +74,6 @@ class rpLiDAR_A2M4_R4:
                 #print("distance : " + str(data[angle]) + " at angle : " + str(angle))
                 return False
         return True
-
-
-    # Helper function for object tracking
-    def tracking_helper(data):
-        new_obj = {angle : distance}
 
 
     # helper function used to find objects/obstacles obstructing the robot path
