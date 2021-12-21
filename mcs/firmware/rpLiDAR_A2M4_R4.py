@@ -35,7 +35,7 @@ class rpLiDAR_A2M4_R4:
     def  startup(self):
          up_status = False
          status_string = ''
-         while !up_status:
+         while not up_status:
              self.lidar.connect()
 #              self.lidar.start_motor()  # may not be needed as get_health starts motor i think
              if self.lidar.get_health() != 'Good':
