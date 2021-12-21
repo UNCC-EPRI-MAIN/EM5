@@ -22,6 +22,16 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 - The Mowbot should not damage the PV equipment or modify the environment.
 - The new design will be a scaled up version of the current design. This includes making the cutting area bigger. The cut-area per charge will be increased.
 
+<p align="center" style="margin-bottom: 0px">
+  <img height="400" src="images/CurrentMowbot.jpg" alt="Current Mowbot" align="center">
+</p>
+<p align="center" >Figure 1: The current mowbot prototype.</p>
+
+<p align="center" style="margin-bottom: 0px">
+  <img height="300" src="images/newmowbotdesign.png" alt="New CAD Design" align="center">
+</p>
+<p align="center" >Figure 2: The new upscale Mowbot design.</p>
+
 ### The Mowbot will gain new features to improve the autonomous functionality.
 - The new features include: computer-vision-based object detection, Accelerometer, and Re-charging algorithm.
 - The internal computer will be upgraded from a Raspberry PI to an Nvidia Jetson Nano.
@@ -30,6 +40,11 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 ### The Mowbot will be simulated using Gazebo and ROS.
 - The idea is to simulated and test the robot with all the sensors before building it in real life
 - That will help planning out the robot building process and minimize error.
+
+<p align="center" style="margin-bottom: 0px">
+  <img height="300" src="images/modelGazebo.png" alt="CAD model in Gazebo" align="center">
+</p>
+<p align="center" >Figure 3: One of the test CAD model in Gazebo.</p>
 
 ## Computer Features
 - [x] Controlling the relays for the blades and wheels motors.
