@@ -1,22 +1,19 @@
-## @package mcs.MowBotControl
-# Primary process for mcs. 
-#
-# This file is an auxillary file used to assign GPIO pin assignments for various purposes.
-# This file ensures pin numbers do not conflict and provides a mechanism for quick changes.
-# All pin numbers use BCM mode. See Raspberry Pi GPIO for more information.
-# @author Keith
-# @note 03/19/2021: Updated documentation -KS
+## @brief The main system controller for the mowbot
 
-# standard libaries
+## @file MowBotControl.py
+# This file 
+
+# Standard Libaries
 import multiprocessing as multiproc
 import importlib
 import time
 import os
 import threading
 
-# load initial modules
+# Load Initial Modules
 import mcs.testFlags as tFlags
 import mcs.pinAssignments as pins
+
 
 # start HMI and get test number
 # temporarily disabled

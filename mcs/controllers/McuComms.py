@@ -1,4 +1,4 @@
-## @package mcs.controllers.BatteryMonitor
+## @package mcs.controllers
 # 
 #
 # More details

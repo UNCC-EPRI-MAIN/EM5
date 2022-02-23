@@ -1,11 +1,13 @@
+""" @package mcs.firmware
+TEMP
+
+test
+""" 
+
+
 import RPi.GPIO as GPIO
 
 ## This class is the firmware used to control the wheel motors via the Sabertooth2x60 hardware.
-# A PWM signal is passed throug the low pass filter, converting it to an analog signal. The Sabertooth2x60
-# then uses the signal to control a motor. This class controls only a single motor via one PWM signal.
-# @author Keith
-# @note 11/26/2020: Added commenting to code. -KS
-# @note 11/01/2020: Module tested. -KS
 class Sabertooth2x60:
 
     ##  Constructor for motor module. 

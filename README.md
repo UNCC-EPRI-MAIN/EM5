@@ -23,12 +23,12 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 - The new design will be a scaled up version of the current design. This includes making the cutting area bigger. The cut-area per charge will be increased.
 
 <p align="center" style="margin-bottom: 0px">
-  <img height="400" src="images/CurrentMowbot.jpg" alt="Current Mowbot" align="center">
+  <img height="400" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/CurrentMowbot.jpg" alt="Current Mowbot" align="center">
 </p>
 <p align="center" >Figure 1: The current mowbot prototype.</p>
 
 <p align="center" style="margin-bottom: 0px">
-  <img height="300" src="images/newmowbotdesign.png" alt="New CAD Design" align="center">
+  <img height="300" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/newmowbotdesign.png" alt="New CAD Design" align="center">
 </p>
 <p align="center" >Figure 2: The new upscale Mowbot design.</p>
 
@@ -42,7 +42,7 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 - That will help planning out the robot building process and minimize error.
 
 <p align="center" style="margin-bottom: 0px">
-  <img height="300" src="images/modelGazebo.png" alt="CAD model in Gazebo" align="center">
+  <img height="300" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/modelGazebo.png" alt="CAD model in Gazebo" align="center">
 </p>
 <p align="center" >Figure 3: One of the test CAD model in Gazebo.</p>
 

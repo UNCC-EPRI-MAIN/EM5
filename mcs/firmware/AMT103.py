@@ -1,29 +1,22 @@
-## @package mcs.firmware.AMT103
-# Documentation for this module
+## @package mcs.firmware
 #
-# More details
-
+#s
+#3
 
 import RPi.GPIO as GPIO
 
+# Module Parameters
+GEAR_RATIO = 26                                                             # 26 motor rotations for one wheel rotation
+INDEX_PULSE_PER_WHEEL_ROTATION = GEAR_RATIO                                 # index will pulse 26 times per wheel rotation
+INDEX_CHANGE_PER_WHEEL_ROTATION = 2 * GEAR_RATIO                            # 26 pulses = 52 state changes on pin
+WHEEL_DIAMETER = 33                                                         # diameter in cm
+WHEEL_CIRCUMFERENCE = 3.14 * WHEEL_DIAMETER                                 # circumference in cm
+DISTANCE_PER_STEP = WHEEL_CIRCUMFERENCE / INDEX_CHANGE_PER_WHEEL_ROTATION   # distance in cm for each step
+DISTANCE_PER_STEP = 2                                                       # above calculation yields 1.99
 
-# module parameters
-GEAR_RATIO = 26 # 26 motor rotations for one wheel rotation
-INDEX_PULSE_PER_WHEEL_ROTATION = GEAR_RATIO # index will pulse 26 times per wheel rotation
-INDEX_CHANGE_PER_WHEEL_ROTATION = 2 * GEAR_RATIO # 26 pulses = 52 state changes on pin
-WHEEL_DIAMETER = 33 # diameter in cm
-WHEEL_CIRCUMFERENCE = 3.14 * WHEEL_DIAMETER # circumference in cm
-DISTANCE_PER_STEP = WHEEL_CIRCUMFERENCE / INDEX_CHANGE_PER_WHEEL_ROTATION # distance in cm for each step
-DISTANCE_PER_STEP = 2 # above calculation yields 1.99
+## @file AMT103.py
 
-
-
-## This class is used to control and monitor a single encoder
-# Enoceders may use up to 3 pins: Channels: X, A, B
-# Various degrees of resolution are available
-# Bewary of overloading Pi with aggressive resolution
-# @author Keith
-# @note 12/17/2020: Redeveloped due to data loss. -KS
+## test 
 class AMT103:
 
     ##  Constructor for relay control module. 

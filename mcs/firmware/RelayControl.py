@@ -1,9 +1,4 @@
-## @package mcs.firmware.RelayControl
-# Controls single GPIO output to drive relay
-#
-# More details
-# @author Keith
-# @note 03/19/2021: Updated documentation -KS
+
 
 # standard libraries
 import RPi.GPIO as GPIO

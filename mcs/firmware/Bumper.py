@@ -1,10 +1,11 @@
+## @package mcs.firmware.Bumper
+
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM) 
 
 ## This class is used to control individual normally open bumper.
 # @author Ithamar
 # @note 02/28/2021: Created
-# @modified by Ithamar  
 class Bumper:
 
     ##  Constructor for bumper module. 
@@ -14,9 +15,7 @@ class Bumper:
     # @param enabledFlag Boolean to indicate if operations should be carried out. If false, bumper will always be open.
     # @param debugName String to indicate name for debugging information
     def __init__(self, pinNumber, debugFlag, enabledFlag, overrideFlag, debugName):
-        ## Boolean indicating if debug info sh
-
-
+        ## Boolean indicating if the program need to output debugging info.
         self.debug = debugFlag
         ## Boolean to indicate if this motor should be used. If disabled, program will run but not attempt to operate motors
         self.enabled = enabledFlag

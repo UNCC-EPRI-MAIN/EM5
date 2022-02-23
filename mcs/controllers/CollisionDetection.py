@@ -1,3 +1,9 @@
+## @package mcs.controllers
+#  Documentation for this module.
+#
+#  More details.
+
+
 import mcs.firmware.Bumper as Bumper
 import time
 # mcs modules

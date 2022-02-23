@@ -1,3 +1,8 @@
+## @package mcs.controllers
+#  Documentation for this module.
+#
+#  More details.
+
 # standard libraries
 import time
 import RPi.GPIO as GPIO
