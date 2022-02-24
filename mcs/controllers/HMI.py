@@ -1,5 +1,10 @@
 def getTestNum():
     # get test number
-    testNum = input("Enter test number: ")
-    testNum = int(testNum)
-    return testNum
+    while True:
+        testNum = input("Enter Test Number: ")
+        
+        try:
+            testNum = int(testNum)
+            return testNum
+        except ValueError:
+            print("Invaild Test number. Enter Test Number: ")
