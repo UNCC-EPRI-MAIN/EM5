@@ -1,31 +1,13 @@
 ## @package mcs.testFlags
 # Test flag settings for individual modules
-#
-# 
 
 ## @file testFlags.py
 # Most modules include standard test flags that can be used to facilitate
-# testing and debugging. 
-# @author Keith, Jonathon
-# @note 03/19/2021: Updated documentation -KS
-# @note 12/22/2021: Updated documentation -JN
+# testing and debugging.
 
 # Test Number
 ## This is the test number correlating with the test/routines folder
 testNum = 0
-
-# ---------- System Controllers ----------
-# MowBot Control System
-MowBotControl_debug = True
-MowBotControl_enabled = True
-
-# Drive System Control
-DriveSysControl_debug = True
-DriveSysControl_enabled = True
-
-# Interrupt System Control
-InterruptControl_debug = True
-InterruptControl_enabled = True
 
 # ---------- Controllers ----------
 # Battery Monitor
