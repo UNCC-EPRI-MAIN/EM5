@@ -1,10 +1,10 @@
-## @package mcs.pinAssignments
-# Primary process for mcs. 
+## @package mcs.PinAssignments
+# Holds all the pins for the MCS to interface with.
 #
-# @file pinAssignments.py
+# @file PinAssignments.py
 # This file is an auxillary file used to assign GPIO pin assignments for various purposes.
 # This file ensures pin numbers do not conflict and provides a mechanism for quick changes.
-# All pin numbers use BCM mode. See Raspberry Pi GPIO for more information.
+# All pin numbers use board Mode mode. See Raspberry Pi GPIO for more information.
 
 # Motor Signals
 bladePWM = 0
