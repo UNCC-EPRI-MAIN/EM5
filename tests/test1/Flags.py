@@ -31,28 +31,6 @@ RemoteControl_debug = True
 RemoteControl_enabled = True
 
 # ---------- Firmware ----------
-# Bumpers
-bumper1_debug = False
-bumper1_enabled = True
-
-bumper2_debug = False
-bumper2_enabled = True
-
-bumper3_debug = False
-bumper3_enabled = False
-
-bumper4_debug = False
-bumper4_enabled = True
-
-bumper5_debug = False
-bumper5_enabled = False
-
-bumper6_debug = False
-bumper6_enabled = False
-
-bumper7_debug = False
-bumper7_enabled = True
-
 # AMT103 - Encoders
 leftEncoder_debug = True
 leftEncoder_enabled = True

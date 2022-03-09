@@ -111,12 +111,6 @@ def run(globals):
     # start drive control thread
     if enabled:
         drive = DriveControl.DriveControl()
-
-    # load remote control module
-    if tFlags.RemoteControl_over:
-        testDir = "test.routines.test" + str(testNum) + ".RemoteControl"
-        RemoteControl = importlib.import_module(testDir)
-    else:
         
     # start remote control thread
     if enabled:

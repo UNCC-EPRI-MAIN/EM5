@@ -7,8 +7,8 @@
 
 # ---------- Controllers ----------
 # Battery Monitor
-BatteryMonitor_debug = False
-BatteryMonitor_enabled = False
+BatteryMonitor_debug = True
+BatteryMonitor_enabled = True
 
 # Blade control
 BladeControl_debug = True
