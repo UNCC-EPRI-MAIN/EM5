@@ -11,6 +11,10 @@ import time
 import importlib
 import threading
 
+# Controller Modules
+import mcs.controllers.DriveControl as DriveControl
+import mcs.controllers.RemoteControl as RemoteControl
+
 # Module Parameters
 NORMAL_DRIVE_SPEED = 50                     # Speed of the wheels normals
 CAUTION_DRIVE_SPEED = 40                    # speed of the wheels when 
@@ -45,6 +49,7 @@ def run(globals):
         lastHeading = globals['heading']
         print("last heading: " + str(lastHeading))
         globals['heading'] = 240
+
         #if globals['forwardClearnce'] < STOP_DISTANCE:
             # reverse
             #continue
@@ -79,21 +84,15 @@ def run(globals):
         time.sleep(10)
         globals['state1'] = 'manual'
 
-
+    ## Turns off the motors when there is a collision.
     def collisionResponse():
         drive.rapidStop()
         time.sleep(2)
         #globals['state1'] = 'shutdown'
         # Need to shutdown motors when collision happens. Dont shutdown the system.
-
-
-    testNum = globals['testNum']
     
     # load test flags
-    import mcs.Flags as tFlags
-    if testNum > 0:
-        testFile = "test.routines.test" + str(testNum) + ".testFlags"
-        tFlags = importlib.import_module(testFile)
+    tFlags = importlib.import_module(globals['flagFile'])
 
     # Check the enables and debug flags.
     debug = tFlags.DriveSysControl_debug
@@ -109,12 +108,6 @@ def run(globals):
         print(debugPrefix + ": process spawned")
         print(debugPrefix + ": process id = " + str(os.getpid()))
 
-    # load drive control module
-    if tFlags.DriveControl_over:
-        testDir = "test.routines.test" + str(testNum) + ".DriveControl"
-        DriveControl = importlib.import_module(testDir)
-    else:
-        import mcs.controllers.DriveControl as DriveControl
     # start drive control thread
     if enabled:
         drive = DriveControl.DriveControl()
@@ -124,7 +117,7 @@ def run(globals):
         testDir = "test.routines.test" + str(testNum) + ".RemoteControl"
         RemoteControl = importlib.import_module(testDir)
     else:
-        import mcs.controllers.RemoteControl as RemoteControl
+        
     # start remote control thread
     if enabled:
         thread_remoteControl = threading.Thread(target = RemoteControl.run, args = (globals, ))

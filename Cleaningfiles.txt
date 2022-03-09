@@ -9,6 +9,7 @@ Sabertooth
 Relays
 AMT103
 MD30C
+NEO_M8p
 
 --Controller Folder--
 BladeControl
@@ -18,7 +19,7 @@ RemoteControl
 DriveControl
 
 --WIP--
-NEO_M8p
+
 LIDAR
 Navigation
 DriveSysControl
