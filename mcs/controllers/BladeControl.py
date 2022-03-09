@@ -7,7 +7,7 @@
 # Standard libraries
 import RPi.GPIO as GPIO
 import importlib
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 
 # Load Initial Modules
 import mcs.PinAssignments as pins

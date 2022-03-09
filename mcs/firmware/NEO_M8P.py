@@ -3,13 +3,13 @@
 import serial
 from ublox_gps import UbloxGps
 import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BCM) 
+GPIO.setmode(GPIO.BOARD) 
 
 # module parameters
 FAILED_READ_ALARM_THRESHOLD = 3
 FAILED_READ_ALARM_FREQUENCY = 10
 
-def run(debug, enabled, rtk_enabled, overrideFlag, rtkStatusPin, globals):
+def run(debug, enabled, rtk_enabled, rtkStatusPin, globals):
     ## String used for debugging
     newLon = -1
     newLat = -1
@@ -17,15 +17,15 @@ def run(debug, enabled, rtk_enabled, overrideFlag, rtkStatusPin, globals):
     oldLat = -1
     newHeading = -1
     oldHeading = -1
+
     debugPrefix = "[NEO_M8P]"
-    if overrideFlag:
-        debugPrefix += "[O]"
     if enabled:
         debugPrefix += "[E]"
     else:
         debugPrefix += "[D]"
     if rtk_enabled:
         debugPrefix += "[RTK]"
+
     if enabled:
         port = serial.Serial('/dev/ttyACM0', baudrate=38400, timeout=1)
         gps = UbloxGps(port)
@@ -37,18 +37,24 @@ def run(debug, enabled, rtk_enabled, overrideFlag, rtkStatusPin, globals):
                 newLon = geo.lon
                 newLat = geo.lat
                 newHeading = geo.headMot
+
                 if newLon != oldLon:
                     globals['lon'] = newLon
                     oldLon = newLon
+
                 if newLat != oldLat:
                     globals['lat'] = newLat
                     oldLat = newLat
+
                 if newHeading != oldHeading and not globals['headingLock']:
                     globals['heading'] = newHeading
+
                 rtkStatus = GPIO.input(rtkStatusPin)
                 rtkStatus = not rtkStatus
+
                 if rtkStatus:
                     failedReadCount = 0
+
                 if debug:
                     print(debugPrefix + "[run()]: RTK active = " + str(rtkStatus))
                     print(debugPrefix + "[run()]: X: " + str(geo.lon) + " Y: " + str(geo.lat))

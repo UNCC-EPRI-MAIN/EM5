@@ -7,7 +7,7 @@
 # standard libraries
 import time
 import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 
 import threading
 import importlib
