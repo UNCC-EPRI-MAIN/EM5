@@ -2,4 +2,4 @@ dataclasses
 inputs
 rplidar
 serial
-ublox_gps
+sparkfun-ublox-gps
