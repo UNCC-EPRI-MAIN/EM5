@@ -104,7 +104,7 @@ with multiproc.Manager() as manager:
         print(debugPrefix + ": Blade Control Controller is disabled")
 
     # Start Program if remote controller not used
-    if Flags.DriveSysControl_enabled or not Flags.RemoteControl_enabled:
+    if not Flags.RemoteControl_enabled:
         time.sleep(3)
         globals['state1'] = 'mow'
 
