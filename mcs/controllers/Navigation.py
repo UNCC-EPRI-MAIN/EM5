@@ -12,7 +12,6 @@ import math
 import time
 from geopy.distance import great_circle
 from vincenty import vincenty
-#from geopy.distance import vincenty
 
 import mcs.PinAssignments as pins
 

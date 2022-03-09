@@ -5,6 +5,9 @@
 # Most modules include standard test flags that can be used to facilitate
 # testing and debugging.
 
+# System Controller
+MowBotControl_debug = True
+
 # ---------- Controllers ----------
 # Battery Monitor
 BatteryMonitor_debug = True
