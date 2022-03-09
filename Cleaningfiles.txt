@@ -1,0 +1,24 @@
+--MCS folder--
+PinAssignments
+MowBotControl
+InterruptControl
+Flags
+
+--Firmware Folder--
+Sabertooth
+Relays
+AMT103
+MD30C
+
+--Controller Folder--
+BladeControl
+HMI
+CollisionDetection
+RemoteControl
+DriveControl
+
+--WIP--
+NEO_M8p
+LIDAR
+Navigation
+DriveSysControl

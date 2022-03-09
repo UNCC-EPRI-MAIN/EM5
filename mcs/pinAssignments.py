@@ -2,7 +2,7 @@
 # Holds all the pins for the MCS to interface with.
 #
 # @file PinAssignments.py
-# This file is an auxillary file used to assign GPIO pin assignments for various purposes.
+# Auxillary file used to assign GPIO pin assignments for various purposes.
 # This file ensures pin numbers do not conflict and provides a mechanism for quick changes.
 # All pin numbers use board Mode mode. See Raspberry Pi GPIO for more information.
 

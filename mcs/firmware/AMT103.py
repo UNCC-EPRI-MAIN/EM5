@@ -1,7 +1,9 @@
 ## @package mcs.firmware
-#
-#s
-#3
+# The lowest level of the mcs responsible for controling each components.
+
+## @file AMT103.py
+# Reads the encoders on the wheels.
+# This helps us with keeping the wheel straight and turning.
 
 import RPi.GPIO as GPIO
 
@@ -14,36 +16,35 @@ WHEEL_CIRCUMFERENCE = 3.14 * WHEEL_DIAMETER                                 # ci
 DISTANCE_PER_STEP = WHEEL_CIRCUMFERENCE / INDEX_CHANGE_PER_WHEEL_ROTATION   # distance in cm for each step
 DISTANCE_PER_STEP = 2                                                       # above calculation yields 1.99
 
-## @file AMT103.py
-
-## test 
+## This class is the firmware read the encoders on the wheels.
 class AMT103:
 
     ##  Constructor for relay control module. 
-    # @param pinXNumber Interger Raspberry Pi GPIO BCM pin number used channel X of encoder
-    # @param pinANumber Interger Raspberry Pi GPIO BCM pin number used channel X of encoder
-    # @param pinBNumber Interger Raspberry Pi GPIO BCM pin number used channel X of encoder
+    # @param pinXNumber Interger Raspberry Pi GPIO Board pin number used channel X of encoder
+    # @param pinANumber Interger Raspberry Pi GPIO Board pin number used channel X of encoder
+    # @param pinBNumber Interger Raspberry Pi GPIO Board pin number used channel X of encoder
     # @param highPrecision Boolean to indicate use of channel A for encoders
     # @param ultraPrecision Boolean to indicate use of channel A and B for encoders
     # @param directional Boolean to indicate if direction should be considered. Uess  channels A and B
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out.
     # @param debugName String to indicate name for debugging information
-    def __init__(self, pinXNumber, pinANumber, debugFlag, enabledFlag, overrideFlag, debugName):
+    def __init__(self, pinXNumber, pinANumber, debugFlag, enabledFlag, debugName):
         ## Boolean indicating if debug info should be included for this module
         self.debug = debugFlag
+
         ## Boolean to indicate if this device should be used
         self.enabled = enabledFlag
+
         ## String to differentiate different relays for debugging
         self.debugPrefix = "[AMT103<" + debugName + ">]"
-        if overrideFlag:
-            self.debugPrefix += "[O]"
         if self.enabled:
             self.debugPrefix += "[E]"
         else:
             self.debugPrefix += "[D]"
         self.pinXNumber = pinXNumber
         self.pinANumber = pinANumber
+
         if self.enabled:
             GPIO.setup(pinXNumber, GPIO.IN)
             #GPIO.setup(pinANumber, GPIO.IN)
@@ -52,7 +53,6 @@ class AMT103:
             #print(self.debugPrefix + "[__init__()]: Channel A BCM pin = " + str(pinANumber))
 
     ## Prints out encoder readings
-    #
     # Standard precision using channel X only
     def countDown(self, distance_cm):
         stepCount = int(distance_cm / DISTANCE_PER_STEP)

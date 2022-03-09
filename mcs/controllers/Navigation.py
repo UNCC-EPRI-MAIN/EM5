@@ -14,7 +14,7 @@ from geopy.distance import great_circle
 from vincenty import vincenty
 #from geopy.distance import vincenty
 
-import mcs.pinAssignments as pins
+import mcs.PinAssignments as pins
 
 ratio = 85 / 100
 DISTANCE_THRESHOLD = 4
@@ -36,10 +36,7 @@ A = waypoint(-80.709662, 35.2376715)
 def run(globals):
 
     # load test flags
-    import mcs.testFlags as tFlags
-    if tFlags.testNum > 0:
-        testFile = "test.routines.test" + str(tFlags.testNum) + ".testFlags"
-        tFlags = importlib.import_module(testFile)
+    tFlags = importlib.import_module(globals['flagFile'])
 
     ## Boolean indicating if debug info should be included for this module
     debug = tFlags.Navigation_debug

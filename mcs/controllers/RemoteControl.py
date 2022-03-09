@@ -1,7 +1,8 @@
 ## @package mcs.controllers
-#  Documentation for this module.
-#
-#  More details.
+# This software layer interfaces the components and the overall control system.
+
+## @file RemoteControl.py
+# Handles the input from the controller.
 
 # standard libraries
 import time
@@ -13,64 +14,63 @@ import importlib
 normalDriveSpeed = 60
 turnFactor = 15
 
+## Returns the speed based on the angles of the joystick.
 def updateSpeed(leftAxis, rightAxis):
     speedPercent = leftAxis / 32768
     baseSpeed = int(normalDriveSpeed * speedPercent)
     turnPercent = rightAxis / 32768
     # forward right
     if turnPercent > 0 and speedPercent > 0.15:
-        #print("forward right")
         leftSpeed = baseSpeed + int(turnFactor * turnPercent)
         rightSpeed = baseSpeed - int(turnFactor * turnPercent)
+    
     # forward left
     elif turnPercent < 0 and speedPercent >= 0.15:
-        #print("forward left")
         leftSpeed = baseSpeed - int(turnFactor * turnPercent * -1)
         rightSpeed = baseSpeed + int(turnFactor * turnPercent * -1)
+
     # forward
     elif turnPercent < 0.1 and turnPercent > -0.1 and speedPercent >= 0.15:
-        #print("forward")
         leftSpeed = baseSpeed
         rightSpeed = baseSpeed
+
     # pivot right
     elif turnPercent >= 0.1 and speedPercent > -0.15 and speedPercent < 0.15:
-        #print("pivot right")
         leftSpeed = 60
         rightSpeed = -60
+
     # pivot left
     elif turnPercent <= -0.1 and speedPercent > -0.15 and speedPercent < 0.15:
-        #print("pivot left")
         leftSpeed = -60
         rightSpeed = 60
+
     # backwards
     elif speedPercent < -0.15:
-        #print("backwards")
         leftSpeed = -50
         rightSpeed = -50
+
     # stopped
     else:
         leftSpeed = 0
         rightSpeed = 0
-    #print(str(leftSpeed) + " - " + str(rightSpeed))
+    
     return leftSpeed, rightSpeed
 
-
+## The function that the spawned process uses.
 def run(globals):
 
     # load test flags
-    import mcs.testFlags as tFlags
-    if tFlags.testNum > 0:
-        testFile = "test.routines.test" + str(tFlags.testNum) + ".testFlags"
-        tFlags = importlib.import_module(testFile)
+    tFlags = importlib.import_module(globals['flagFile'])
 
     ## Boolean indicating if debug info should be included for this module
     debug = tFlags.RemoteControl_debug
+
     ## Boolean to indicate if this motor should be used. If disabled, program will run but not attempt to operate motors.
     enabled = tFlags.RemoteControl_enabled
+
     ## String used for debugging
     debugPrefix = "[RemoteControl]"
-    if tFlags.RemoteControl_over:
-        debugPrefix += "[O]"
+
     leftSpeed = 0
     prevLeftSpeed = 0
     rightSpeed = 0
@@ -78,8 +78,7 @@ def run(globals):
     manualMode = False
     leftAxis = 0
     rightAxis = 0
-    if tFlags.RemoteControl_over:
-        debugPrefix += "[O]"
+
     if enabled:
         debugPrefix += "[E]"
     else:
@@ -91,11 +90,9 @@ def run(globals):
     # main loop, run until end of program
     while globals['state1'] != 'shutdown':
         if enabled:
-            
-            #wait for controller events
+            # Wait for controller events
             events = inputs.get_gamepad()
             for event in events:
-
                 # yellow button pressed
                 if event.code == 'BTN_WEST' and event.state == 1:
                     # already in manual, resume program

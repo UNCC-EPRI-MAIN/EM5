@@ -1,13 +1,9 @@
-## @package mcs.testFlags
+## @package mcs.Flags
 # Test flag settings for individual modules
 
-## @file testFlags.py
+## @file Flags.py
 # Most modules include standard test flags that can be used to facilitate
 # testing and debugging.
-
-# Test Number
-## This is the test number correlating with the test/routines folder
-testNum = 0
 
 # ---------- Controllers ----------
 # Battery Monitor

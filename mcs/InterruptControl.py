@@ -2,7 +2,7 @@
 # A system controller to stop the mowbot in a event.
 
 ## @file InterruptControl.py
-# This file handels tells the robot what to do when a collision happens or theres a object in the way.
+# Tells the robot what to do when a collision happens or theres a object in the way.
 # This uses the sensors accelerometer, bumpers, lidar, and the camera.
 
 # standard libraries
@@ -19,14 +19,7 @@ import mcs.firmware.rpLiDAR_A2M4_R4 as mcs_lidar
 
 def run(globals):
 
-    # Load Initial Globals
-    testNum = globals['testNum']
-  
-    # Load test flags
-    import mcs.Flags as Flags
-    if testNum > 0:
-        testFile = "test.routines.test" + str(testNum) + ".Flags"
-        Flags = importlib.import_module(testFile)
+    Flags = importlib.import_module(globals['flagFile'])
 
     # Create debug info
     debugPrefix = "[InterruptController]"

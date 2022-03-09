@@ -1,6 +1,9 @@
+## @package mcs.firmware
+# The lowest level of the mcs responsible for controling each components.
 
+## @file RelayControl.py
+# Controls the wheel and blade motor relays.
 
-# standard libraries
 import RPi.GPIO as GPIO
 
 ## This class is used to control individual normally open relays.
@@ -9,24 +12,26 @@ class RelayControl:
 
     ##  Constructor for relay control module. 
     # Relays are normally open and disabled by default 
-    # @param pinNumber Interger Raspberry Pi GPIO BCM pin number used for control signal
+    # @param pinNumber Interger Raspberry Pi GPIO Board pin number used for control signal
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out. If false, relays will always be open.
     # @param debugName String to indicate name for debugging information
     # @param overrideFlag Boolean to indicate module has been overridden 
-    def __init__(self, pinNumber, debugFlag, enabledFlag, overrideFlag, debugName):
+    def __init__(self, pinNumber, debugFlag, enabledFlag, debugName):
         ## Boolean indicating if debug info should be included for this module
         self.debug = debugFlag
+
         ## Boolean to indicate if this motor should be used. If disabled, program will run but not attempt to operate motors
         self.enabled = enabledFlag
+
         ## String to differentiate different relays for debugging
         self.debugPrefix = "[RelayControl<" + debugName + ">]"
-        if overrideFlag:
-            self.debugPrefix += "[O]"
+
         if self.enabled:
             self.debugPrefix += "[E]"
         else:
             self.debugPrefix += "[D]"
+
         self.pinNumber = pinNumber
         if self.enabled:
             GPIO.setup(pinNumber, GPIO.OUT)

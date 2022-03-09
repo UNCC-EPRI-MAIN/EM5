@@ -4,15 +4,10 @@
 
 from rplidar import RPLidar as LD
 from math import floor, cos, sin, pi
-
-
-
-
-import mcs.testFlags as tFlags
    
 class rpLiDAR_A2M4_R4:
 
-    ##  Constructor for GNSS module 
+    ##  Constructor for GNSS module ????
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out
     def __init__(self, debugFlag, enabledFlag, overrideFlag):

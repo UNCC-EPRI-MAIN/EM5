@@ -2,16 +2,16 @@
 # The main system controller for the mowbot
 
 ## @file MowBotControl.py
-# This file is the main file for the mowbot.
+# The main file for the mowbot.
 # This is the entry point of the program. use "sudo python3 -m mcs.MowBotControl" to start this file and the robot.
 # It spawn all the system controllers and even handles some of the threads like the blades and the navigation.
 
 # Standard Libaries
 import multiprocessing as multiproc
-import importlib
 import time
 import os
 import threading
+import importlib
 
 # Load Initial Modules
 import mcs.controllers.HMI as HMI
@@ -29,10 +29,12 @@ import mcs.controllers.BladeControl as mcs_blades
 # Start HMI and get test number
 testNum = HMI.getTestNum()
 
-# Update test flags if test specified
+# Update test flags
 if testNum > 0:
-    testFile = "test.routines.test" + str(testNum) + ".Flags"
-    Flags = importlib.import_module(testFile)
+    flagFile = "tests.test" + str(testNum) + ".Flags"
+    Flags = importlib.import_module(flagFile)
+else:
+    flagFile = "mcs.Flags"
 
 # Create Debug Info
 debugPrefix = "[MowBotControl]"
@@ -49,7 +51,7 @@ with multiproc.Manager() as manager:
     globals['state2'] = 'waitForRemote'
 
     # Mowbot Control Status
-    globals['testNum'] = testNum
+    globals['flagFile'] = flagFile
     globals['destLat'] = []
     globals['destLong'] = []
     globals['destinationHeading'] = 0
@@ -73,13 +75,6 @@ with multiproc.Manager() as manager:
     globals['avoidanceTurnDirection'] = None
     
     # Collision Detection
-    globals['bumper1Pressed'] = False
-    globals['bumper2Pressed'] = False
-    globals['bumper3Pressed'] = False
-    globals['bumper4Pressed'] = False
-    globals['bumper5Pressed'] = False
-    globals['bumper6Pressed'] = False
-    globals['bumper7Pressed'] = False
 
     # Gps Data
     globals['lon'] = -1

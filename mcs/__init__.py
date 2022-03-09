@@ -11,4 +11,3 @@
 # This starts the other system controllers in different threads so the system controllers can run in parallel.
 #
 # The second system controller is the Drive system controller.
-# 
