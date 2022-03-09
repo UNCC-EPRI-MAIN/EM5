@@ -1,5 +1,9 @@
 # **A Better Approach to Vegetation Management at Utility-Scale PV Plant**
 
+[This is the documentation page for phase 6.](https://github.com/nguyjd/Mowbot/deployments)
+View Package tab at the top for the structure of the project
+View the File tab at the top to see how each files works.
+
 This project is the six-phase "A Better Approach to Vegetation Management at Utility-Scale PV Plant" project. 
 This phase aims to improve the functionality and autonomy of the existing five-year-old MowBot by developing a new model while testing the new functionality of the current model.
 
