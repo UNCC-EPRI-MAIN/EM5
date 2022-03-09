@@ -1,4 +1,8 @@
+## @package mcs.firmware
+# The lowest level of the mcs responsible for controling each components.
 
+## @file NEO_M8P.py
+# Find the location of the Mowbot via gps
 
 import serial
 from ublox_gps import UbloxGps
@@ -27,43 +31,46 @@ def run(debug, enabled, rtk_enabled, rtkStatusPin, globals):
         debugPrefix += "[RTK]"
 
     if enabled:
-        port = serial.Serial('/dev/ttyACM0', baudrate=38400, timeout=1)
-        gps = UbloxGps(port)
-        GPIO.setup(rtkStatusPin, GPIO.IN)
-        failedReadCount = 0
-        while globals['state1'] != 'shutdown':
-            try:
-                geo = gps.geo_coords()
-                newLon = geo.lon
-                newLat = geo.lat
-                newHeading = geo.headMot
+        try:
+            port = serial.Serial('/dev/ttyACM0', baudrate=38400, timeout=1)
+            gps = UbloxGps(port)
+            GPIO.setup(rtkStatusPin, GPIO.IN)
+            failedReadCount = 0
+            while globals['state1'] != 'shutdown':
+                try:
+                    geo = gps.geo_coords()
+                    newLon = geo.lon
+                    newLat = geo.lat
+                    newHeading = geo.headMot
 
-                if newLon != oldLon:
-                    globals['lon'] = newLon
-                    oldLon = newLon
+                    if newLon != oldLon:
+                        globals['lon'] = newLon
+                        oldLon = newLon
 
-                if newLat != oldLat:
-                    globals['lat'] = newLat
-                    oldLat = newLat
+                    if newLat != oldLat:
+                        globals['lat'] = newLat
+                        oldLat = newLat
 
-                if newHeading != oldHeading and not globals['headingLock']:
-                    globals['heading'] = newHeading
+                    if newHeading != oldHeading and not globals['headingLock']:
+                        globals['heading'] = newHeading
 
-                rtkStatus = GPIO.input(rtkStatusPin)
-                rtkStatus = not rtkStatus
+                    rtkStatus = GPIO.input(rtkStatusPin)
+                    rtkStatus = not rtkStatus
 
-                if rtkStatus:
-                    failedReadCount = 0
+                    if rtkStatus:
+                        failedReadCount = 0
 
-                if debug:
-                    print(debugPrefix + "[run()]: RTK active = " + str(rtkStatus))
-                    print(debugPrefix + "[run()]: X: " + str(geo.lon) + " Y: " + str(geo.lat))
-                    print(debugPrefix + "[run()]: heading: " + str(geo.headMot))
-            except:
-                failedReadCount += 1
-                if debug:
-                    print(debugPrefix + "[run()]: failed read")
-                if failedReadCount >= FAILED_READ_ALARM_THRESHOLD and failedReadCount % 10 == 0:
-                    print("!--- RTK READ FAILURE ---!")
+                    if debug:
+                        print(debugPrefix + "[run()]: RTK active = " + str(rtkStatus))
+                        print(debugPrefix + "[run()]: X: " + str(geo.lon) + " Y: " + str(geo.lat))
+                        print(debugPrefix + "[run()]: heading: " + str(geo.headMot))
+                except:
+                    failedReadCount += 1
+                    if debug:
+                        print(debugPrefix + "[run()]: failed read")
+                    if failedReadCount >= FAILED_READ_ALARM_THRESHOLD and failedReadCount % 10 == 0:
+                        print("!--- RTK READ FAILURE ---!")
+        except:
+            print("Failed to find the USB for the GPS.")
     
     print(debugPrefix + "end of module")
