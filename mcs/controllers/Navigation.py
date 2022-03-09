@@ -15,6 +15,8 @@ from vincenty import vincenty
 
 import mcs.PinAssignments as pins
 
+import mcs.firmware.NEO_M8P as NEO_M8P
+
 ratio = 85 / 100
 DISTANCE_THRESHOLD = 4
 
@@ -52,14 +54,8 @@ def run(globals):
 
         
     if enabled:
-        # load GPS module
-        if tFlags.NEO_M8P_over:
-            testDir = "test.routines.test" + str(testNum) + ".NEO_M8P"
-            NEO_M8P = importlib.import_module(testDir)
-        else:
-            import mcs.firmware.NEO_M8P as NEO_M8P
         # start GPS thread
-        thread_gps = threading.Thread(target = NEO_M8P.run, args = (tFlags.NEO_M8P_debug, tFlags.NEO_M8P_enabled, tFlags.NEO_M8P_RTK_enabled, tFlags.NEO_M8P_over, pins.rtkStatus, globals))
+        thread_gps = threading.Thread(target = NEO_M8P.run, args = (tFlags.NEO_M8P_debug, tFlags.NEO_M8P_enabled, tFlags.NEO_M8P_RTK_enabled, pins.rtkStatus, globals))
         thread_gps.start()
 
     # main loop, run until end of program
