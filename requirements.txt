@@ -3,3 +3,4 @@ inputs
 rplidar
 serial
 sparkfun-ublox-gps
+spidev
