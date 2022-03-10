@@ -90,7 +90,6 @@ def run(globals):
     # main loop, run until end of program
     while globals['state1'] != 'shutdown':
         if enabled:
-            
             try:
                 # Wait for controller events
                 events = inputs.get_gamepad()
@@ -212,6 +211,7 @@ def run(globals):
                                 prevRightSpeed = rightSpeed
             except:
                 print("Game controller was not found.")
+                break
             
             
             
