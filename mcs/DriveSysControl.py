@@ -110,7 +110,7 @@ def run(globals):
 
     # start drive control thread
     if enabled:
-        drive = DriveControl.DriveControl()
+        drive = DriveControl.DriveControl(globals)
         
     # start remote control thread
     if enabled:

@@ -38,7 +38,7 @@ class DriveControl:
     # @param pinNumber Raspberry Pi GPIO board pin number used for PWM to drive single motor
     # @param flags System flags passed to module. Should be defined in test bench or SystemFlags module.
     # @param debugName Name of instance to be used for debugging output
-    def __init__(self):
+    def __init__(self, globals):
         
         flagpath = globals['flagFile']
         tFlags = importlib.import_module(flagpath)
