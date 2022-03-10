@@ -32,15 +32,23 @@ class Accelerometer:
         else:
             self.debugPrefix += "[D]"
 
-        self.i2c = busio.I2C(sdlPin, sdaPin)
-        self.lis = adafruit_lis331.LIS331HH(self.i2c)
+        try:
+            self.i2c = busio.I2C(sdlPin, sdaPin)
+            self.lis = adafruit_lis331.LIS331HH(self.i2c)
 
-        if self.debug:
-            print(self.debugPrefix + "[__init__()]: Using I2C Pins.")
-            print(self.debugPrefix + "[__init__()]: Completed Setup of the accelerometer.")
+            if self.debug:
+                print(self.debugPrefix + "[__init__()]: Using I2C Pins.")
+                print(self.debugPrefix + "[__init__()]: Completed Setup of the accelerometer.")
+        except:
+            if self.debug:
+                print(self.debugPrefix + "[__init__()]: Failed to setup the accelerometer")
+                self.lis = None
 
 
 
     ## Return the reading from the acclerometer
     def GetReading(self):
-        return self.lis.acceleration
+        if self.lis != None:
+            return self.lis.acceleration
+        else:
+            return 0.0, 0.0, 0.0

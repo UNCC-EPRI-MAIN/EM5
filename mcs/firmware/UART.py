@@ -41,7 +41,9 @@ class UART:
                 print(self.debugPrefix + "[__init__()]: Completed Setup of UART.")
 
         except:
-            print(self.debugPrefix + "[__init__()]: Failed to setup UART.")
+            if self.debug:
+                print(self.debugPrefix + "[__init__()]: Failed to setup UART.")
+            self.uart = None
 
     ## Return a line from the other microcontroller.
     def ReadMessage(self):
