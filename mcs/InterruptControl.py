@@ -53,10 +53,10 @@ def run(globals):
         time.sleep(2)
 
     # wait for threads to end
-    if Flags.CollisionDetection_enabled:
+    if Flags.rpLiDAR_A2M4_R4_enabled:
         thread_objectDetection.join()
 
-    if Flags.rpLiDAR_A2M4_R4_enabled:
+    if Flags.CollisionDetection_enabled:
         thread_collisionDetection.join()
 
     print(debugPrefix + ": end of process")
