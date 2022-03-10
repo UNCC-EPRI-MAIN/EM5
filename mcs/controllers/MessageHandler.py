@@ -8,7 +8,7 @@
 import importlib
 
 # Firmware modules
-import mcs.firmware.Accelerometer as accelerometer
+import mcs.firmware.UART as uart
 
 ## The function that the spawned process uses.
 def run(globals):
@@ -34,7 +34,7 @@ def run(globals):
 
     if enabled:
         ## The uart class object.
-        jetson_uart = accelerometer.UART(tFlags.uart_debug, tFlags.uart_enabled)
+        jetson_uart = uart.UART(tFlags.uart_debug, tFlags.uart_enabled)
 
 
     # main loop, run until end of program
