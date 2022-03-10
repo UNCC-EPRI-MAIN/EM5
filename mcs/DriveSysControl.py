@@ -1,4 +1,9 @@
+## @package mcs.DriveSysControl
+# A system controller to control how the mowbot moves
 
+## @file DriveSysControl.py
+# Handles the movement of the robot by controlling the speed of the wheel and rotation of the robot.
+# NOTE: This has some internal code that directly interfaces with the motors. Look through the code.
 
 # standard libaries
 import os
@@ -6,16 +11,18 @@ import time
 import importlib
 import threading
 
-# module parameters
-NORMAL_DRIVE_SPEED = 50
-CAUTION_DRIVE_SPEED = 40
-OBJECT_DETECTION_SLOW_DOWN_FACTOR = 1.5 # lower number -> more gradual slowdown
-stopDistance = 15 # cm
-STOP_DISTANCE = 15 # cm
-OBJECT_DETECTION_STOP_DISTANCE = 15
-PIVOT_SPEED = 18 # % motor speed
-DEGREES_OFF_COURSE = 5 # threshold to determine MowBot is off course
-DEGREES_FORCE_PIVOT = 90 # number of degrees off course requiring pivot
+# Controller Modules
+import mcs.controllers.DriveControl as DriveControl
+import mcs.controllers.RemoteControl as RemoteControl
+
+# Module Parameters
+NORMAL_DRIVE_SPEED = 50                     # Speed of the wheels normals
+CAUTION_DRIVE_SPEED = 40                    # speed of the wheels when 
+OBJECT_DETECTION_SLOW_DOWN_FACTOR = 1.5     # lower number -> more gradual slowdown
+OBJECT_DETECTION_STOP_DISTANCE = 15         # cm
+PIVOT_SPEED = 18                            # % motor speed
+DEGREES_OFF_COURSE = 5                      # threshold to determine MowBot is off course
+DEGREES_FORCE_PIVOT = 90                    # number of degrees off course requiring pivot
 
 
 def slowDownSpeed(distance):
@@ -24,21 +31,25 @@ def slowDownSpeed(distance):
         speed = 0
     else:
         speed = int(OBJECT_DETECTION_SLOW_DOWN_FACTOR * (distance - OBJECT_DETECTION_STOP_DISTANCE))
+
     if speed > NORMAL_DRIVE_SPEED:
         speed = NORMAL_DRIVE_SPEED
+
     if speed < 0:
         speed = 0
+
     return speed
 
 def run(globals):
-    
+    # I dont think anything calls this to run.
     def avoidObject():
         # check for correct distance
-        print("Object Avoidacne")
+        print("Object Avoidance")
         #globals['destinationHeading'] = globals['heading']
         lastHeading = globals['heading']
         print("last heading: " + str(lastHeading))
         globals['heading'] = 240
+
         #if globals['forwardClearnce'] < STOP_DISTANCE:
             # reverse
             #continue
@@ -73,60 +84,34 @@ def run(globals):
         time.sleep(10)
         globals['state1'] = 'manual'
 
-
+    ## Turns off the motors when there is a collision.
     def collisionResponse():
         drive.rapidStop()
-        # temp for testing
-        print(debugPrefix + "[collisionResponse()]: start collision response")
-        print(debugPrefix + "[collisionResponse()]: Bumper 1 status = " + str(globals['bumper1Pressed']))
-        print(debugPrefix + "[collisionResponse()]: Bumper 2 status = " + str(globals['bumper2Pressed']))
-        print(debugPrefix + "[collisionResponse()]: Bumper 3 status = " + str(globals['bumper3Pressed']))
-        print(debugPrefix + "[collisionResponse()]: Bumper 4 status = " + str(globals['bumper4Pressed']))
-        print(debugPrefix + "[collisionResponse()]: Bumper 5 status = " + str(globals['bumper5Pressed']))
-        print(debugPrefix + "[collisionResponse()]: Bumper 6 status = " + str(globals['bumper6Pressed']))
-        print(debugPrefix + "[collisionResponse()]: Bumper 7 status = " + str(globals['bumper7Pressed']))
         time.sleep(2)
         #globals['state1'] = 'shutdown'
-
-    
-
-    testNum = globals['testNum']
+        # Need to shutdown motors when collision happens. Dont shutdown the system.
     
     # load test flags
-    import mcs.testFlags as tFlags
-    if testNum > 0:
-        testFile = "test.routines.test" + str(testNum) + ".testFlags"
-        tFlags = importlib.import_module(testFile)
+    tFlags = importlib.import_module(globals['flagFile'])
 
+    # Check the enables and debug flags.
     debug = tFlags.DriveSysControl_debug
     enabled = tFlags.DriveSysControl_enabled
     debugPrefix = "[DriveSysCont]"
-    if tFlags.DriveSysControl_over:
-        debugPrefix += "[O]"
     if enabled:
         debugPrefix += "[E]"
     else:
         debugPrefix += "[D]"
+
+    # Let the debugger know that the this as started.
     if debug:
         print(debugPrefix + ": process spawned")
         print(debugPrefix + ": process id = " + str(os.getpid()))
 
-    # load drive control module
-    if tFlags.DriveControl_over:
-        testDir = "test.routines.test" + str(testNum) + ".DriveControl"
-        DriveControl = importlib.import_module(testDir)
-    else:
-        import mcs.controllers.DriveControl as DriveControl
     # start drive control thread
     if enabled:
-        drive = DriveControl.DriveControl()
-
-    # load remote control module
-    if tFlags.RemoteControl_over:
-        testDir = "test.routines.test" + str(testNum) + ".RemoteControl"
-        RemoteControl = importlib.import_module(testDir)
-    else:
-        import mcs.controllers.RemoteControl as RemoteControl
+        drive = DriveControl.DriveControl(globals)
+        
     # start remote control thread
     if enabled:
         thread_remoteControl = threading.Thread(target = RemoteControl.run, args = (globals, ))

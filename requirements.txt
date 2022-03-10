@@ -1,0 +1,8 @@
+dataclasses
+inputs
+rplidar
+serial
+sparkfun-ublox-gps
+spidev
+geopy
+vincenty

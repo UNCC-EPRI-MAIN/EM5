@@ -1,36 +1,34 @@
-## @package mcs.controllers.BladeControl
-#  Documentation for this module.
-#
-#  More details.
-# @author Keith
-# @note 03/19/2021: Updated documentation -KS
+## @package mcs.controllers
+# This software layer interfaces the components and the overall control system.
+
+## @file BladeControl.py
+# Provides high level control by integrating MD30C and relay control
 
 # Standard libraries
 import RPi.GPIO as GPIO
 import importlib
-GPIO.setmode(GPIO.BCM) 
-import mcs.pinAssignments as pins
+
+# Load Initial Modules
+import mcs.PinAssignments as pins
+
+# Firmware modules
 from mcs.firmware.RelayControl import RelayControl
 from mcs.firmware.MD30C import MD30C
 
-## This file is the high level controller for the blade motors
-# @file BladeControl.py
-# Provides high level control by integrating MD30C and relay control
-# @author Keith
-# @note 12/16/2020: Added commenting to code. -KS
+## The function that the spawned process uses.
 def run(globals):
 
-    # Load test flags
-    import mcs.testFlags as tFlags
-    if tFlags.testNum > 0:
-        testFile = "test.routines.test" + str(tFlags.testNum) + ".testFlags"
-        tFlags = importlib.import_module(testFile)
+    # load test flags
+    flagpath = globals['flagFile']
+    tFlags = importlib.import_module(flagpath)
 
     ## Boolean indicating if debug info should be included for this module
     debug = tFlags.BladeControl_debug
 
     ## Boolean to indicate if blade motors should be used. 
     enabled = tFlags.BladeControl_enabled
+
+    ## Boolean to indicate if blade motors are on. 
     bladesOn = False
 
     ## String used for debugging
@@ -42,7 +40,9 @@ def run(globals):
     if debug:
         print(debugPrefix + "init blade controller")
     if enabled:
-        relay = RelayControl(pins.bladeRelay, tFlags.bladeRelay_debug, tFlags.bladeRelay_enabled, tFlags.RelayControl_over, "Blade")
+        ## The relay class object. 
+        relay = RelayControl(pins.bladeRelay, tFlags.bladeRelay_debug, tFlags.bladeRelay_enabled, "Blade")
+        ## The Blade class object. 
         blade = MD30C(pins.bladePWM, tFlags.MD30C_debug, tFlags.MD30C_enabled)
 
     # main loop, run until end of program
