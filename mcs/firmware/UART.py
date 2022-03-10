@@ -61,7 +61,8 @@ class UART:
     ## Send a message over UART with a newline.
     def SendMessage(self, message):
         if self.uart != None:
-            self.uart.write(message + '\n')
+            message += '\n'
+            self.uart.write(message.encode())
         elif self.debug:
             print(self.debugPrefix + "Failed to send the message")
         
