@@ -42,9 +42,14 @@ def run(globals):
 
         recv_message = jetson_uart.ReadMessage()
 
+        if debug:
+            print(debugPrefix + "Message: " + recv_message)
+
         # Temp, when the jetson gets its camera, we will change the message.
         if recv_message == 'Shutdown\n':
             globals['state1'] = 'shutdown'
+
+        
 
     jetson_uart.CleanUp()
     print(debugPrefix + "end of module")
