@@ -29,9 +29,9 @@ class UART:
         else:
             self.debugPrefix += "[D]"
 
-        self.uart = serial.Serial("/dev/ttyAMA0", baudrate=9600)
         try:
             
+            self.uart = serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=1.0)
 
             # Wait until the port is ready to send and receive data.
             while not self.uart.is_open:
