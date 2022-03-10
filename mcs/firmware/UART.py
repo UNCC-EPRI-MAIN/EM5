@@ -29,7 +29,7 @@ class UART:
         else:
             self.debugPrefix += "[D]"
 
-            self.uart = serial.Serial("/dev/ttyAMA0", baudrate=9600)
+        self.uart = serial.Serial("/dev/ttyAMA0", baudrate=9600)
         try:
             
 
