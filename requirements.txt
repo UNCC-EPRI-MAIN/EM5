@@ -1,7 +1,7 @@
 dataclasses
 inputs
 rplidar
-serial
+pyserial
 sparkfun-ublox-gps
 spidev
 geopy
