@@ -20,8 +20,8 @@ BatteryMonitor_debug = False
 BatteryMonitor_enabled = False
 
 # Blade control
-BladeControl_debug = False
-BladeControl_enabled = False
+BladeControl_debug = True
+BladeControl_enabled = True
 
 # Collision Detection
 CollisionDetection_debug = True
