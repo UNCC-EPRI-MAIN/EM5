@@ -8,8 +8,8 @@
 # ---------- System Controller ----------
 MowBotControl_debug = True
 
-DriveSysControl_debug = True
-DriveSysControl_enabled = True
+DriveSysControl_debug = False
+DriveSysControl_enabled = False
 
 InterruptControl_debug = True
 InterruptControl_enabled = True
@@ -24,8 +24,8 @@ BladeControl_debug = False
 BladeControl_enabled = False
 
 # Collision Detection
-CollisionDetection_debug = False
-CollisionDetection_enabled = False
+CollisionDetection_debug = True
+CollisionDetection_enabled = True
 
 # Drive Control
 DriveControl_debug = False
@@ -76,3 +76,7 @@ rpLiDAR_A2M4_R4_enabled = False
 NEO_M8P_debug = False
 NEO_M8P_enabled = False
 NEO_M8P_RTK_enabled = False
+
+# Accelerometer
+accelerometer_debug = True
+accelerometer_enabled = True
