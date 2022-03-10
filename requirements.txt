@@ -6,3 +6,5 @@ sparkfun-ublox-gps
 spidev
 geopy
 vincenty
+board
+adafruit-circuitpython-lis331

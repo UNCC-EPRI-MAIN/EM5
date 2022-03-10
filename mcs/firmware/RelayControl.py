@@ -16,7 +16,6 @@ class RelayControl:
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out. If false, relays will always be open.
     # @param debugName String to indicate name for debugging information
-    # @param overrideFlag Boolean to indicate module has been overridden 
     def __init__(self, pinNumber, debugFlag, enabledFlag, debugName):
         ## Boolean indicating if debug info should be included for this module
         self.debug = debugFlag

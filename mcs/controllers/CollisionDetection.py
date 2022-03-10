@@ -9,7 +9,17 @@ import importlib
 import mcs.PinAssignments as pins
 
 # Firmware modules
-# Accelometer will be here.
+import mcs.firmware.Accelerometer as accelerometer
+
+# Module Parameters
+## x-axis accleration threshold in m/s^2
+X_THRESHOLD = 10                     
+
+## y-axis accleration threshold in m/s^2
+X_THRESHOLD = 10
+
+## z-axis accleration threshold in m/s^2
+X_THRESHOLD = 10
 
 ## The function that the spawned process uses.
 def run(globals):
@@ -29,17 +39,32 @@ def run(globals):
     if enabled:
         debugPrefix += "[E]"
     else:
-        debugPrefix += "[D]"  
+        debugPrefix += "[D]"
+
+    if enabled:
+        accelerometer.Accelerometer(tFlags.accelerometer_debug, tFlags.accelerometer_debug)
+
     if debug:
         print(debugPrefix + "[run()]: Collision Detection initialized")
-    activeCollision = False
-    if enabled:
-        if debug:
-            print(debugPrefix + ": This modules is missing collision stuff.")
 
     while globals['state1'] != 'shutdown':
         if enabled:
-            print(debugPrefix + ": This modules is missing collision stuff.")
+            x, y, z = accelerometer.GetReading()
+
+            if abs(x) > X_THRESHOLD:
+                activeCollision = True
+
+            if abs(x) > X_THRESHOLD:
+                activeCollision = True
+
+            if abs(x) > X_THRESHOLD:
+                activeCollision = True
+
+            if activeCollision:
+                if debug:
+                    print(debugPrefix + "[run()]: Collision Detected.")
+                    print(debugPrefix + "[run()]: Sending Shutdown Signal.")
+                globals['state1'] = 'shutdown'
             
     print(debugPrefix + "end of module")
                 
