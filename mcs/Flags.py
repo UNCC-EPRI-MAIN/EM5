@@ -23,9 +23,9 @@ BatteryMonitor_enabled = True
 BladeControl_debug = True
 BladeControl_enabled = True
 
-# Collision Detection - Bumpers
-CollisionDetection_debug = True
-CollisionDetection_enabled = True
+# Collision Detection
+CollisionDetection_debug = False
+CollisionDetection_enabled = False
 
 # Drive Control
 DriveControl_debug = True
