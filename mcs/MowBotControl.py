@@ -65,7 +65,7 @@ with multiproc.Manager() as manager:
     globals['rightSpeed'] = 0
 
     # Blade Control
-    globals['bladesOn'] = False
+    globals['bladesOn'] = True
 
     # Battery Bonitor
     globals['batteryLevel'] = None
@@ -76,8 +76,6 @@ with multiproc.Manager() as manager:
     globals['leftTurnClear'] = False
     globals['rightTurnClear'] = False
     globals['avoidanceTurnDirection'] = None
-    
-    # Collision Detection
 
     # Gps Data
     globals['lon'] = -1

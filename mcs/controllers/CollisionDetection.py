@@ -16,10 +16,10 @@ import mcs.firmware.Accelerometer as accelerometer
 X_THRESHOLD = 15                     
 
 ## y-axis accleration threshold in m/s^2
-X_THRESHOLD = 15
+Y_THRESHOLD = 15
 
 ## z-axis accleration threshold in m/s^2
-X_THRESHOLD = 15
+Z_THRESHOLD = 15
 
 ## The function that the spawned process uses.
 def run(globals):
@@ -55,10 +55,10 @@ def run(globals):
             if abs(x) > X_THRESHOLD:
                 activeCollision = True
 
-            if abs(x) > X_THRESHOLD:
+            if abs(y) > Y_THRESHOLD:
                 activeCollision = True
 
-            if abs(x) > X_THRESHOLD:
+            if abs(z) > Z_THRESHOLD:
                 activeCollision = True
 
             if activeCollision:
