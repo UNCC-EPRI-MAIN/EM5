@@ -2,7 +2,7 @@
 # This software layer interfaces the components and the overall control system.
 
 ## @file CollisionDetection.py
-# Provides high level control by integrating MD30C and relay control
+# Detect Collision with the bumpers and accleometer.
 
 # Load Initial Modules
 import importlib
