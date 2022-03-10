@@ -22,3 +22,7 @@ leftEncoderX = 18
 leftEncoderA = 16
 rightEncoderX = 24
 rightEncoderA = 26
+
+# Accelerometer
+SDL = 3
+SDA = 2
