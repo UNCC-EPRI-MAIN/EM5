@@ -31,11 +31,13 @@ class UART:
 
         try:
             
-            self.uart = serial.Serial(  "/dev/ttyAMA0", 
+            # /dev/ttyS0 is used on the pi model 3, maybe different on the model 4
+            self.uart = serial.Serial(  "/dev/ttyS0", 
                                         baudrate=9600, 
                                         bytesize=serial.EIGHTBITS, 
                                         parity=serial.PARITY_NONE, 
-                                        stopbits=serial.STOPBITS_ONE)
+                                        stopbits=serial.STOPBITS_ONE,
+                                        timeout=1.0)
 
             # Wait until the port is ready to send and receive data.
             while not self.uart.is_open:
