@@ -4,7 +4,7 @@
 ## @file Accelerometer.py
 # Controls the wheel and blade motor relays.
 
-import board
+import busio
 import adafruit_lis331
 
 ## This class is used to control individual normally open relays.
@@ -15,7 +15,7 @@ class Accelerometer:
     # Relays are normally open and disabled by default
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out. If false, relays will always be open.
-    def __init__(self, debugFlag, enabledFlag):
+    def __init__(self, sdaPin, sdlPin, debugFlag, enabledFlag):
         ## Boolean indicating if debug info should be included for this module
         self.debug = debugFlag
 
@@ -30,7 +30,7 @@ class Accelerometer:
         else:
             self.debugPrefix += "[D]"
 
-        self.i2c = board.I2C()
+        self.i2c = busio.I2C(sdlPin, sdaPin)
         self.lis = adafruit_lis331.LIS331HH(self.i2c)
 
         if self.debug:
@@ -39,6 +39,6 @@ class Accelerometer:
 
 
 
-    ## Closes relay by outputting high GPIO signal
+    ## Return the reading from the acclerometer
     def GetReading(self):
         return self.lis.accleration
