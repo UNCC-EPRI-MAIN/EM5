@@ -49,6 +49,7 @@ def run(globals):
 
     while globals['state1'] != 'shutdown':
         if enabled:
+            activeCollision = False
             x, y, z = acc.GetReading()
 
             if abs(x) > X_THRESHOLD:
