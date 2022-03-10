@@ -42,14 +42,14 @@ def run(globals):
         debugPrefix += "[D]"
 
     if enabled:
-        accelerometer.Accelerometer(pins.SDA, pins.SDL, tFlags.accelerometer_debug, tFlags.accelerometer_debug)
+        acc = accelerometer.Accelerometer(pins.SDA, pins.SDL, tFlags.accelerometer_debug, tFlags.accelerometer_debug)
 
     if debug:
         print(debugPrefix + "[run()]: Collision Detection initialized")
 
     while globals['state1'] != 'shutdown':
         if enabled:
-            x, y, z = accelerometer.GetReading()
+            x, y, z = acc.GetReading()
 
             if abs(x) > X_THRESHOLD:
                 activeCollision = True
