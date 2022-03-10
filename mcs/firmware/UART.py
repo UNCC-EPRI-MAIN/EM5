@@ -53,6 +53,7 @@ class UART:
             recv_message = self.uart.readline()
         elif self.debug:
             print(self.debugPrefix + "Can't read the port, UART is not setup.")
+            time.sleep(1)
 
         return recv_message
 
@@ -65,7 +66,7 @@ class UART:
         
 
     ## Close the port.
-    def CleanUp(self, message):
+    def CleanUp(self):
         self.uart.flushInput()
         self.uart.flushOutput()
         self.uart.close()
