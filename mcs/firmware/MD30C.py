@@ -15,7 +15,7 @@ class MD30C:
 
     ##  Constructor for blade motor module. 
     # Motor is initalized with a speed of zero. 
-    # @param pinNumber Interger Raspberry Pi GPIO Board pin number used for PWM to drive all 3 motors
+    # @param pinNumber Interger Raspberry Pi GPIO BCM pin number used for PWM to drive all 3 motors
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out
     def __init__(self, pinNumber, debugFlag, enabledFlag):
@@ -41,7 +41,7 @@ class MD30C:
             self.motorPWM = GPIO.PWM(self.pinNumber, 10000)
             self.motorPWM.start(self.dutyCycle)
         if self.debug:
-            print(self.debugPrefix + "[__init__()]: Board pin = " + str(self.pinNumber))
+            print(self.debugPrefix + "[__init__()]: BCM pin = " + str(self.pinNumber))
 
     ## Stops motor by setting PWM to 0
     def stop(self):

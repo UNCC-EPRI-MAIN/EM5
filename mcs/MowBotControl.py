@@ -27,7 +27,7 @@ import mcs.DriveSysControl as mcs_dsc
 import mcs.controllers.Navigation as mcs_nav
 import mcs.controllers.BladeControl as mcs_blades
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
 # Start HMI and get test number
 testNum = HMI.getTestNum()

@@ -13,8 +13,10 @@ class Accelerometer:
 
     ##  Constructor for accelerometer module. 
     # Relays are normally open and disabled by default
+    # @param sdaPin Raspberry Pi GPIO BCM pin number used for IC2(SDA)
+    # @param sdlPin Raspberry Pi GPIO BCM pin number used for IC2(SDL)
     # @param debugFlag Boolean to indicate if debugging data should be printed
-    # @param enabledFlag Boolean to indicate if opeations should be carried out. If false, relays will always be open.
+    # @param enabledFlag Boolean to indicate if opeations should be carried out.
     def __init__(self, sdaPin, sdlPin, debugFlag, enabledFlag):
         ## Boolean indicating if debug info should be included for this module
         self.debug = debugFlag

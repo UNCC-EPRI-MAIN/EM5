@@ -20,9 +20,9 @@ DISTANCE_PER_STEP = 2                                                       # ab
 class AMT103:
 
     ##  Constructor for relay control module. 
-    # @param pinXNumber Interger Raspberry Pi GPIO Board pin number used channel X of encoder
-    # @param pinANumber Interger Raspberry Pi GPIO Board pin number used channel X of encoder
-    # @param pinBNumber Interger Raspberry Pi GPIO Board pin number used channel X of encoder
+    # @param pinXNumber Interger Raspberry Pi GPIO BCM pin number used channel X of encoder
+    # @param pinANumber Interger Raspberry Pi GPIO BCM pin number used channel X of encoder
+    # @param pinBNumber Interger Raspberry Pi GPIO BCM pin number used channel X of encoder
     # @param highPrecision Boolean to indicate use of channel A for encoders
     # @param ultraPrecision Boolean to indicate use of channel A and B for encoders
     # @param directional Boolean to indicate if direction should be considered. Uess  channels A and B
