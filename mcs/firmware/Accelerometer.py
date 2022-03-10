@@ -43,4 +43,4 @@ class Accelerometer:
 
     ## Return the reading from the acclerometer
     def GetReading(self):
-        return self.lis.accleration
+        return self.lis.acceleration
