@@ -42,7 +42,7 @@ def run(globals):
         debugPrefix += "[D]"
 
     if enabled:
-        accelerometer.Accelerometer(tFlags.accelerometer_debug, tFlags.accelerometer_debug)
+        accelerometer.Accelerometer(pins.SDA, pins.SDL, tFlags.accelerometer_debug, tFlags.accelerometer_debug)
 
     if debug:
         print(debugPrefix + "[run()]: Collision Detection initialized")
