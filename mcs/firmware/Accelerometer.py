@@ -2,13 +2,13 @@
 # The lowest level of the mcs responsible for controling each components.
 
 ## @file Accelerometer.py
-# Controls the wheel and blade motor relays.
+# Reads the accelerometer LIS331 sensor.
 
 import busio
 import adafruit_lis331
 
-## This class is used to control individual normally open relays.
-# If the relay is enabled, a simple digital out is sent triggering a MOSFET controlled relay.
+## This class is used to read the LIS331 sensor.
+# The class reads the sensor and returns the forces in 3 axis in m/s^2
 class Accelerometer:
 
     ##  Constructor for accelerometer module. 

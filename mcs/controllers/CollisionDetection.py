@@ -53,12 +53,15 @@ def run(globals):
             x, y, z = acc.GetReading()
 
             if abs(x) > X_THRESHOLD:
+                print(debugPrefix + "[run()]: Acceleration in the X axis are passed the threshold")
                 activeCollision = True
 
             if abs(y) > Y_THRESHOLD:
+                print(debugPrefix + "[run()]: Acceleration in the Y axis are passed the threshold")
                 activeCollision = True
 
             if abs(z) > Z_THRESHOLD:
+                print(debugPrefix + "[run()]: Acceleration in the Z axis are passed the threshold")
                 activeCollision = True
 
             if activeCollision:

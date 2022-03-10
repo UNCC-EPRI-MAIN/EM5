@@ -13,6 +13,7 @@ import time
 
 # Controller Modules
 import mcs.controllers.CollisionDetection as mcs_colldec
+import mcs.controllers.MessageHandler as mcs_message
 
 # Firmware Modules
 import mcs.firmware.rpLiDAR_A2M4_R4 as mcs_lidar
@@ -39,7 +40,13 @@ def run(globals):
     elif Flags.InterruptControl_debug:
         print(debugPrefix + ": Collision Detection Controller is disabled")
 
-    # At a later date, we will move this in a object detection controller. 
+    # start message handler thread.
+    if Flags.MessageHandler_enabled:
+        thread_messagehandler = threading.Thread(target = mcs_message.run, args = (globals, ))
+        thread_messagehandler.start()
+    elif Flags.InterruptControl_debug:
+        print(debugPrefix + ": Message Handler Controller is disabled")
+
     # start object detection thread
     if Flags.rpLiDAR_A2M4_R4_enabled:
         lidar = mcs_lidar.rpLiDAR_A2M4_R4(Flags.rpLiDAR_A2M4_R4_debug, Flags.rpLiDAR_A2M4_R4_enabled, Flags.rpLiDAR_A2M4_R4_over)
@@ -58,5 +65,8 @@ def run(globals):
 
     if Flags.CollisionDetection_enabled:
         thread_collisionDetection.join()
+
+    if Flags.MessageHandler_enabled:
+        thread_messagehandler.join()
 
     print(debugPrefix + ": end of process")

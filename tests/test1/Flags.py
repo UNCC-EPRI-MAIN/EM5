@@ -39,6 +39,10 @@ Navigation_enabled = False
 RemoteControl_debug = False
 RemoteControl_enabled = False
 
+# Message Handler
+MessageHandler_debug = True
+MessageHandler_enabled = True
+
 # ---------- Firmware ----------
 # AMT103 - Encoders
 leftEncoder_debug = False
@@ -80,3 +84,7 @@ NEO_M8P_RTK_enabled = False
 # Accelerometer
 accelerometer_debug = True
 accelerometer_enabled = True
+
+# UART 
+uart_debug = True
+uart_enabled = True

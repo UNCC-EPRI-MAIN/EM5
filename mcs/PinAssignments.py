@@ -26,3 +26,7 @@ rightEncoderA = 7
 # Accelerometer
 SDL = 3
 SDA = 2
+
+# UART
+TX = 14
+RX = 15
