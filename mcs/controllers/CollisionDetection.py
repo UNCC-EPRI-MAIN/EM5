@@ -13,13 +13,13 @@ import mcs.firmware.Accelerometer as accelerometer
 
 # Module Parameters
 ## x-axis accleration threshold in m/s^2
-X_THRESHOLD = 10                     
+X_THRESHOLD = 15                     
 
 ## y-axis accleration threshold in m/s^2
-X_THRESHOLD = 10
+X_THRESHOLD = 15
 
 ## z-axis accleration threshold in m/s^2
-X_THRESHOLD = 10
+X_THRESHOLD = 15
 
 ## The function that the spawned process uses.
 def run(globals):
