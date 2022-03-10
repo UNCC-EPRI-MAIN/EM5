@@ -13,7 +13,9 @@ import os
 import threading
 import importlib
 
+
 # Load Initial Modules
+import RPi.GPIO as GPIO
 import mcs.controllers.HMI as HMI
 import mcs.Flags as Flags
 
@@ -25,6 +27,7 @@ import mcs.DriveSysControl as mcs_dsc
 import mcs.controllers.Navigation as mcs_nav
 import mcs.controllers.BladeControl as mcs_blades
 
+GPIO.setmode(GPIO.BOARD)
 
 # Start HMI and get test number
 testNum = HMI.getTestNum()

@@ -7,7 +7,7 @@
 # All pin numbers use board Mode mode. See Raspberry Pi GPIO for more information.
 
 # Motor Signals
-bladePWM = 27
+bladePWM = 29
 leftMotorPWM = 32
 rightMotorPWM = 33
 

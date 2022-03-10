@@ -19,7 +19,8 @@ import mcs.firmware.rpLiDAR_A2M4_R4 as mcs_lidar
 
 def run(globals):
 
-    Flags = importlib.import_module(globals['flagFile'])
+    flagpath = globals['flagFile']
+    Flags = importlib.import_module(flagpath)
 
     # Create debug info
     debugPrefix = "[InterruptController]"

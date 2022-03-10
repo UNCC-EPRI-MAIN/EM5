@@ -15,7 +15,8 @@ import mcs.PinAssignments as pins
 def run(globals):
     
     # load test flags
-    tFlags = importlib.import_module(globals['flagFile'])
+    flagpath = globals['flagFile']
+    tFlags = importlib.import_module(flagpath)
     
     ## Boolean indicating if debug info should be included for this module
     debug = tFlags.CollisionDetection_debug

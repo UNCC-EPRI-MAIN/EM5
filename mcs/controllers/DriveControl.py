@@ -7,7 +7,6 @@
 # standard libraries
 import time
 import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BOARD)
 
 import threading
 import importlib
@@ -41,7 +40,8 @@ class DriveControl:
     # @param debugName Name of instance to be used for debugging output
     def __init__(self):
         
-        tFlags = importlib.import_module(globals['flagFile'])
+        flagpath = globals['flagFile']
+        tFlags = importlib.import_module(flagpath)
 
         ## Boolean indicating if debug info should be included for this module
         self.debug = tFlags.DriveControl_debug

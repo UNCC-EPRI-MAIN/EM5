@@ -42,7 +42,7 @@ class Sabertooth2x60:
             self.motorPWM.start(dutyCycle)
 
         if self.debug:
-            print(self.debugPrefix + "[__init__()]: BCM pin = " + str(self.pinNumber))
+            print(self.debugPrefix + "[__init__()]: Board pin = " + str(self.pinNumber))
 
     ## Stops motor by setting PWM to 50
     def stop(self):

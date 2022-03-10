@@ -49,7 +49,7 @@ class AMT103:
             GPIO.setup(pinXNumber, GPIO.IN)
             #GPIO.setup(pinANumber, GPIO.IN)
         if self.debug:
-            print(self.debugPrefix + "[__init__()]: Channel X BCM pin = " + str(pinXNumber))
+            print(self.debugPrefix + "[__init__()]: Channel X Board pin = " + str(pinXNumber))
             #print(self.debugPrefix + "[__init__()]: Channel A BCM pin = " + str(pinANumber))
 
     ## Prints out encoder readings

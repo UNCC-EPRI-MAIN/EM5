@@ -37,7 +37,7 @@ class RelayControl:
             GPIO.setup(pinNumber, GPIO.OUT)
             GPIO.output(self.pinNumber, GPIO.LOW)
         if self.debug:
-            print(self.debugPrefix + "[__init__()]: BCM pin = " + str(pinNumber))
+            print(self.debugPrefix + "[__init__()]: Board pin = " + str(pinNumber))
 
     ## Closes relay by outputting high GPIO signal
     def enable(self):

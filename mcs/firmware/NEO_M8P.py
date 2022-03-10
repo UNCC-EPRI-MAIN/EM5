@@ -6,8 +6,7 @@
 
 import serial
 from ublox_gps import UbloxGps
-import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BOARD) 
+import RPi.GPIO as GPIO 
 
 # module parameters
 FAILED_READ_ALARM_THRESHOLD = 3

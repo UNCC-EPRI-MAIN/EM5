@@ -8,6 +8,12 @@
 # ---------- System Controller ----------
 MowBotControl_debug = True
 
+DriveSysControl_debug = True
+DriveSysControl_enabled = True
+
+InterruptControl_debug = True
+InterruptControl_enabled = True
+
 # ---------- Controllers ----------
 # Battery Monitor
 BatteryMonitor_debug = True

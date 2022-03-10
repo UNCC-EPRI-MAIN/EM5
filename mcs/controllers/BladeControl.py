@@ -7,7 +7,6 @@
 # Standard libraries
 import RPi.GPIO as GPIO
 import importlib
-GPIO.setmode(GPIO.BOARD)
 
 # Load Initial Modules
 import mcs.PinAssignments as pins
@@ -20,7 +19,8 @@ from mcs.firmware.MD30C import MD30C
 def run(globals):
 
     # load test flags
-    tFlags = importlib.import_module(globals['flagFile'])
+    flagpath = globals['flagFile']
+    tFlags = importlib.import_module(flagpath)
 
     ## Boolean indicating if debug info should be included for this module
     debug = tFlags.BladeControl_debug
