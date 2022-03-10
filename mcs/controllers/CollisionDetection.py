@@ -70,5 +70,5 @@ def run(globals):
                     print(debugPrefix + "[run()]: Sending Shutdown Signal.")
                 globals['state1'] = 'shutdown'
             
-    print(debugPrefix + "end of module")
+    print(debugPrefix + ": end of module")
                 
