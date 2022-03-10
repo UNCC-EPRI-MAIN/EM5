@@ -35,8 +35,7 @@ class UART:
                                         baudrate=9600, 
                                         bytesize=serial.EIGHTBITS, 
                                         parity=serial.PARITY_NONE, 
-                                        stopbits=serial.STOPBITS_ONE, 
-                                        timeout=1.0)
+                                        stopbits=serial.STOPBITS_ONE)
 
             # Wait until the port is ready to send and receive data.
             while not self.uart.is_open:
