@@ -51,8 +51,7 @@ class AMT103:
             if self.debug:
                 print(self.debugPrefix + "[__init__()]: Encoder is disabled.")
 
-        
-
+    
     ## Counts the pulses in a loop
     def run(self, globals):
         while globals['state1'] != 'shutdown':
@@ -62,9 +61,12 @@ class AMT103:
                     self.count += 1
                     self.currentState = newState
 
-
     ## Return the encoder counter.
     def GetCount(self):
         return self.count
+
+    ## Reset the counter.
+    def ResetCount(self):
+        self.count = 0
                     
                     
