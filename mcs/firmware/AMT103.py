@@ -21,19 +21,18 @@ class AMT103:
 
     ##  Constructor for relay control module. 
     # @param pinXNumber Interger Raspberry Pi GPIO BCM pin number used channel X of encoder
-    # @param pinANumber Interger Raspberry Pi GPIO BCM pin number used channel A of encoder
-    # @param highPrecision Boolean to indicate use of channel A for encoders
-    # @param ultraPrecision Boolean to indicate use of channel A and B for encoders
-    # @param directional Boolean to indicate if direction should be considered. Uess  channels A and B
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out.
-    # @param debugName String to indicate name for debugging information
-    def __init__(self, pinXNumber, pinANumber, debugFlag, enabledFlag, debugName):
+    # @param debugName String to indicate name for debugging information 
+    def __init__(self, pinXNumber, debugFlag, enabledFlag, debugName):
         ## Boolean indicating if debug info should be included for this module
         self.debug = debugFlag
 
         ## Boolean to indicate if this device should be used
         self.enabled = enabledFlag
+
+        ## the encoder count 
+        self.count = 0
 
         ## String to differentiate different relays for debugging
         self.debugPrefix = "[AMT103<" + debugName + ">]"
@@ -42,28 +41,26 @@ class AMT103:
         else:
             self.debugPrefix += "[D]"
         self.pinXNumber = pinXNumber
-        self.pinANumber = pinANumber
 
         if self.enabled:
             GPIO.setup(pinXNumber, GPIO.IN)
-            #GPIO.setup(pinANumber, GPIO.IN)
         if self.debug:
-            print(self.debugPrefix + "[__init__()]: Channel X Board pin = " + str(pinXNumber))
-            #print(self.debugPrefix + "[__init__()]: Channel A BCM pin = " + str(pinANumber))
+            print(self.debugPrefix + "[__init__()]: Channel X BCM pin = " + str(pinXNumber))
 
-    ## Prints out encoder readings
-    # Standard precision using channel X only
-    def countDown(self, distance_cm):
-        stepCount = int(distance_cm / DISTANCE_PER_STEP)
-        if self.debug:
-            print(self.debugPrefix + "[countDown()]: steps to target = " + str(stepCount))
-        if self.enabled:
-            oldX = GPIO.input(self.pinXNumber)
-            while stepCount != 0:
-                newX = GPIO.input(self.pinXNumber)
-                if newX != oldX:
-                    stepCount -= 1
-                    oldX = newX
-        print(self.debugPrefix + "[countDown()]: tagget reached")
+        self.currentState = GPIO.input(self.pinXNumber)
+
+    ## Counts the pulses in a loop
+    def run(self):
+        while globals['state1'] != 'shutdown':
+            if self.enabled:
+                newState = GPIO.input(self.pinXNumber)
+                if newState != self.currentState:
+                    stepCount += 1
+                    self.currentState = newState
+
+
+    ## Return the encoder counter.
+    def GetCount(self):
+        return self.count
                     
                     

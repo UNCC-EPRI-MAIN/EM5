@@ -59,16 +59,32 @@ def run(globals):
         ## The right motor object.
         rightMotor = Sabertooth2x60.Sabertooth2x60(pins.rightMotorPWM, tFlags.rightMotor_debug, tFlags.rightMotor_enabled, "Right")
         ## The left encoder object.
-        leftEncoder = AMT103.AMT103(pins.leftEncoderX, pins.leftEncoderA, tFlags.leftEncoder_debug, tFlags.leftEncoder_enabled, "Left")
+        leftEncoder = AMT103.AMT103(pins.leftEncoderX, tFlags.leftEncoder_debug, tFlags.leftEncoder_enabled, "Left")
         ## The right encoder object.
-        rightEncoder = AMT103.AMT103(pins.rightEncoderX, pins.rightEncoderA, tFlags.rightEncoder_debug, tFlags.rightEncoder_enabled, "Right")
+        rightEncoder = AMT103.AMT103(pins.rightEncoderX, tFlags.rightEncoder_debug, tFlags.rightEncoder_enabled, "Right")
+
+        # Start left encoder thread
+        if tFlags.leftEncoder_enabled:
+            thread_leftenc = threading.Thread(target = leftEncoder.run)
+            thread_leftenc.start()
+        elif tFlags.DriveControl_debug:
+            print(debugPrefix + ": left encoder thread is not started")
+
+        # Start right encoder thread
+        if tFlags.leftEncoder_enabled:
+            thread_rightenc = threading.Thread(target = rightEncoder.run)
+            thread_rightenc.start()
+        elif tFlags.DriveControl_debug:
+            print(debugPrefix + ": right encoder thread is not started")
 
     if debug:
         print(debugPrefix + "[run()]: Drive Control initialized")
 
     while globals['state1'] != 'shutdown':
         if enabled:
-            pass
+            time.sleep(1)
+            print("leftEncoder: " + str(leftEncoder.GetCount()))
+            print("leftEncoder: " + str(rightEncoder.GetCount()))
 
     print(debugPrefix + ": end of module")
 
