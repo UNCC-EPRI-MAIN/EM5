@@ -54,7 +54,7 @@ class AMT103:
         
 
     ## Counts the pulses in a loop
-    def run(self):
+    def run(self, globals):
         while globals['state1'] != 'shutdown':
             if self.enabled:
                 newState = GPIO.input(self.pinXNumber)
