@@ -44,10 +44,14 @@ class AMT103:
 
         if self.enabled:
             GPIO.setup(pinXNumber, GPIO.IN)
-        if self.debug:
-            print(self.debugPrefix + "[__init__()]: Channel X BCM pin = " + str(pinXNumber))
+            self.currentState = GPIO.input(self.pinXNumber)
+            if self.debug:
+                print(self.debugPrefix + "[__init__()]: Channel X BCM pin = " + str(pinXNumber))
+        else:
+            if self.debug:
+                print(self.debugPrefix + "[__init__()]: Encoder is disabled.")
 
-        self.currentState = GPIO.input(self.pinXNumber)
+        
 
     ## Counts the pulses in a loop
     def run(self):
