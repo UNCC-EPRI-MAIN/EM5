@@ -32,8 +32,8 @@ DriveControl_debug = True
 DriveControl_enabled = True
 
 # Navigation
-Navigation_debug = False
-Navigation_enabled = False
+Navigation_debug = True
+Navigation_enabled = True
 
 # Remote Control
 RemoteControl_debug = False
