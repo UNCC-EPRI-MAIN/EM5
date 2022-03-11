@@ -9,7 +9,17 @@ import importlib
 import mcs.PinAssignments as pins
 
 # Firmware modules
-# Accelometer will be here.
+import mcs.firmware.Accelerometer as accelerometer
+
+# Module Parameters
+## x-axis accleration threshold in m/s^2
+X_THRESHOLD = 15                     
+
+## y-axis accleration threshold in m/s^2
+Y_THRESHOLD = 15
+
+## z-axis accleration threshold in m/s^2
+Z_THRESHOLD = 15
 
 ## The function that the spawned process uses.
 def run(globals):
@@ -29,17 +39,36 @@ def run(globals):
     if enabled:
         debugPrefix += "[E]"
     else:
-        debugPrefix += "[D]"  
+        debugPrefix += "[D]"
+
+    if enabled:
+        acc = accelerometer.Accelerometer(pins.SDA, pins.SDL, tFlags.accelerometer_debug, tFlags.accelerometer_debug)
+
     if debug:
         print(debugPrefix + "[run()]: Collision Detection initialized")
-    activeCollision = False
-    if enabled:
-        if debug:
-            print(debugPrefix + ": This modules is missing collision stuff.")
 
     while globals['state1'] != 'shutdown':
         if enabled:
-            print(debugPrefix + ": This modules is missing collision stuff.")
+            activeCollision = False
+            x, y, z = acc.GetReading()
+
+            if abs(x) > X_THRESHOLD:
+                print(debugPrefix + "[run()]: Acceleration in the X axis are passed the threshold")
+                activeCollision = True
+
+            if abs(y) > Y_THRESHOLD:
+                print(debugPrefix + "[run()]: Acceleration in the Y axis are passed the threshold")
+                activeCollision = True
+
+            if abs(z) > Z_THRESHOLD:
+                print(debugPrefix + "[run()]: Acceleration in the Z axis are passed the threshold")
+                activeCollision = True
+
+            if activeCollision:
+                if debug:
+                    print(debugPrefix + "[run()]: Collision Detected.")
+                    print(debugPrefix + "[run()]: Sending Shutdown Signal.")
+                globals['state1'] = 'shutdown'
             
-    print(debugPrefix + "end of module")
+    print(debugPrefix + ": end of module")
                 

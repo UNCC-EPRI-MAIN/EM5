@@ -8,71 +8,83 @@
 # ---------- System Controller ----------
 MowBotControl_debug = True
 
-DriveSysControl_debug = True
+DriveSysControl_debug = False
 DriveSysControl_enabled = True
 
-InterruptControl_debug = True
+InterruptControl_debug = False
 InterruptControl_enabled = True
 
 # ---------- Controllers ----------
 # Battery Monitor
-BatteryMonitor_debug = True
+BatteryMonitor_debug = False
 BatteryMonitor_enabled = True
 
 # Blade control
-BladeControl_debug = True
+BladeControl_debug = False
 BladeControl_enabled = True
 
 # Collision Detection
 CollisionDetection_debug = False
-CollisionDetection_enabled = False
+CollisionDetection_enabled = True
 
 # Drive Control
-DriveControl_debug = True
+DriveControl_debug = False
 DriveControl_enabled = True
 
 # Navigation
-Navigation_debug = True
+Navigation_debug = False
 Navigation_enabled = True
 
 # Remote Control
-RemoteControl_debug = True
+RemoteControl_debug = False
 RemoteControl_enabled = True
+
+# Message Handler
+MessageHandler_debug = False
+MessageHandler_enabled = True
 
 # ---------- Firmware ----------
 # AMT103 - Encoders
-leftEncoder_debug = True
+leftEncoder_debug = False
 leftEncoder_enabled = True
 
-rightEncoder_debug = True
+rightEncoder_debug = False
 rightEncoder_enabled = True
 
 # MD30C - Blade Motor Driver
-MD30C_debug = True
+MD30C_debug = False
 MD30C_enabled = True
 
 # Relay Controls
-wheelRelay_debug = True
+wheelRelay_debug = False
 wheelRelay_enabled = True
 
-bladeRelay_debug = True
+bladeRelay_debug = False
 bladeRelay_enabled = True
 
-chargeRelay_debug = True
+chargeRelay_debug = False
 chargeRelay_enabled = True
 
 # Sabertooth2x60 - Wheel Motors
-leftMotor_debug = True
+leftMotor_debug = False
 leftMotor_enabled = True
 
-rightMotor_debug = True
+rightMotor_debug = False
 rightMotor_enabled = True
 
 # Object Detection - LiDar
 rpLiDAR_A2M4_R4_debug = False
-rpLiDAR_A2M4_R4_enabled = False
+rpLiDAR_A2M4_R4_enabled = True
 
 # GPS 
-NEO_M8P_debug = True
+NEO_M8P_debug = False
 NEO_M8P_enabled = True
 NEO_M8P_RTK_enabled = True
+
+# Accelerometer
+accelerometer_debug = False
+accelerometer_enabled = True
+
+# UART 
+uart_debug = False
+uart_enabled = True

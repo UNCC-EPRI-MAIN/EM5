@@ -27,7 +27,7 @@ import mcs.DriveSysControl as mcs_dsc
 import mcs.controllers.Navigation as mcs_nav
 import mcs.controllers.BladeControl as mcs_blades
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 
 # Start HMI and get test number
 testNum = HMI.getTestNum()
@@ -65,7 +65,7 @@ with multiproc.Manager() as manager:
     globals['rightSpeed'] = 0
 
     # Blade Control
-    globals['bladesOn'] = False
+    globals['bladesOn'] = True
 
     # Battery Bonitor
     globals['batteryLevel'] = None
@@ -76,8 +76,6 @@ with multiproc.Manager() as manager:
     globals['leftTurnClear'] = False
     globals['rightTurnClear'] = False
     globals['avoidanceTurnDirection'] = None
-    
-    # Collision Detection
 
     # Gps Data
     globals['lon'] = -1

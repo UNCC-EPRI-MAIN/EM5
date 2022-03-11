@@ -12,7 +12,7 @@ class Sabertooth2x60:
 
     ## Constructor for motor module. 
     # Motor is initalized with a speed of zero. 
-    # @param pinNumber Interger Raspberry Pi GPIO Board pin number used for PWM to drive single motor
+    # @param pinNumber Interger Raspberry Pi GPIO BCM pin number used for PWM to drive single motor
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out
     # @param debugName String to indicate name for debugging information
@@ -33,7 +33,7 @@ class Sabertooth2x60:
             self.debugPrefix += "[D]"
 
         ## Dutycycle used for PWM signal. Initally set to 50 (motors stopped)
-        ## Raspberry Pi GPIO board pin number for PWM output
+        ## Raspberry Pi GPIO BCM pin number for PWM output
         self.pinNumber = pinNumber
         if self.enabled:
             GPIO.setup(pinNumber, GPIO.OUT)
@@ -42,7 +42,7 @@ class Sabertooth2x60:
             self.motorPWM.start(dutyCycle)
 
         if self.debug:
-            print(self.debugPrefix + "[__init__()]: Board pin = " + str(self.pinNumber))
+            print(self.debugPrefix + "[__init__()]: BCM pin = " + str(self.pinNumber))
 
     ## Stops motor by setting PWM to 50
     def stop(self):

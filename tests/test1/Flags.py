@@ -8,8 +8,8 @@
 # ---------- System Controller ----------
 MowBotControl_debug = True
 
-DriveSysControl_debug = True
-DriveSysControl_enabled = True
+DriveSysControl_debug = False
+DriveSysControl_enabled = False
 
 InterruptControl_debug = True
 InterruptControl_enabled = True
@@ -20,12 +20,12 @@ BatteryMonitor_debug = False
 BatteryMonitor_enabled = False
 
 # Blade control
-BladeControl_debug = False
-BladeControl_enabled = False
+BladeControl_debug = True
+BladeControl_enabled = True
 
 # Collision Detection
-CollisionDetection_debug = False
-CollisionDetection_enabled = False
+CollisionDetection_debug = True
+CollisionDetection_enabled = True
 
 # Drive Control
 DriveControl_debug = False
@@ -38,6 +38,10 @@ Navigation_enabled = False
 # Remote Control
 RemoteControl_debug = False
 RemoteControl_enabled = False
+
+# Message Handler
+MessageHandler_debug = True
+MessageHandler_enabled = True
 
 # ---------- Firmware ----------
 # AMT103 - Encoders
@@ -76,3 +80,11 @@ rpLiDAR_A2M4_R4_enabled = False
 NEO_M8P_debug = False
 NEO_M8P_enabled = False
 NEO_M8P_RTK_enabled = False
+
+# Accelerometer
+accelerometer_debug = True
+accelerometer_enabled = True
+
+# UART 
+uart_debug = True
+uart_enabled = True
