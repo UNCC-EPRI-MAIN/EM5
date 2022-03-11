@@ -265,7 +265,3 @@ def run(globals):
             self.leftMotor.stop()
             self.rightMotor.stop()
             self.relay.disable()
-
-    ## Stops motor gently
-    def stop(self):
-        
