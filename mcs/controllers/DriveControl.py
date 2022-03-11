@@ -55,18 +55,21 @@ def run(globals):
     enabled = tFlags.DriveControl_enabled
 
     ## String used for debugging
-    debugPrefix = "[DriveControl]"
-        
-    ## The speed of the left wheel.
-    leftSpeed = 0
-    
-    ## The speed of the right wheel.
-    rightSpeed = 0
+    debugPrefix = "[DriveControl]"    
         
     if enabled:
         debugPrefix += "[E]"
     else:
         debugPrefix += "[D]"
+
+    ## The speed of the left wheel.
+    leftSpeed = 0
+    
+    ## The speed of the right wheel.
+    rightSpeed = 0
+
+    ## The state of the drive system.
+    currentState = 'stop'
 
     if enabled:
         ## The relay class object.
@@ -102,24 +105,29 @@ def run(globals):
     while globals['state'] != 'shutdown':
         if enabled:
 
-            state = globals['driveState']
+            newState = globals['driveState']
 
-            # Wheel should not be running.
-            if state == 'stop':
-                if debug:
-                    print(debugPrefix + ": turning off motors")
-                if enabled:
-                    speed = rightSpeed
-                    while speed > 0:
-                        speed -= 1
+            if currentState != newState:
+
+                currentState = newState
+                # Wheel should not be running.
+                if currentState == 'stop':
+                    if debug:
+                        print(debugPrefix + ": turning off motors")
+                    if enabled:
+                        speed = rightSpeed
+                        while speed > 0:
+                            speed -= 1
+                            leftMotor.engage(speed)
+                            rightMotor.engage(speed)
+                            time.sleep(0.01)
+                        
+                        speed = 0
                         leftMotor.engage(speed)
                         rightMotor.engage(speed)
-                        time.sleep(0.01)
-                    
-                    speed = 0
-                    leftMotor.engage(speed)
-                    rightMotor.engage(speed)
-                    relay.disable()
+                        relay.disable()
+
+            
 
             time.sleep(10)
             print("leftEncoder: " + str(leftEncoder.GetCount()))
