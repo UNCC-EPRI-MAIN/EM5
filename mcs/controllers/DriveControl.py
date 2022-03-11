@@ -127,12 +127,6 @@ def run(globals):
                         rightMotor.engage(speed)
                         relay.disable()
 
-            
-
-            time.sleep(10)
-            print("leftEncoder: " + str(leftEncoder.GetCount()))
-            print("rightEncoder: " + str(rightEncoder.GetCount()))
-
     # Wait for threads to end
     if tFlags.leftEncoder_enabled:
         thread_leftenc.join()
