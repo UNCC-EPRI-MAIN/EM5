@@ -58,6 +58,7 @@ def run(globals):
         leftMotor = Sabertooth2x60.Sabertooth2x60(pins.leftMotorPWM, tFlags.leftMotor_debug, tFlags.leftMotor_enabled, "Left")
         ## The right motor object.
         rightMotor = Sabertooth2x60.Sabertooth2x60(pins.rightMotorPWM, tFlags.rightMotor_debug, tFlags.rightMotor_enabled, "Right")
+        
         ## The left encoder object.
         leftEncoder = AMT103.AMT103(pins.leftEncoderX, tFlags.leftEncoder_debug, tFlags.leftEncoder_enabled, "Left")
         ## The right encoder object.
@@ -71,7 +72,7 @@ def run(globals):
             print(debugPrefix + ": left encoder thread is not started")
 
         # Start right encoder thread
-        if tFlags.leftEncoder_enabled:
+        if tFlags.rightEncoder_enabled:
             thread_rightenc = threading.Thread(target = rightEncoder.run, args = (globals, ))
             thread_rightenc.start()
         elif tFlags.DriveControl_debug:
@@ -82,9 +83,16 @@ def run(globals):
 
     while globals['state1'] != 'shutdown':
         if enabled:
-            time.sleep(1)
+            time.sleep(10)
             print("leftEncoder: " + str(leftEncoder.GetCount()))
             print("rightEncoder: " + str(rightEncoder.GetCount()))
+
+    # Wait for threads to end
+    if tFlags.leftEncoder_enabled:
+        thread_leftenc.join()
+    
+    if tFlags.rightEncoder_enabled:
+        thread_rightenc.join()
 
     print(debugPrefix + ": end of module")
 
