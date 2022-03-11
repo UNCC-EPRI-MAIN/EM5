@@ -8,8 +8,8 @@
 # ---------- System Controller ----------
 MowBotControl_debug = True
 
-DriveSysControl_debug = False
-DriveSysControl_enabled = False
+DriveSysControl_debug = True
+DriveSysControl_enabled = True
 
 InterruptControl_debug = True
 InterruptControl_enabled = True
