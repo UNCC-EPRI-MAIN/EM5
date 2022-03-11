@@ -6,7 +6,6 @@
 
 # standard libraries
 import time
-import RPi.GPIO as GPIO
 
 import threading
 import importlib
@@ -27,52 +26,51 @@ import mcs.firmware.RelayControl as RelayControl
 import mcs.firmware.Sabertooth2x60 as Sabertooth2x60
 import mcs.firmware.AMT103 as AMT103
 
+## The function that the spawned process uses.
+def run(globals):
+    flagpath = globals['flagFile']
+    tFlags = importlib.import_module(flagpath)
 
-## This class is the firmware used to control the wheel motors via the Sabertooth2x60 hardware.
-# A PWM signal is passed throug the low pass filter, converting it to an analog signal. The Sabertooth2x60
-# then uses the signal to control a motor. This class controls only a single motor via one PWM signal.
-class DriveControl:
+    ## Boolean indicating if debug info should be included for this module
+    debug = tFlags.DriveControl_debug
 
-    ##  Constructor for motor module. 
-    # Motor is initalized with a speed of zero. 
-    # @param pinNumber Raspberry Pi GPIO BCM pin number used for PWM to drive single motor
-    # @param flags System flags passed to module. Should be defined in test bench or SystemFlags module.
-    # @param debugName Name of instance to be used for debugging output
-    def __init__(self, globals):
+    ## Boolean to indicate if this motor should be used. If disabled, program will run but not attempt to operate motors.
+    enabled = tFlags.DriveControl_enabled
+
+    ## String used for debugging
+    debugPrefix = "[DriveControl]"
         
-        flagpath = globals['flagFile']
-        tFlags = importlib.import_module(flagpath)
-
-        ## Boolean indicating if debug info should be included for this module
-        self.debug = tFlags.DriveControl_debug
-
-        ## Boolean to indicate if this motor should be used. If disabled, program will run but not attempt to operate motors.
-        self.enabled = tFlags.DriveControl_enabled
-
-        ## String used for debugging
-        self.debugPrefix = "[DriveControl]"
-        ## The speed of the left wheel.
-        self.leftSpeed = 0
-        ## The speed of the right wheel.
-        self.rightSpeed = 0
-        if self.enabled:
-            self.debugPrefix += "[E]"
-        else:
-            self.debugPrefix += "[D]"  
+    ## The speed of the left wheel.
+    leftSpeed = 0
+    
+    ## The speed of the right wheel.
+    rightSpeed = 0
         
-        if self.debug:
-            print(self.debugPrefix + "[__init__()]: defining DriveControl")
-        if self.enabled:
-            ## The relay class object.
-            self.relay = RelayControl.RelayControl(pins.wheelRelay, tFlags.wheelRelay_debug, tFlags.wheelRelay_enabled, "Wheel")
-            ## The left motor object.
-            self.leftMotor = Sabertooth2x60.Sabertooth2x60(pins.leftMotorPWM, tFlags.leftMotor_debug, tFlags.leftMotor_enabled, "Left")
-            ## The right motor object.
-            self.rightMotor = Sabertooth2x60.Sabertooth2x60(pins.rightMotorPWM, tFlags.rightMotor_debug, tFlags.rightMotor_enabled, "Right")
-            ## The left encoder object.
-            self.leftEncoder = AMT103.AMT103(pins.leftEncoderX, pins.leftEncoderA, tFlags.leftEncoder_debug, tFlags.leftEncoder_enabled, "Left")
-            ## The right encoder object.
-            self.rightEncoder = AMT103.AMT103(pins.rightEncoderX, pins.rightEncoderA, tFlags.rightEncoder_debug, tFlags.rightEncoder_enabled, "Right")
+    if enabled:
+        debugPrefix += "[E]"
+    else:
+        debugPrefix += "[D]"
+
+    if enabled:
+        ## The relay class object.
+        relay = RelayControl.RelayControl(pins.wheelRelay, tFlags.wheelRelay_debug, tFlags.wheelRelay_enabled, "Wheel")
+        ## The left motor object.
+        leftMotor = Sabertooth2x60.Sabertooth2x60(pins.leftMotorPWM, tFlags.leftMotor_debug, tFlags.leftMotor_enabled, "Left")
+        ## The right motor object.
+        rightMotor = Sabertooth2x60.Sabertooth2x60(pins.rightMotorPWM, tFlags.rightMotor_debug, tFlags.rightMotor_enabled, "Right")
+        ## The left encoder object.
+        leftEncoder = AMT103.AMT103(pins.leftEncoderX, pins.leftEncoderA, tFlags.leftEncoder_debug, tFlags.leftEncoder_enabled, "Left")
+        ## The right encoder object.
+        rightEncoder = AMT103.AMT103(pins.rightEncoderX, pins.rightEncoderA, tFlags.rightEncoder_debug, tFlags.rightEncoder_enabled, "Right")
+
+    if debug:
+        print(debugPrefix + "[run()]: Drive Control initialized")
+
+    while globals['state1'] != 'shutdown':
+        if enabled:
+            pass
+
+    print(debugPrefix + ": end of module")
 
     ## Makes the robot drive straight.
     # Does not use the encoder to move.
@@ -134,7 +132,7 @@ class DriveControl:
 
     ## Turn the robot CCW
     def pivotLeft(self, degrees):
-        distance  = int(degrees * DISTANCE_PER_DEGREE)
+        distance = int(degrees * DISTANCE_PER_DEGREE)
         if self.debug:
             print(self.debugPrefix + "[pivotLeft()]: degrees = " + str(degrees))
             print(self.debugPrefix + "[pivotLeft()]: distance (cm) to travel = " + str(distance))
@@ -173,7 +171,7 @@ class DriveControl:
     ## Give power to the wheel motors.
     def enable(self):
         if self.debug:
-            print(self.debugPrefix + "[enable()]: driving straight")
+            print(self.debugPrefix + "[enable()]: Turning on the wheel relays")
         if self.enabled:
             self.relay.enable()
     
@@ -182,7 +180,7 @@ class DriveControl:
         self.leftSpeed = 0
         self.rightSpeed = 0
         if self.debug:
-            print(self.debugPrefix + "[disable()]: driving straight")
+            print(self.debugPrefix + "[disable()]: Turning off the wheel relays")
         if self.enabled:
             self.relay.disable()
 
@@ -191,7 +189,7 @@ class DriveControl:
         self.leftSpeed = 0
         self.rightSpeed = 0
         if self.debug:
-            print(self.debugPrefix + "[rapidStop()]: turning on motors")
+            print(self.debugPrefix + "[rapidStop()]: turning off motors")
         if self.enabled:
             self.leftMotor.stop()
             self.rightMotor.stop()
@@ -200,7 +198,7 @@ class DriveControl:
     ## Stops motor gently
     def stop(self):
         if self.debug:
-            print(self.debugPrefix + "[stop()]: turning on motors")
+            print(self.debugPrefix + "[stop()]: turning off motors")
         if self.enabled:
             self.speed = self.rightSpeed
             while self.speed > 0:

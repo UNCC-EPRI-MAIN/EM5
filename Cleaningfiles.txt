@@ -19,6 +19,6 @@ RemoteControl
 DriveControl
 
 --WIP--
-LIDAR
+LIDAR - we might want to move this into a controller. maybe not.
 Navigation
 DriveSysControl
