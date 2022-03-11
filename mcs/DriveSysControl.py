@@ -61,7 +61,7 @@ def run(globals):
         thread_drivecontrol = threading.Thread(target = DriveControl.run, args = (globals, ))
         thread_drivecontrol.start()
     elif Flags.DriveSysControl_debug:
-        print(debugPrefix + ": Collision Detection Controller is disabled")
+        print(debugPrefix + ": Drive Control is disabled")
 
     # main loop, wait for shutdown
     while globals['state1'] != 'shutdown':

@@ -28,8 +28,8 @@ CollisionDetection_debug = True
 CollisionDetection_enabled = True
 
 # Drive Control
-DriveControl_debug = False
-DriveControl_enabled = False
+DriveControl_debug = True
+DriveControl_enabled = True
 
 # Navigation
 Navigation_debug = False
