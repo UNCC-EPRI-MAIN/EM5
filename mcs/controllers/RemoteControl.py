@@ -88,7 +88,7 @@ def run(globals):
         print(debugPrefix + "starting RemoteControl")
 
     # main loop, run until end of program
-    while globals['state1'] != 'shutdown':
+    while globals['state'] != 'shutdown':
         if enabled:
             try:
                 # Wait for controller events
@@ -102,7 +102,7 @@ def run(globals):
                         if manualMode:
                             if debug:
                                 print(debugPrefix + "yellow button pressed, exit manual drive, shutdown")
-                            globals['state1'] = 'shutdown'
+                            globals['state'] = 'shutdown'
                             break
                         else:
                             if debug:
@@ -110,13 +110,13 @@ def run(globals):
                             manualMode = True
                             leftSpeed = 0
                             rightSpeed = 0
-                            globals['state1'] = 'manual'    
+                            globals['state'] = 'manual'    
                         
                     # blue button pressed
                     elif event.code == 'BTN_NORTH' and event.state == 1:
                         if debug:
                             print(debugPrefix + "blue button pressed, init shutdown")
-                        globals['state1'] = 'shutdown'
+                        globals['state'] = 'shutdown'
                         break
 
                     # red button pressed
@@ -129,11 +129,10 @@ def run(globals):
                     # green button pressed
                     elif event.code == 'BTN_SOUTH' and event.state == 1:
                         # start program if in startup
-                        if globals['state2'] == 'waitForRemote':   
+                        if globals['state'] == 'waitForRemote':   
                             if debug:
                                 print(debugPrefix + "starting mow routine")
-                            globals['state1'] = 'mow'
-                            globals['state2'] = None
+                            globals['state'] = 'mow'
                         # else pause program (future)
                         if debug:
                             print(debugPrefix + "green button pressed")

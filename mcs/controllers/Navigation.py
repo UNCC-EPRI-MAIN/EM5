@@ -69,7 +69,7 @@ def run(globals):
         arrivedB = False
         arrivedC = False
 
-        while globals['state1'] != 'shutdown':
+        while globals['state'] != 'shutdown':
             time.sleep(1)
             currentLon = globals['lon']
             currentLat = globals['lat']
@@ -107,7 +107,7 @@ def run(globals):
                         print("destination B reached")
                     elif not arrivedC:
                         print("destination C reached")
-                        globals['state1'] = 'shutdown'
+                        globals['state'] = 'shutdown'
                     else:
                         print("something went wrong")
     # wait for threads to end

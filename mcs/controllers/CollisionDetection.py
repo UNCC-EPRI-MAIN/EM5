@@ -47,7 +47,7 @@ def run(globals):
     if debug:
         print(debugPrefix + "[run()]: Collision Detection initialized")
 
-    while globals['state1'] != 'shutdown':
+    while globals['state'] != 'shutdown':
         if enabled:
             activeCollision = False
             x, y, z = acc.GetReading()
@@ -68,7 +68,7 @@ def run(globals):
                 if debug:
                     print(debugPrefix + "[run()]: Collision Detected.")
                     print(debugPrefix + "[run()]: Sending Shutdown Signal.")
-                globals['state1'] = 'shutdown'
+                globals['state'] = 'shutdown'
             
     print(debugPrefix + ": end of module")
                 

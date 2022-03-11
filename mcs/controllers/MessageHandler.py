@@ -38,7 +38,7 @@ def run(globals):
 
 
     # main loop, run until end of program
-    while globals['state1'] != 'shutdown':
+    while globals['state'] != 'shutdown':
 
         recv_message = jetson_uart.ReadMessage()
 
@@ -47,7 +47,7 @@ def run(globals):
 
         # Temp, when the jetson gets its camera, we will change the message.
         if recv_message == b'Shutdown\n':
-            globals['state1'] = 'shutdown'
+            globals['state'] = 'shutdown'
 
         
 

@@ -7,15 +7,6 @@
 
 import RPi.GPIO as GPIO
 
-# Module Parameters
-GEAR_RATIO = 26                                                             # 26 motor rotations for one wheel rotation
-INDEX_PULSE_PER_WHEEL_ROTATION = GEAR_RATIO                                 # index will pulse 26 times per wheel rotation
-INDEX_CHANGE_PER_WHEEL_ROTATION = 2 * GEAR_RATIO                            # 26 pulses = 52 state changes on pin
-WHEEL_DIAMETER = 33                                                         # diameter in cm
-WHEEL_CIRCUMFERENCE = 3.14 * WHEEL_DIAMETER                                 # circumference in cm
-DISTANCE_PER_STEP = WHEEL_CIRCUMFERENCE / INDEX_CHANGE_PER_WHEEL_ROTATION   # distance in cm for each step
-DISTANCE_PER_STEP = 2                                                       # above calculation yields 1.99
-
 ## This class is the firmware read the encoders on the wheels.
 class AMT103:
 
@@ -54,7 +45,7 @@ class AMT103:
     
     ## Counts the pulses in a loop
     def run(self, globals):
-        while globals['state1'] != 'shutdown':
+        while globals['state'] != 'shutdown':
             if self.enabled:
                 newState = GPIO.input(self.pinXNumber)
                 if newState != self.currentState:

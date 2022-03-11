@@ -118,11 +118,11 @@ class rpLiDAR_A2M4_R4:
     # Function to find objects obstructing the path of the robot and returning distance to the objects
     def objectDetection(self, globals):
         if self.enabled:
-            while globals['state1'] != 'shutdown': 
+            while globals['state'] != 'shutdown': 
                 try:
                 # process of getting LiDAR read outs each scan will call the function to analyze the data
                     for scan in self.lidar.iter_scans():
-                        if globals['state1'] == 'shutdown':
+                        if globals['state'] == 'shutdown':
                             break
                         scan_data = [0]*360
                         scan_data_mod = [0]*360

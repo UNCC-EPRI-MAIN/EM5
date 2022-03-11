@@ -56,7 +56,7 @@ def run(globals):
         print(debugPrefix + ": LiDAR firmware is disabled")
 
     # main loop, wait for shutdown
-    while globals['state1'] != 'shutdown':
+    while globals['state'] != 'shutdown':
         time.sleep(2)
 
     # wait for threads to end

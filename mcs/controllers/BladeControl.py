@@ -46,7 +46,7 @@ def run(globals):
         blade = MD30C(pins.bladePWM, tFlags.MD30C_debug, tFlags.MD30C_enabled)
 
     # main loop, run until end of program
-    while globals['state1'] != 'shutdown':
+    while globals['state'] != 'shutdown':
 
         # check if change in state
         if globals['bladesOn'] != bladesOn:

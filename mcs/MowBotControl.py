@@ -50,15 +50,14 @@ with multiproc.Manager() as manager:
     globals = manager.dict()
 
     # Super States
-    globals['state1'] = 'startup'
-    globals['state2'] = 'waitForRemote'
+    if not Flags.RemoteControl_enabled:
+        globals['state'] = 'startup'
+    else:
+        globals['state'] = 'waitForRemote'
 
     # Mowbot Control Status
     globals['flagFile'] = flagFile
-    globals['destLat'] = []
-    globals['destLong'] = []
-    globals['destinationHeading'] = 0
-    globals['headingLock'] = False
+    globals['driveState'] = 'stop'
 
     # Manual Drive Speeds
     globals['leftSpeed'] = 0
@@ -81,6 +80,10 @@ with multiproc.Manager() as manager:
     globals['lon'] = -1
     globals['lat'] = -1
     globals['heading'] = -1
+    globals['destLat'] = []
+    globals['destLong'] = []
+    globals['destinationHeading'] = 0
+    globals['headingLock'] = False
     
     # Start Interrupt Controller Process
     proc_ic = multiproc.Process(target = mcs_ic.run, args = (globals, ))
@@ -107,10 +110,10 @@ with multiproc.Manager() as manager:
     # Start Program if remote controller not used
     if not Flags.RemoteControl_enabled:
         time.sleep(3)
-        globals['state1'] = 'mow'
+        globals['state'] = 'mow'
 
     # Stall until Shutdown Loop
-    while globals['state1'] != 'shutdown':
+    while globals['state'] != 'shutdown':
         time.sleep(2)
     
     globals['bladesOn'] = False

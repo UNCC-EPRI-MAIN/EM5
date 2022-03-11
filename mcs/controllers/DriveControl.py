@@ -18,6 +18,23 @@ DISTANCE_PER_DEGREE = PIVOT_CIRCUMFERENCE / 360         # 0.811 cm for each degr
 NORMAL_DRIVE_SPEED = 50
 COURSE_CORRECTION_FACTOR = 0.2                          # higher number -> faster correction
 
+
+GEAR_RATIO = 26                                                             # 26 motor rotations for one wheel rotation
+INDEX_PULSE_PER_WHEEL_ROTATION = GEAR_RATIO                                 # index will pulse 26 times per wheel rotation
+INDEX_CHANGE_PER_WHEEL_ROTATION = 2 * GEAR_RATIO                            # 26 pulses = 52 state changes on pin
+WHEEL_DIAMETER = 33                                                         # diameter in cm
+WHEEL_CIRCUMFERENCE = 3.14 * WHEEL_DIAMETER                                 # circumference in cm
+DISTANCE_PER_STEP = WHEEL_CIRCUMFERENCE / INDEX_CHANGE_PER_WHEEL_ROTATION   # distance in cm for each step
+
+# Module Parameters
+NORMAL_DRIVE_SPEED = 50                     # Speed of the wheels normals
+CAUTION_DRIVE_SPEED = 40                    # speed of the wheels when 
+OBJECT_DETECTION_SLOW_DOWN_FACTOR = 1.5     # lower number -> more gradual slowdown
+OBJECT_DETECTION_STOP_DISTANCE = 15         # cm
+PIVOT_SPEED = 18                            # % motor speed
+DEGREES_OFF_COURSE = 5                      # threshold to determine MowBot is off course
+DEGREES_FORCE_PIVOT = 90                    # number of degrees off course requiring pivot
+
 # Load Initial Modules
 import mcs.PinAssignments as pins
 
@@ -81,8 +98,31 @@ def run(globals):
     if debug:
         print(debugPrefix + "[run()]: Drive Control initialized")
 
-    while globals['state1'] != 'shutdown':
+    # Main loop controlling the drive system.
+    while globals['state'] != 'shutdown':
         if enabled:
+
+            state = globals['driveState']
+
+            # Wheel should not be running.
+            if state == 'stop':
+                if debug:
+                    print(debugPrefix + ": turning off motors")
+                if enabled:
+                    speed = rightSpeed
+                    while speed > 0:
+                        speed -= 1
+                        leftMotor.engage(speed)
+                        rightMotor.engage(speed)
+                        time.sleep(0.01)
+                    
+                    speed = 0
+                    leftMotor.engage(speed)
+                    rightMotor.engage(speed)
+                    relay.disable()
+            elif state == ''
+            
+
             time.sleep(10)
             print("leftEncoder: " + str(leftEncoder.GetCount()))
             print("rightEncoder: " + str(rightEncoder.GetCount()))
@@ -93,6 +133,15 @@ def run(globals):
     
     if tFlags.rightEncoder_enabled:
         thread_rightenc.join()
+
+    leftSpeed = 0
+    rightSpeed = 0
+    if debug:
+        print(debugPrefix + ": turning off motors")
+    if enabled:
+        leftMotor.stop()
+        rightMotor.stop()
+        relay.disable()
 
     print(debugPrefix + ": end of module")
 
@@ -221,17 +270,4 @@ def run(globals):
 
     ## Stops motor gently
     def stop(self):
-        if self.debug:
-            print(self.debugPrefix + "[stop()]: turning off motors")
-        if self.enabled:
-            self.speed = self.rightSpeed
-            while self.speed > 0:
-                self.speed -= 1
-                self.leftMotor.engage(self.speed)
-                self.rightMotor.engage(self.speed)
-                time.sleep(0.01)
-            
-            self.speed = 0
-            self.leftMotor.engage(self.speed)
-            self.rightMotor.engage(self.speed)
-            self.relay.disable()
+        

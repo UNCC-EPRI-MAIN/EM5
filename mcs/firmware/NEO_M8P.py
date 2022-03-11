@@ -35,7 +35,7 @@ def run(debug, enabled, rtk_enabled, rtkStatusPin, globals):
             gps = UbloxGps(port)
             GPIO.setup(rtkStatusPin, GPIO.IN)
             failedReadCount = 0
-            while globals['state1'] != 'shutdown':
+            while globals['state'] != 'shutdown':
                 try:
                     geo = gps.geo_coords()
                     newLon = geo.lon
