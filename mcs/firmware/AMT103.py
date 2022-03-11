@@ -59,7 +59,7 @@ class AMT103:
             if self.enabled:
                 newState = GPIO.input(self.pinXNumber)
                 if newState != self.currentState:
-                    stepCount += 1
+                    self.count += 1
                     self.currentState = newState
 
 
