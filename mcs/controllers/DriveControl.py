@@ -84,7 +84,7 @@ def run(globals):
         if enabled:
             time.sleep(1)
             print("leftEncoder: " + str(leftEncoder.GetCount()))
-            print("leftEncoder: " + str(rightEncoder.GetCount()))
+            print("rightEncoder: " + str(rightEncoder.GetCount()))
 
     print(debugPrefix + ": end of module")
 
