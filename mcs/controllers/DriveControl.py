@@ -120,8 +120,6 @@ def run(globals):
                     leftMotor.engage(speed)
                     rightMotor.engage(speed)
                     relay.disable()
-            elif state == ''
-            
 
             time.sleep(10)
             print("leftEncoder: " + str(leftEncoder.GetCount()))
