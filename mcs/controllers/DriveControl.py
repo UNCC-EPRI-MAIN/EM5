@@ -65,14 +65,14 @@ def run(globals):
 
         # Start left encoder thread
         if tFlags.leftEncoder_enabled:
-            thread_leftenc = threading.Thread(target = leftEncoder.run)
+            thread_leftenc = threading.Thread(target = leftEncoder.run, args = (globals, ))
             thread_leftenc.start()
         elif tFlags.DriveControl_debug:
             print(debugPrefix + ": left encoder thread is not started")
 
         # Start right encoder thread
         if tFlags.leftEncoder_enabled:
-            thread_rightenc = threading.Thread(target = rightEncoder.run)
+            thread_rightenc = threading.Thread(target = rightEncoder.run, args = (globals, ))
             thread_rightenc.start()
         elif tFlags.DriveControl_debug:
             print(debugPrefix + ": right encoder thread is not started")
