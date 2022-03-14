@@ -1,6 +1,6 @@
 # **A Better Approach to Vegetation Management at Utility-Scale PV Plant**
 
-[This is the documentation page for phase 6.](https://github.com/nguyjd/Mowbot/deployments)  
+[This is the documentation page for phase 6.](https://nguyjd.github.io/Mowbot/)  
 View the "Package" tab at the top for the structure of the project  
 View the "File" tab at the top to see how each files works.  
 
