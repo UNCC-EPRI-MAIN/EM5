@@ -5,7 +5,6 @@
 # Provides high level control by integrating MD30C and relay control
 
 # Standard libraries
-import RPi.GPIO as GPIO
 import importlib
 
 # Load Initial Modules
@@ -48,25 +47,42 @@ def run(globals):
     # main loop, run until end of program
     while globals['state'] != 'shutdown':
 
-        # check if change in state
-        if globals['bladesOn'] != bladesOn:
-            bladesOn = globals['bladesOn']
-            
-            # Turn off blades
-            if not bladesOn:
-                if debug:
-                    print(debugPrefix + "turning off blades")
-                if enabled:
-                    blade.stop()
-                    relay.disable()
-            
-            # Turn on blades
-            else:
+        if globals['state'] == 'mow':
+
+            if globals['bladesOn'] != True:
                 if debug:
                     print(debugPrefix + "turning on blades")
                 if enabled:
                     relay.enable()
                     blade.spin()
+
+        elif globals['state'] == 'manual':
+            if globals['bladesOn'] != bladesOn:
+                bladesOn = globals['bladesOn']
+
+                # Turn off blades
+                if not bladesOn:
+                    if debug:
+                        print(debugPrefix + "turning off blades")
+                    if enabled:
+                        blade.stop()
+                        relay.disable()
+                
+                # Turn on blades
+                else:
+                    if debug:
+                        print(debugPrefix + "turning on blades")
+                    if enabled:
+                        relay.enable()
+                        blade.spin()
+        
+        else:
+            if globals['bladesOn'] != False:
+                if debug:
+                    print(debugPrefix + "turning off blades")
+                if enabled:
+                    blade.stop()
+                    relay.disable()
 
     if debug:
         print(debugPrefix + "turning off blades")

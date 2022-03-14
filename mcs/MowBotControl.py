@@ -65,7 +65,7 @@ with multiproc.Manager() as manager:
     globals['degrees'] = 0
 
     # Blade Control
-    globals['bladesOn'] = True
+    globals['bladesOn'] = False
 
     # Battery Bonitor
     globals['batteryLevel'] = None
