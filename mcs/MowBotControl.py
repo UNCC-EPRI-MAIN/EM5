@@ -59,9 +59,10 @@ with multiproc.Manager() as manager:
     globals['flagFile'] = flagFile
     globals['driveState'] = 'stop'
 
-    # Manual Drive Speeds
+    # Drive settings
     globals['leftSpeed'] = 0
     globals['rightSpeed'] = 0
+    globals['degrees'] = 0
 
     # Blade Control
     globals['bladesOn'] = True
