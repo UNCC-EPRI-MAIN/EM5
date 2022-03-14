@@ -289,6 +289,7 @@ def run(globals):
                             if debug:
                                 print(debugPrefix + "[pivotLeft]: pivot complete")
 
+            # Using the remote controller.
             elif globals['state'] == 'manual':
                 if enabled:
                     # Check if the relay is already open.
