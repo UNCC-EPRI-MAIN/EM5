@@ -42,7 +42,7 @@ def run(globals):
 
         recv_message = jetson_uart.ReadMessage()
 
-        if debug and not recv_message == b'':
+        if debug and recv_message != b'':
             print(debugPrefix + "Message: " + str(recv_message))
 
         # Temp, when the jetson gets its camera, we will change the message.
