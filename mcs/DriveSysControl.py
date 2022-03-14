@@ -38,6 +38,12 @@ def run(globals):
     elif Flags.DriveSysControl_debug:
         print(debugPrefix + ": Drive Control is disabled")
 
+    if Flags.RemoteControl_enabled:
+        thread_remoteControl = threading.Thread(target = RemoteControl.run, args = (globals, ))
+        thread_remoteControl.start()
+    elif Flags.DriveSysControl_debug:
+        print(debugPrefix + ": Remote Control is disabled")
+
     # main loop, wait for shutdown
     while globals['state'] != 'shutdown':
         time.sleep(2)
