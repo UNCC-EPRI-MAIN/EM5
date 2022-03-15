@@ -50,6 +50,7 @@ def run(globals):
         if globals['state'] == 'mow':
 
             if globals['bladesOn'] != True:
+                globals['bladesOn'] = True 
                 if debug:
                     print(debugPrefix + "turning on blades")
                 if enabled:
@@ -78,6 +79,7 @@ def run(globals):
         
         else:
             if globals['bladesOn'] != False:
+                globals['bladesOn'] = False
                 if debug:
                     print(debugPrefix + "turning off blades")
                 if enabled:
