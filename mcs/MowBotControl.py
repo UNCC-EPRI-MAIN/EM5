@@ -67,10 +67,6 @@ with multiproc.Manager() as manager:
     # Blade Control
     globals['bladesOn'] = False
 
-    # Battery Bonitor
-    globals['batteryLevel'] = None
-    globals['batteryCharging'] = None
-
     # Object Detection
     globals['forwardClearance'] = 200
     globals['leftTurnClear'] = False
