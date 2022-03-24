@@ -77,6 +77,7 @@ def run(globals):
                         relay.enable()
                         blade.spin()
         
+        # If we are not mowing anymore.
         else:
             if globals['bladesOn'] != False:
                 globals['bladesOn'] = False
