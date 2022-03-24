@@ -73,15 +73,9 @@ with multiproc.Manager() as manager:
 
     # GPS
     globals['offcourse'] = False
-
-    # Check if we need this.
     globals['lon'] = -1
     globals['lat'] = -1
     globals['heading'] = -1
-    globals['destLat'] = []
-    globals['destLong'] = []
-    globals['destinationHeading'] = 0
-    globals['headingLock'] = False
     
     # Start Interrupt Controller Process
     proc_ic = multiproc.Process(target = mcs_ic.run, args = (globals, ))
