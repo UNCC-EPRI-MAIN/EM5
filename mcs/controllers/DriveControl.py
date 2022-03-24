@@ -10,10 +10,18 @@ import time
 import threading
 import importlib
 
+# Load Initial Modules
+import mcs.PinAssignments as pins
+
+# Firmware modules
+import mcs.firmware.RelayControl as RelayControl
+import mcs.firmware.Sabertooth2x60 as Sabertooth2x60
+import mcs.firmware.AMT103 as AMT103
+
 ## Speed of the robot in each phase.
 NORMAL_DRIVE_SPEED = 50
 PIVOT_SPEED = 18
-CAUTION_DRIVE_SPEED = 30
+CAUTION_DRIVE_SPEED = 25
 
 #TODO: Wheel base will be changed. DISTANCE_WHEEL_TO_WHEEL
 ## Real stats on about the robot.
@@ -26,7 +34,6 @@ OBJECT_DETECTION_SLOW_DOWN_FACTOR = 1.5                                     # lo
 OBJECT_DETECTION_STOP_DISTANCE = 15                                         # cm
 DEGREES_OFF_COURSE = 5                                                      # threshold to determine MowBot is off course
 DEGREES_FORCE_PIVOT = 90                                                    # number of degrees off course requiring pivot
-COURSE_CORRECTION_FACTOR = 0.2                                              # higher number -> faster correction
 ENCODER_TOLERANCE = 10                                                      # The amount of pulses that the encoder can be out of phase.
 
 ## Calculated Values for travel.
@@ -36,14 +43,6 @@ INDEX_PULSE_PER_WHEEL_ROTATION = GEAR_RATIO                                 # in
 INDEX_CHANGE_PER_WHEEL_ROTATION = 2 * GEAR_RATIO                            # 26 pulses = 52 state changes on pin
 WHEEL_CIRCUMFERENCE = 3.14 * WHEEL_DIAMETER                                 # circumference in cm
 DISTANCE_PER_STEP = WHEEL_CIRCUMFERENCE / INDEX_CHANGE_PER_WHEEL_ROTATION   # distance in cm for each step
-
-# Load Initial Modules
-import mcs.PinAssignments as pins
-
-# Firmware modules
-import mcs.firmware.RelayControl as RelayControl
-import mcs.firmware.Sabertooth2x60 as Sabertooth2x60
-import mcs.firmware.AMT103 as AMT103
 
 ## The function that the spawned process uses.
 def run(globals):
@@ -189,8 +188,67 @@ def run(globals):
                         if debug:
                             print(debugPrefix + ": not driving straight")
                         if enabled:
-                            leftMotor.stop(leftSpeed)
-                            rightMotor.stop(rightSpeed)
+                            leftMotor.stop()
+                            rightMotor.stop()
+
+                    ## Slows the robot down when driving straight.
+                    elif currentState == 'cautionstraight':
+
+                        # Start the wheel relay
+                        if enabled and tFlags.wheelRelay_enabled:
+                            if relay.GetState():
+                                relay.enable()
+                            if debug:
+                                print(debugPrefix + ": Turning on the wheel relays")
+
+                        # Set the speed of the robot and start driving.
+                        leftSpeed = CAUTION_DRIVE_SPEED
+                        rightSpeed = CAUTION_DRIVE_SPEED
+                        if debug:
+                            print(debugPrefix + ": driving straight (caution)")
+                        if enabled:
+                            leftMotor.engage(leftSpeed)
+                            rightMotor.engage(rightSpeed)
+                        
+                        rightEncoder.ResetCount()
+                        leftEncoder.ResetCount()
+
+                        leftEncoderCount = 0
+                        rightEncoderCount = 0
+
+                        # Drive straight until the system needs to do something else.
+                        while globals['driveState'] != 'cautionstraight':
+
+                            leftEncoderCount = leftEncoder.GetCount()
+                            rightEncoderCount = rightEncoder.GetCount()
+
+                            # if right motor is too fast, speed up the left motor 
+                            if((leftEncoderCount + ENCODER_TOLERANCE) < rightEncoderCount):
+                                leftSpeed += 1
+                                leftMotor.engage(leftSpeed)
+
+                            # if the left motor is too fast.
+                            elif ((rightEncoderCount + ENCODER_TOLERANCE) < leftEncoderCount):
+                                
+                                rightSpeed += 1
+                                rightMotor.engage(rightSpeed)
+
+                            # Reset the robot back to the orginal values.
+                            else:
+                                leftSpeed = CAUTION_DRIVE_SPEED
+                                rightSpeed = CAUTION_DRIVE_SPEED
+
+                                leftMotor.engage(leftSpeed)
+                                rightMotor.engage(rightSpeed)
+
+                        leftSpeed = 0
+                        rightSpeed = 0
+
+                        if debug:
+                            print(debugPrefix + ": not driving straight")
+                        if enabled:
+                            leftMotor.stop()
+                            rightMotor.stop()
 
                     ## Makes the robot drive straight.
                     elif currentState == 'backward':
@@ -218,7 +276,7 @@ def run(globals):
                         rightEncoderCount = 0
 
                         # Drive straight until the system needs to do something else.
-                        while globals['driveState'] != 'straight':
+                        while globals['driveState'] != 'backward':
 
                             leftEncoderCount = leftEncoder.GetCount()
                             rightEncoderCount = rightEncoder.GetCount()
@@ -299,6 +357,8 @@ def run(globals):
                             rightMotor.stop()
                             if debug:
                                 print(debugPrefix + "[pivotRight]: pivot complete")
+                            
+                            globals['driveState'] = 'completed'
 
                     ## Turn the robot CCW
                     elif currentState == 'pivotLeft':
@@ -347,6 +407,8 @@ def run(globals):
                             rightMotor.stop()
                             if debug:
                                 print(debugPrefix + "[pivotLeft]: pivot complete")
+
+                            globals['driveState'] = 'completed'
 
             # Using the remote controller.
             elif globals['state'] == 'manual':
