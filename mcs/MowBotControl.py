@@ -13,7 +13,6 @@ import os
 import threading
 import importlib
 
-
 # Load Initial Modules
 import RPi.GPIO as GPIO
 import mcs.controllers.HMI as HMI
@@ -63,17 +62,19 @@ with multiproc.Manager() as manager:
     globals['leftSpeed'] = 0
     globals['rightSpeed'] = 0
     globals['degrees'] = 0
+    globals['pivot'] = 'cw'
 
     # Blade Control
     globals['bladesOn'] = False
 
     # Object Detection
-    globals['forwardClearance'] = 200
-    globals['leftTurnClear'] = False
-    globals['rightTurnClear'] = False
-    globals['avoidanceTurnDirection'] = None
+    globals['objectclose'] = False
+    globals['blocked'] = False
 
-    # Gps Data
+    # GPS
+    globals['offcourse'] = False
+
+    # Check if we need this.
     globals['lon'] = -1
     globals['lat'] = -1
     globals['heading'] = -1
