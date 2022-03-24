@@ -49,6 +49,12 @@ def run(globals):
         if recv_message == b'Shutdown\n':
             globals['state'] = 'shutdown'
 
+        if recv_message == b'blocked\n':
+            globals['blocked'] = True
+
+        if recv_message == b'not blocked\n':
+            globals['blocked'] = False
+
         
 
     jetson_uart.CleanUp()
