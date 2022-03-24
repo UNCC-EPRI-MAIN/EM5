@@ -3,7 +3,7 @@
 
 ## @file DriveSysControl.py
 # Handles the movement of the robot by controlling the speed of the wheel and rotation of the robot.
-# NOTE: This has some internal code that directly interfaces with the motors. Look through the code.
+# NOTE: This has some internal code that interfaces with the motors. Look through the code.
 
 # standard libaries
 import os
@@ -46,6 +46,30 @@ def run(globals):
 
     # main loop, wait for shutdown
     while globals['state'] != 'shutdown':
+
+        # Slow the robot down when the camera sees a object.
+        if globals['blocked'] == True:
+            globals['driveState'] = 'cautionstraight'
+
+        # Found a object within threshold or the robot is off course
+        elif globals['objectclose'] == True or globals['offcourse'] == True:
+            if globals['pivot'] == 'cw':
+                globals['driveState'] = 'pivotRight'
+
+            elif globals['pivot'] == 'ccw':
+                globals['driveState'] = 'pivotLeft'
+
+            # Wait until the pivot is done.
+            while globals['driveState'] != 'completed':
+                time.sleep(2)
+
+            globals['driveState'] = 'straight'
+
+        # No problem with the path.
+        else:
+            globals['driveState'] = 'straight'
+
+
         time.sleep(2)
 
     if Flags.DriveControl_enabled:
