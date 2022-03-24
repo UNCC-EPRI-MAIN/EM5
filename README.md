@@ -58,9 +58,9 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 - [x] Use the data from the wheel encoder.
 - [x] Using LiDar for obstacle detection
 - [x] Use bumpers to detect collision.
-- [ ] Tracking the charge of the battery.
+- [x] Tracking the charge of the battery.
 - [ ] Use computer vision for object detection.  [^1]
-- [ ] Use a accelerometer to detect collision.  [^2]
+- [x] Use a accelerometer to detect collision.  [^2]
 - [ ] Use machine learning to detect obstacles.  [^1]
 
 [^1]: These go hand and hand. Right now, this is very broad. As we go through paces of developing software, the feature definition will become narrow. 
