@@ -75,6 +75,8 @@ def run(globals):
         currentDestination = mowbot_path.GetCurrentWaypoint()
         destinationLat = currentDestination.lat
         destinationLon = currentDestination.long
+        if debug:
+            print(f"Destination Lat: {destinationLat}, Destination Lon: {destinationLon}")
 
         # make sure gps readings are good
         if currentLon != -1 and currentLat != -1:
