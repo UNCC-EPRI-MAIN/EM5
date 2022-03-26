@@ -60,7 +60,8 @@ def run(debug, enabled, globals):
                         print(debugPrefix + "[run()]: failed read")
                     if failedReadCount >= FAILED_READ_ALARM_THRESHOLD and failedReadCount % 10 == 0:
                         print("!--- READ FAILURE ---!")
-        except:
+        except Exception as e:
             print("Failed to find the USB for the GPS.")
+            print(e)
     
     print(debugPrefix + "end of module")
