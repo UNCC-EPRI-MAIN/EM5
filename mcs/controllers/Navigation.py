@@ -15,7 +15,7 @@ import threading
 # Helper libraries
 import math
 import time
-from geopy.distance import great_circle
+from geopy import distance
 
 # Load Initial Modules
 import mcs.PinAssignments as pins
@@ -97,7 +97,7 @@ def run(globals):
             # Compute the distance from each other.
             p1 = (currentLat, currentLon)
             p2 = (destinationLat, destinationLon)
-            distance = great_circle(p1, p2).meters
+            distance = distance.distance(p1, p2).meters
 
             if debug:
                 print(debugPrefix + f": Distance from destination {distance}")
