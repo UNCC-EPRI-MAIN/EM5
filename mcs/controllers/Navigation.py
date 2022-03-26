@@ -53,7 +53,7 @@ def run(globals):
     else:
         debugPrefix += "[D]: "  
     if debug:
-        print(debugPrefix + "init blade controller")
+        print(debugPrefix + "init navigation controller")
 
     if enabled:
         # start GPS thread
