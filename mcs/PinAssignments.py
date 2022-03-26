@@ -11,9 +11,6 @@ bladePWM = 5
 leftMotorPWM = 12
 rightMotorPWM = 13
 
-# RTK status.
-rtkStatus = 26
-
 # Relays
 wheelRelay = 6
 bladeRelay = 19

@@ -79,7 +79,6 @@ rpLiDAR_A2M4_R4_enabled = False
 # GPS 
 NEO_M8P_debug = True
 NEO_M8P_enabled = True
-NEO_M8P_RTK_enabled = False
 
 # Accelerometer
 accelerometer_debug = True
