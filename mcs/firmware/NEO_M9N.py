@@ -27,37 +27,41 @@ def run(debug, enabled, globals):
         debugPrefix += "[D]"
 
     if enabled:
-        port = serial.Serial('/dev/ttyACM0', baudrate=38400, timeout=1)
-        gps = UbloxGps(port)
-        failedReadCount = 0
-        while globals['state'] != 'shutdown':
-            try:
-                geo = gps.geo_coords()
-                newLon = geo.lon
-                newLat = geo.lat
-                newHeading = geo.headMot
+        try:
+            port = serial.Serial('/dev/ttyACM0', baudrate=38400, timeout=1)
+            gps = UbloxGps(port)
+            failedReadCount = 0
+            while globals['state'] != 'shutdown':
+                try:
+                    geo = gps.geo_coords()
+                    newLon = geo.lon
+                    newLat = geo.lat
+                    newHeading = geo.headMot
 
-                if newLon != oldLon:
-                    globals['lon'] = newLon
-                    oldLon = newLon
+                    if newLon != oldLon:
+                        globals['lon'] = newLon
+                        oldLon = newLon
 
-                if newLat != oldLat:
-                    globals['lat'] = newLat
-                    oldLat = newLat
+                    if newLat != oldLat:
+                        globals['lat'] = newLat
+                        oldLat = newLat
 
-                if newHeading != oldHeading and not globals['headingLock']:
-                    globals['heading'] = newHeading
+                    if newHeading != oldHeading:
+                        globals['heading'] = newHeading
 
-                if debug:
-                    print(debugPrefix + "[run()]: X: " + str(geo.lon) + " Y: " + str(geo.lat))
-                    print(debugPrefix + "[run()]: heading: " + str(geo.headMot))
-            
-            except (ValueError, IOError) as err:
-                failedReadCount += 1
-                if debug:
-                    print(debugPrefix + err)
-                    print(debugPrefix + "[run()]: failed read")
-                if failedReadCount >= FAILED_READ_ALARM_THRESHOLD and failedReadCount % 10 == 0:
-                    print("!--- READ FAILURE ---!")
+                    if debug:
+                        print(debugPrefix + "[run()]: X: " + str(geo.lon) + " Y: " + str(geo.lat))
+                        print(debugPrefix + "[run()]: heading: " + str(geo.headMot))
+                
+                except (ValueError, IOError) as err:
+                    failedReadCount += 1
+                    if debug:
+                        print(debugPrefix + err)
+                        print(debugPrefix + "[run()]: failed read")
+                    if failedReadCount >= FAILED_READ_ALARM_THRESHOLD and failedReadCount % 10 == 0:
+                        print("!--- READ FAILURE ---!")
+        except Exception as e:
+            print("Failed to find the USB for the GPS.")
+            print(e)
     
     print(debugPrefix + "end of module")
