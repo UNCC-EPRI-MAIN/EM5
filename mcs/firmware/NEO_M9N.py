@@ -31,7 +31,7 @@ def run(debug, enabled, rtk_enabled, rtkStatusPin, globals):
 
     if enabled:
         try:
-            port = serial.Serial('/dev/ttyAMA0', baudrate=38400, timeout=1)
+            port = serial.Serial('/dev/ttyAMA', baudrate=38400, timeout=1)
             gps = UbloxGps(port)
             GPIO.setup(rtkStatusPin, GPIO.IN)
             failedReadCount = 0
