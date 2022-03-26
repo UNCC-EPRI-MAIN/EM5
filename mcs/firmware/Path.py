@@ -72,13 +72,13 @@ class Path:
         self.path.append(waypoint(lat, long))
 
     def WritePathToFile(self):
-        with open('./GPSWaypoints.txt', 'w') as file:
+        with open('./../../GPSWaypoints.txt', 'w') as file:
             for waypoint in self.path:
                 file.write(str(waypoint.lat) + ',' + str(waypoint.long) + '\n')
 
     def LoadPathFromFile(self):
         file_content = []
-        with open('./GPSWaypoints.txt', 'r') as file:
+        with open('./../../GPSWaypoints.txt', 'r') as file:
             file_content = file.readlines()
 
         self.path.clear()
