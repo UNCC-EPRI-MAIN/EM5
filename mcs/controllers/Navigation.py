@@ -15,7 +15,7 @@ import threading
 # Helper libraries
 import math
 import time
-from geopy import distance
+from geopy.distance import great_circle
 
 # Load Initial Modules
 import mcs.PinAssignments as pins
@@ -76,6 +76,7 @@ def run(globals):
         destinationLat = currentDestination.lat
         destinationLon = currentDestination.long
         if debug:
+            print(f"Current Lat: {currentLat}, Current Lon: {currentLon}")
             print(f"Destination Lat: {destinationLat}, Destination Lon: {destinationLon}")
 
         # make sure gps readings are good
@@ -97,13 +98,13 @@ def run(globals):
             # Compute the distance from each other.
             p1 = (currentLat, currentLon)
             p2 = (destinationLat, destinationLon)
-            temp = distance.distance(p1, p2).meters
+            distance = great_circle(p1, p2).meters
 
             if debug:
-                print(debugPrefix + f": Distance from destination {temp}")
+                print(debugPrefix + f": Distance from destination {distance}")
 
             # arrived at destination
-            if temp < DISTANCE_THRESHOLD:
+            if distance < DISTANCE_THRESHOLD:
                 
                 if debug:
                     print(debugPrefix + f": Arrived at {currentDestination}")
