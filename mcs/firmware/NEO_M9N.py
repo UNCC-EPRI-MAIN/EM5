@@ -31,7 +31,7 @@ def run(debug, enabled, rtk_enabled, rtkStatusPin, globals):
 
     if enabled:
         try:
-            port = serial.Serial('/dev/serial0', baudrate=38400, timeout=1)
+            port = serial.Serial('/dev/ttyACM0', baudrate=38400, timeout=1)
             gps = UbloxGps(port)
             GPIO.setup(rtkStatusPin, GPIO.IN)
             failedReadCount = 0
@@ -63,9 +63,10 @@ def run(debug, enabled, rtk_enabled, rtkStatusPin, globals):
                         print(debugPrefix + "[run()]: RTK active = " + str(rtkStatus))
                         print(debugPrefix + "[run()]: X: " + str(geo.lon) + " Y: " + str(geo.lat))
                         print(debugPrefix + "[run()]: heading: " + str(geo.headMot))
-                except:
+                except (ValueError, IOError) as err:
                     failedReadCount += 1
                     if debug:
+                        print(debugPrefix + err)
                         print(debugPrefix + "[run()]: failed read")
                     if failedReadCount >= FAILED_READ_ALARM_THRESHOLD and failedReadCount % 10 == 0:
                         print("!--- RTK READ FAILURE ---!")
