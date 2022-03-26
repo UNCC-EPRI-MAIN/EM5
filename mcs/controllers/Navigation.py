@@ -97,13 +97,13 @@ def run(globals):
             # Compute the distance from each other.
             p1 = (currentLat, currentLon)
             p2 = (destinationLat, destinationLon)
-            distance = distance.distance(p1, p2).meters
+            temp = distance.distance(p1, p2).meters
 
             if debug:
-                print(debugPrefix + f": Distance from destination {distance}")
+                print(debugPrefix + f": Distance from destination {temp}")
 
             # arrived at destination
-            if distance < DISTANCE_THRESHOLD:
+            if temp < DISTANCE_THRESHOLD:
                 
                 if debug:
                     print(debugPrefix + f": Arrived at {currentDestination}")
