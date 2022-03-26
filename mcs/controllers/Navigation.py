@@ -57,7 +57,7 @@ def run(globals):
 
     if enabled:
         # start GPS thread
-        thread_gps = threading.Thread(target = NEO_M9N.run, args = (tFlags.NEO_M8P_debug, tFlags.NEO_M8P_enabled, tFlags.NEO_M8P_RTK_enabled, pins.rtkStatus, globals))
+        thread_gps = threading.Thread(target = NEO_M9N.run, args = (tFlags.NEO_M8P_debug, tFlags.NEO_M8P_enabled, globals))
         thread_gps.start()
 
     mowbot_path.LoadPathFromFile()
