@@ -24,8 +24,8 @@ BladeControl_debug = False
 BladeControl_enabled = False
 
 # Collision Detection
-CollisionDetection_debug = False
-CollisionDetection_enabled = False
+CollisionDetection_debug = True
+CollisionDetection_enabled = True
 
 # Drive Control
 DriveControl_debug = False
@@ -82,8 +82,8 @@ NEO_M8P_enabled = True
 NEO_M8P_RTK_enabled = False
 
 # Accelerometer
-accelerometer_debug = False
-accelerometer_enabled = False
+accelerometer_debug = True
+accelerometer_enabled = True
 
 # UART 
 uart_debug = False
