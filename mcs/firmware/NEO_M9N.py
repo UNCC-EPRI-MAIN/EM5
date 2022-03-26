@@ -21,7 +21,7 @@ def run(debug, enabled, rtk_enabled, rtkStatusPin, globals):
     newHeading = -1
     oldHeading = -1
 
-    debugPrefix = "[NEO_M8P]"
+    debugPrefix = "[NEO_M9N]"
     if enabled:
         debugPrefix += "[E]"
     else:
@@ -31,7 +31,7 @@ def run(debug, enabled, rtk_enabled, rtkStatusPin, globals):
 
     if enabled:
         try:
-            port = serial.Serial('/dev/ttyAMA', baudrate=38400, timeout=1)
+            port = serial.Serial('/dev/ttyAMA0', baudrate=38400, timeout=1)
             gps = UbloxGps(port)
             GPIO.setup(rtkStatusPin, GPIO.IN)
             failedReadCount = 0
