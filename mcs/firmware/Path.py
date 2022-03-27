@@ -39,6 +39,9 @@ class Path:
         self.RTB = True
 
     def NextWaypoint(self):
+        
+        # Save the completed path for later
+        self.completedPath.append(self.path[self.currentWaypointIndex])
 
         self.currentWaypointIndex += 1
 
@@ -46,9 +49,6 @@ class Path:
         if len(self.path) <= self.currentWaypointIndex:
             print("[Path Class]: There is not a path to get.")
             return None
-
-        # Save the completed path for later
-        self.completedPath.append(self.path[self.currentWaypointIndex - 1])
 
         # Get the next waypoint.
         self.currentWaypoint = self.path[self.currentWaypointIndex]
