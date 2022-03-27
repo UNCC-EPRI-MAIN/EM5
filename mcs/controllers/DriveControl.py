@@ -111,7 +111,6 @@ def run(globals):
                 if currentState != newState:
                     
                     currentState = newState
-                    print(currentState)
                     # Wheel should not be running.
                     if currentState == 'stop':
                         if debug:
