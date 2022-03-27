@@ -51,7 +51,7 @@ class AMT103:
                 newState = GPIO.input(self.pinXNumber)
                 if newState != self.currentState:
 
-                    if debug:
+                    if self.debug:
                         print(self.debugPrefix + f"[run()]: Encoder Count: {self.count}")
 
                     self.count += 1
