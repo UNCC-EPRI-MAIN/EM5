@@ -113,11 +113,15 @@ def run(globals):
 
                 else:
                     offcourse_count = 0
+                    globals['degrees'] = (destinationHeading - currentHeading)
+                    globals['pivot'] = 'cw'
+                    globals['offcourse'] = True
                     if debug:
                         print(debugPrefix + f"Performing a pivot.")
 
             else:
                 offcourse_count = 0
+                globals['offcourse'] = False
 
             
             # Compute the distance from each other.
