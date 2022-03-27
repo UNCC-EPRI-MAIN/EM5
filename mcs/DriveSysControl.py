@@ -81,6 +81,8 @@ def run(globals):
                 time.sleep(2)
 
             globals['driveState'] = 'straight'
+        
+        time.sleep(1)
 
     if Flags.DriveControl_enabled:
         thread_drivecontrol.join()
