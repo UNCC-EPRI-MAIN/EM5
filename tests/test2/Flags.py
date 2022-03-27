@@ -46,10 +46,10 @@ MessageHandler_command = True
 
 # ---------- Firmware ----------
 # AMT103 - Encoders
-leftEncoder_debug = True
+leftEncoder_debug = False
 leftEncoder_enabled = True
 
-rightEncoder_debug = True
+rightEncoder_debug = False
 rightEncoder_enabled = True
 
 # MD30C - Blade Motor Driver
