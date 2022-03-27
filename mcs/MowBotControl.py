@@ -101,7 +101,6 @@ with multiproc.Manager() as manager:
 
     # Start Program if remote controller not used
     if not Flags.RemoteControl_enabled:
-        time.sleep(3)
         globals['state'] = 'mow'
 
     # Stall until Shutdown Loop
