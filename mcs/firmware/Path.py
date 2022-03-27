@@ -53,8 +53,6 @@ class Path:
         # Get the next waypoint.
         self.currentWaypoint = self.path[self.currentWaypointIndex]
 
-        print(self.currentWaypointIndex)
-
         return self.currentWaypoint
 
     def GetCurrentWaypoint(self):
