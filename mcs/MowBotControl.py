@@ -105,7 +105,6 @@ with multiproc.Manager() as manager:
 
     # Stall until Shutdown Loop
     while globals['state'] != 'shutdown':
-        print(globals['driveState'])
         time.sleep(2)
     
     globals['bladesOn'] = False

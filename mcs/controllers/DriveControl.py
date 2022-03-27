@@ -156,7 +156,7 @@ def run(globals):
                         rightEncoderCount = 0
 
                         # Drive straight until the system needs to do something else.
-                        while globals['driveState'] != 'straight':
+                        while globals['driveState'] == 'straight':
 
                             leftEncoderCount = leftEncoder.GetCount()
                             rightEncoderCount = rightEncoder.GetCount()
@@ -215,7 +215,7 @@ def run(globals):
                         rightEncoderCount = 0
 
                         # Drive straight until the system needs to do something else.
-                        while globals['driveState'] != 'cautionstraight':
+                        while globals['driveState'] == 'cautionstraight':
 
                             leftEncoderCount = leftEncoder.GetCount()
                             rightEncoderCount = rightEncoder.GetCount()
@@ -274,7 +274,7 @@ def run(globals):
                         rightEncoderCount = 0
 
                         # Drive straight until the system needs to do something else.
-                        while globals['driveState'] != 'backward':
+                        while globals['driveState'] == 'backward':
 
                             leftEncoderCount = leftEncoder.GetCount()
                             rightEncoderCount = rightEncoder.GetCount()
