@@ -46,7 +46,7 @@ def run(globals):
     offcourse_count = 0
 
     ## The number degrees off the path before a pivot is needed.
-    DEGREES_FORCE_PIVOT = 20                                                    
+    DEGREES_FORCE_PIVOT = 5                                                   
 
     mowbot_path = path.Path()
 
@@ -115,6 +115,9 @@ def run(globals):
                     offcourse_count = 0
                     if debug:
                         print(debugPrefix + f"Performing a pivot.")
+
+            else:
+                offcourse_count = 0
 
             
             # Compute the distance from each other.
