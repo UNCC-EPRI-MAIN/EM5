@@ -75,6 +75,7 @@ def run(globals):
         currentDestination = mowbot_path.GetCurrentWaypoint()
         destinationLat = currentDestination.lat
         destinationLon = currentDestination.long
+
         if debug:
             print(debugPrefix + f"Current Lat: {currentLat}, Current Lon: {currentLon}")
             print(debugPrefix + f"Destination Lat: {destinationLat}, Destination Lon: {destinationLon}")
@@ -94,6 +95,9 @@ def run(globals):
                 destinationHeading += 360
             
             globals['destinationHeading'] = destinationHeading
+
+            if debug:
+                print(debugPrefix + f"Destination Heading Angle: {destinationHeading}")
             
             # Compute the distance from each other.
             p1 = (currentLat, currentLon)
