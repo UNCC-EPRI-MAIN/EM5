@@ -80,7 +80,6 @@ def run(globals):
 
         # No problem with the path.
         else:
-            print(debugPrefix + ": driving straight")
             globals['driveState'] = 'straight'
 
     if Flags.DriveControl_enabled:
