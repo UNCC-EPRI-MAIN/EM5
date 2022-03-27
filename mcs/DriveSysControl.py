@@ -50,36 +50,36 @@ def run(globals):
         # Slow the robot down when the camera sees a object.
         if globals['blocked'] == True:
             globals['driveState'] = 'cautionstraight'
-
-        # Found a object within threshold or the robot is off course
-        elif globals['objectclose'] == True:
-            if globals['pivot'] == 'cw':
-                globals['driveState'] = 'pivotRight'
-
-            elif globals['pivot'] == 'ccw':
-                globals['driveState'] = 'pivotLeft'
-
-            # Wait until the pivot is done.
-            while globals['driveState'] != 'completed':
-                time.sleep(2)
-
-            globals['driveState'] = 'straight'
-
-        elif globals['offcourse'] == True:
-            if globals['pivot'] == 'cw':
-                globals['driveState'] = 'pivotRight'
-
-            elif globals['pivot'] == 'ccw':
-                globals['driveState'] = 'pivotLeft'
-
-            # Wait until the pivot is done.
-            while globals['driveState'] != 'completed':
-                time.sleep(2)
-
-            globals['driveState'] = 'straight'
-
+        
         # No problem with the path.
         else:
+            globals['driveState'] = 'straight'
+
+        # Found a object within threshold or the robot is off course
+        if globals['objectclose'] == True:
+            if globals['pivot'] == 'cw':
+                globals['driveState'] = 'pivotRight'
+
+            elif globals['pivot'] == 'ccw':
+                globals['driveState'] = 'pivotLeft'
+
+            # Wait until the pivot is done.
+            while globals['driveState'] != 'completed':
+                time.sleep(2)
+
+            globals['driveState'] = 'straight'
+
+        if globals['offcourse'] == True:
+            if globals['pivot'] == 'cw':
+                globals['driveState'] = 'pivotRight'
+
+            elif globals['pivot'] == 'ccw':
+                globals['driveState'] = 'pivotLeft'
+
+            # Wait until the pivot is done.
+            while globals['driveState'] != 'completed':
+                time.sleep(2)
+
             globals['driveState'] = 'straight'
 
     if Flags.DriveControl_enabled:
