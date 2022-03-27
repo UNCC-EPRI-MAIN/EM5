@@ -42,16 +42,18 @@ class Path:
         return self.currentWaypoint
 
     def NextWaypoint(self):
+
+        self.currentWaypointIndex += 1
+
         # Sanity check on the list.
         if len(self.path) <= self.currentWaypointIndex:
             print("[Path Class]: There is not a path to get. Need to load the waypoints in")
             return None
 
         # Save the completed path for later
-        self.completedPath.append(self.path[self.currentWaypointIndex])
+        self.completedPath.append(self.path[self.currentWaypointIndex - 1])
 
         # Get the next waypoint.
-        self.currentWaypointIndex += 1
         self.currentWaypoint = self.path[self.currentWaypointIndex]
 
         return self.currentWaypoint
