@@ -41,7 +41,8 @@ RemoteControl_enabled = False
 
 # Message Handler
 MessageHandler_debug = False
-MessageHandler_enabled = False
+MessageHandler_enabled = True
+MessageHandler_command = True
 
 # ---------- Firmware ----------
 # AMT103 - Encoders
@@ -86,4 +87,4 @@ accelerometer_enabled = True
 
 # UART 
 uart_debug = False
-uart_enabled = False
+uart_enabled = True

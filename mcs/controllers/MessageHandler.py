@@ -23,6 +23,8 @@ def run(globals):
     ## Boolean to indicate if the message handler should be used. 
     enabled = tFlags.MessageHandler_enabled
 
+    command_mode = tFlags.MessageHandler_command
+
     ## String used for debugging
     debugPrefix = "[MessageHandler]"
     if enabled:
@@ -45,15 +47,22 @@ def run(globals):
         if debug and recv_message != b'':
             print(debugPrefix + "Message: " + str(recv_message))
 
-        # Temp, when the jetson gets its camera, we will change the message.
-        if recv_message == b'Shutdown\n':
-            globals['state'] = 'shutdown'
-
         if recv_message == b'blocked\n':
             globals['blocked'] = True
 
         if recv_message == b'not blocked\n':
             globals['blocked'] = False
+
+        # This allows us to command the RPI from the jetson
+        if command_mode:
+            if recv_message == b'Shutdown\n':
+                globals['state'] = 'shutdown'
+
+            if recv_message == b'PivotRight\n':
+                globals['driveState'] = 'pivotRight'
+
+            if recv_message == b'pivotLeft\n':
+                globals['driveState'] = 'pivotLeft'
 
         
 
