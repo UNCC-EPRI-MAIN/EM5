@@ -80,10 +80,8 @@ def run(globals):
 
         # No problem with the path.
         else:
+            print(debugPrefix + ": driving straight")
             globals['driveState'] = 'straight'
-
-
-        time.sleep(2)
 
     if Flags.DriveControl_enabled:
         thread_drivecontrol.join()
