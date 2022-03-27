@@ -107,6 +107,8 @@ with multiproc.Manager() as manager:
     while globals['state'] != 'shutdown':
         time.sleep(2)
     
+    # Shutdown the blades and wheels
+    globals['driveState'] = 'stop'
     globals['bladesOn'] = False
 
     # Wait for threads to end
