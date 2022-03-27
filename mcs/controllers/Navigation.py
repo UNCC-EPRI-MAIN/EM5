@@ -121,7 +121,7 @@ def run(globals):
                         print(debugPrefix + f"Asking for a pivot.")
 
                     while globals['driveState'] != 'completed' and globals['driveState'] != 'stop':
-                        time.sleep(1)
+                        continue
 
             else:
                 offcourse_count = 0
