@@ -28,7 +28,7 @@ class Path:
 
     def BackTrack(self):
         # Get the old path and reverse it.
-        self.path = self.completedPath
+        self.path = self.completedPath.copy()
         self.currentWaypointIndex = 0
         self.path.reverse()
 
