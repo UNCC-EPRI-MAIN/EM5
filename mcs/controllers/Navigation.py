@@ -115,7 +115,7 @@ def run(globals):
                 # Done with the path.
                 if currentDestination == None:
                     
-                    if not mowbot_path.RTB():
+                    if not mowbot_path.IsRTB():
                         if debug:
                             print(debugPrefix + ": No more path, returning to base")
                         
