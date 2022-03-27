@@ -17,9 +17,6 @@ import math
 import time
 from geopy.distance import great_circle
 
-# Load Initial Modules
-import mcs.PinAssignments as pins
-
 # Firmware modules
 import mcs.firmware.NEO_M9N as NEO_M9N
 import mcs.firmware.Path as path
@@ -41,6 +38,15 @@ def run(globals):
 
     ## Distance from the destination when we can take next waypoint.
     DISTANCE_THRESHOLD = 20
+
+    ## The max amount of time the robot can be off course when GPS is scanned
+    OFFCOURSE_MAX_COUNT = 5
+
+    ## Running count of the amount of time the robot is off course when scanned.
+    offcourse_count = 0
+
+    ## The number degrees off the path before a pivot is needed.
+    DEGREES_FORCE_PIVOT = 20                                                    
 
     mowbot_path = path.Path()
 
@@ -67,6 +73,7 @@ def run(globals):
         time.sleep(1)
         currentLon = globals['lon']
         currentLat = globals['lat']
+        currentHeading = globals['heading']
 
         if globals['state'] == 'lowbattery':
            if not mowbot_path.RTB():
@@ -93,11 +100,22 @@ def run(globals):
             # fix if less than zero
             if destinationHeading < 0:
                 destinationHeading += 360
-            
-            globals['destinationHeading'] = destinationHeading
 
             if debug:
                 print(debugPrefix + f"Destination Heading Angle: {destinationHeading}")
+
+            if (destinationHeading - currentHeading) > DEGREES_FORCE_PIVOT:
+                if offcourse_count < OFFCOURSE_MAX_COUNT:
+                    
+                    offcourse_count += 1
+                    if debug:
+                        print(debugPrefix + f"WARNING: the robot is off course.")
+
+                else:
+                    offcourse_count = 0
+                    if debug:
+                        print(debugPrefix + f"Performing a pivot.")
+
             
             # Compute the distance from each other.
             p1 = (currentLat, currentLon)

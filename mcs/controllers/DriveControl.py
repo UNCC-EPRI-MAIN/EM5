@@ -32,8 +32,6 @@ GEAR_RATIO = 26                                                             # 26
 ## Params
 OBJECT_DETECTION_SLOW_DOWN_FACTOR = 1.5                                     # lower number -> more gradual slowdown
 OBJECT_DETECTION_STOP_DISTANCE = 15                                         # cm
-DEGREES_OFF_COURSE = 5                                                      # threshold to determine MowBot is off course
-DEGREES_FORCE_PIVOT = 90                                                    # number of degrees off course requiring pivot
 ENCODER_TOLERANCE = 10                                                      # The amount of pulses that the encoder can be out of phase.
 
 ## Calculated Values for travel.
