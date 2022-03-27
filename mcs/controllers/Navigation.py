@@ -123,7 +123,7 @@ def run(globals):
                     if debug:
                         print(debugPrefix + f"Asking for a pivot.")
 
-                    while globals['driveState'] != 'completed' and globals['driveState'] != 'stop':
+                    while globals['driveState'] != 'completed' and globals['state'] != 'shutdown':
                         time.sleep(1)
 
             else:
