@@ -66,10 +66,10 @@ chargeRelay_debug = False
 chargeRelay_enabled = False
 
 # Sabertooth2x60 - Wheel Motors
-leftMotor_debug = True
+leftMotor_debug = False
 leftMotor_enabled = True
 
-rightMotor_debug = True
+rightMotor_debug = False
 rightMotor_enabled = True
 
 # Object Detection - LiDar

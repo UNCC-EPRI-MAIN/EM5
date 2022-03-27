@@ -5,6 +5,7 @@
 # Reads the encoders on the wheels.
 # This helps us with keeping the wheel straight and turning.
 
+from distutils.log import debug
 import RPi.GPIO as GPIO
 
 ## This class is the firmware read the encoders on the wheels.
@@ -49,6 +50,10 @@ class AMT103:
             if self.enabled:
                 newState = GPIO.input(self.pinXNumber)
                 if newState != self.currentState:
+
+                    if debug:
+                        print(self.debugPrefix + f"[run()]: Encoder Count: {self.count}")
+
                     self.count += 1
                     self.currentState = newState
 
