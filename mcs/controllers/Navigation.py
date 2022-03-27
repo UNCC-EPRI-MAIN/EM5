@@ -40,7 +40,7 @@ def run(globals):
     RATIO = 85 / 100
 
     ## Distance from the destination when we can take next waypoint.
-    DISTANCE_THRESHOLD = 4
+    DISTANCE_THRESHOLD = 20
 
     mowbot_path = path.Path()
 
