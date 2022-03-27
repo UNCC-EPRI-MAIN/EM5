@@ -38,16 +38,13 @@ class Path:
         # Set the returning to base flag to true
         self.RTB = True
 
-        # Return
-        return self.currentWaypoint
-
     def NextWaypoint(self):
 
         self.currentWaypointIndex += 1
 
         # Sanity check on the list.
         if len(self.path) <= self.currentWaypointIndex:
-            print("[Path Class]: There is not a path to get. Need to load the waypoints in")
+            print("[Path Class]: There is not a path to get.")
             return None
 
         # Save the completed path for later
