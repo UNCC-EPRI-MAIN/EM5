@@ -116,8 +116,12 @@ def run(globals):
                     globals['degrees'] = (destinationHeading - currentHeading)
                     globals['pivot'] = 'cw'
                     globals['offcourse'] = True
+                    
                     if debug:
-                        print(debugPrefix + f"Performing a pivot.")
+                        print(debugPrefix + f"Asking for a pivot.")
+
+                    while globals['driveState'] != 'completed':
+                        time.sleep(1)
 
             else:
                 offcourse_count = 0
