@@ -52,7 +52,20 @@ def run(globals):
             globals['driveState'] = 'cautionstraight'
 
         # Found a object within threshold or the robot is off course
-        elif globals['objectclose'] == True or globals['offcourse'] == True:
+        elif globals['objectclose'] == True:
+            if globals['pivot'] == 'cw':
+                globals['driveState'] = 'pivotRight'
+
+            elif globals['pivot'] == 'ccw':
+                globals['driveState'] = 'pivotLeft'
+
+            # Wait until the pivot is done.
+            while globals['driveState'] != 'completed':
+                time.sleep(2)
+
+            globals['driveState'] = 'straight'
+
+        elif globals['offcourse'] == True:
             if globals['pivot'] == 'cw':
                 globals['driveState'] = 'pivotRight'
 

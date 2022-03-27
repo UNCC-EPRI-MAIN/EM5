@@ -32,7 +32,7 @@ DriveControl_debug = True
 DriveControl_enabled = True
 
 # Navigation
-Navigation_debug = True
+Navigation_debug = False
 Navigation_enabled = True
 
 # Remote Control
