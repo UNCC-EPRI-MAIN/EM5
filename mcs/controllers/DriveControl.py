@@ -351,6 +351,9 @@ def run(globals):
                                 if (rightEncoderCount >= pulseCount):
                                     rightMotor.stop()
 
+                                if globals['driveState'] == 'stop':
+                                    break
+
                             leftMotor.stop()
                             rightMotor.stop()
                             if debug:
