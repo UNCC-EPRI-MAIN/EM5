@@ -13,7 +13,7 @@ import importlib
 import threading
 
 # Helper libraries
-import math
+from numpy import arctan2, sin, cos, degrees
 import time
 from geopy.distance import great_circle
 
@@ -91,11 +91,14 @@ def run(globals):
         if currentLon != -1 and currentLat != -1:
             # get heading in radians
             # I dont know if is the right way to do this.
-            destinationHeading = math.atan2(destinationLat - currentLat, RATIO * (destinationLon - currentLon))
+            dL = destinationLon - currentLon
+            x = cos(destinationLat) * sin(dL)
+            y = cos(currentLat) * sin(destinationLat) - sin(currentLat) * cos(destinationLat) * cos(dL)
+            destinationHeading = arctan2(x, y)
 
             # convert to degreees and adjust for compass orienation
             # I dont know if is the right way to do this.
-            destinationHeading = 90 - math.degrees(destinationHeading)
+            destinationHeading = degrees(destinationHeading)
 
             # fix if less than zero
             if destinationHeading < 0:
