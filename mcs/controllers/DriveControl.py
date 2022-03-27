@@ -111,6 +111,7 @@ def run(globals):
                 if currentState != newState:
                     
                     currentState = newState
+                    print(currentState)
                     # Wheel should not be running.
                     if currentState == 'stop':
                         if debug:
@@ -418,7 +419,6 @@ def run(globals):
                     leftMotor.engage(globals['leftSpeed'])
                     rightMotor.engage(globals['rightSpeed'])
 
-        time.sleep(1)
 
     # Wait for threads to end
     if tFlags.leftEncoder_enabled:
