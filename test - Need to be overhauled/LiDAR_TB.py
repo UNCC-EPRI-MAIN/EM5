@@ -47,7 +47,7 @@ print(health)
 # print(list)
 # 
 # ---------------rpLiDAR_A2M4_R4 implementation-------------------------------
-from mcs.firmware.rpLiDAR_A2M4_R4 import rpLiDAR_A2M4_R4 
+#from mcs.firmware.rpLiDAR_A2M4_R4 import rpLiDAR_A2M4_R4 
 
 #Globals
 globals = dict()
