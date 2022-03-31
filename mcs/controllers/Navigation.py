@@ -34,8 +34,6 @@ def run(globals):
     ## Boolean to indicate if the module is active. 
     enabled = tFlags.Navigation_enabled
 
-    RATIO = 85 / 100
-
     ## Distance from the destination when we can take next waypoint.
     DISTANCE_THRESHOLD = 20
 
@@ -46,7 +44,10 @@ def run(globals):
     offcourse_count = 0
 
     ## The number degrees off the path before a pivot is needed.
-    DEGREES_FORCE_PIVOT = 5                                                   
+    DEGREES_FORCE_PIVOT = 5
+
+    ## True if the robot reached the waypoint.
+    reached_waypoint = False                                                   
 
     mowbot_path = path.Path()
 
@@ -89,16 +90,13 @@ def run(globals):
 
         # make sure gps readings are good
         if currentLon != -1 and currentLat != -1:
-            # get heading in radians
+            
+            # get heading
             # I dont know if is the right way to do this.
             dL = destinationLon - currentLon
             x = cos(destinationLat) * sin(dL)
             y = cos(currentLat) * sin(destinationLat) - sin(currentLat) * cos(destinationLat) * cos(dL)
-            destinationHeading = arctan2(x, y)
-
-            # convert to degreees and adjust for compass orienation
-            # I dont know if is the right way to do this.
-            destinationHeading = degrees(destinationHeading)
+            destinationHeading = degrees(arctan2(x, y))
 
             # fix if less than zero
             if destinationHeading < 0:
@@ -107,17 +105,32 @@ def run(globals):
             if debug:
                 print(debugPrefix + f"Destination Heading Angle: {destinationHeading}")
 
-            if (destinationHeading - currentHeading) > DEGREES_FORCE_PIVOT:
-                if offcourse_count < OFFCOURSE_MAX_COUNT:
+            if abs(destinationHeading - currentHeading) > DEGREES_FORCE_PIVOT:
+                if offcourse_count < OFFCOURSE_MAX_COUNT and not reached_waypoint:
                     
                     offcourse_count += 1
                     if debug:
                         print(debugPrefix + f"WARNING: the robot is off course.")
 
+                elif globals['objectclose'] == True:
+                    offcourse_count = 0
+                    if debug:
+                        print(debugPrefix + f"Not requesting a pivot as we are moving around a object")
+                        print(debugPrefix + f"Resetting offcourse count.")
+
                 else:
                     offcourse_count = 0
-                    globals['degrees'] = (destinationHeading - currentHeading)
-                    globals['pivot'] = 'cw'
+
+                    # Logic to determine the way to rotate.
+                    if (destinationHeading - currentHeading) < 0:
+                        pivotAngle = 360.0 - currentHeading
+                        pivotAngle += destinationHeading
+                        globals['pivot'] = 'cww'
+                    else:
+                        pivotAngle = (destinationHeading - currentHeading)
+                        globals['pivot'] = 'cw'
+
+                    globals['degrees'] = pivotAngle
                     globals['offcourse'] = True
                     
                     if debug:
@@ -125,6 +138,8 @@ def run(globals):
 
                     while globals['driveState'] != 'completed' and globals['state'] != 'shutdown':
                         time.sleep(1)
+
+                    globals['offcourse'] = False
 
             else:
                 offcourse_count = 0
@@ -146,6 +161,8 @@ def run(globals):
                     print(debugPrefix + f": Arrived at {currentDestination}")
                     print(debugPrefix + f": Getting next waypoint.")
 
+                reached_waypoint = True
+
                 currentDestination = mowbot_path.NextWaypoint()
 
                 # Done with the path.
@@ -162,6 +179,8 @@ def run(globals):
                             print(debugPrefix + ": Back at base. Shutting down.")
 
                         globals['state'] = 'shutdown'
+            else:
+                reached_waypoint = False
    
 
     # wait for threads to end
