@@ -99,8 +99,8 @@ rightMotor_debug = False
 rightMotor_enabled = True
 Sabertooth2x60_over = False
 # Object Detection - LiDar
-rpLiDAR_A2M4_R4_debug = False
-rpLiDAR_A2M4_R4_enabled = False
+rpLiDAR_A2M4_R4_debug = True
+rpLiDAR_A2M4_R4_enabled = True
 rpLiDAR_A2M4_R4_over = False
 # GPS 
 NEO_M8P_debug = False
