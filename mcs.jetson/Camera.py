@@ -4,7 +4,7 @@ import serial
 #For more information on the imageNet API:
 #https://rawgit.com/dusty-nv/jetson-inference/python/docs/html/python/jetson.inference.html#imageNet
 
-uart = serial.Serial("dev/ttyS0", baudrate=9600, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE,
+uart = serial.Serial("/dev/ttyTHS1", baudrate=9600, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE,
 	stopbits=serial.STOPBITS_ONE, timeout=10.00)
 
 net = jetson.inference.imageNet('--model=~/jetson-inference/python/training/classification/models/blocked/resnet.18.onnx --labels=~/jetson-inference/python/training/classification/data/Model1_BlockedPath/labels.txt')
