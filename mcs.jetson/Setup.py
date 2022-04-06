@@ -9,5 +9,3 @@ os.system("sudo cp labels.txt ~/jetson-inference/python/training/classification/
 os.system("sudo mkdir ~/jetson-inference/python/training/classification/models/blocked/")
 os.system("sudo cp resnet18.onnx ~/jetson-inference/python/training/classification/models/blocked/")
 os.system("sudo cp Camera.py ~/jetson-inference/python")
-
-os.system("~/jetson-inference/docker/run.sh")
