@@ -1,6 +1,6 @@
 import jetson.inference
 import jetson.utils
-import serial
+import pyserial
 #For more information on the imageNet API:
 #https://rawgit.com/dusty-nv/jetson-inference/python/docs/html/python/jetson.inference.html#imageNet
 
