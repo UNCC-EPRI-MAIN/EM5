@@ -83,6 +83,7 @@ DATA_VOLUME="\
 --volume $PWD/$CLASSIFY_DIR/data:$DOCKER_ROOT/$CLASSIFY_DIR/data \
 --volume $PWD/$CLASSIFY_DIR/models:$DOCKER_ROOT/$CLASSIFY_DIR/models \
 --volume $PWD/$CLASSIFY_DIR/:$DOCKER_ROOT/$CLASSIFY_DIR/ \
+--volume /dev:/dev \
 --volume $PWD/$DETECTION_DIR/data:$DOCKER_ROOT/$DETECTION_DIR/data \
 --volume $PWD/$DETECTION_DIR/models:$DOCKER_ROOT/$DETECTION_DIR/models"
 
