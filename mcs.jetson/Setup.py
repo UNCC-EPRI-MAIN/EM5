@@ -7,8 +7,8 @@ os.system("sudo mkdir ~/jetson-inference/python/training/classification/data/Mod
 os.system("sudo cp labels.txt ~/jetson-inference/python/training/classification/data/Model1_BlockedPath/")
 
 os.system("sudo mkdir ~/jetson-inference/python/training/classification/models/blocked/")
-os.system("cp resnet18.onnx ~/jetson-inference/python/training/classification/models/blocked/")
-os.system("cp Camera.py ~/jetson-inference/python")
+os.system("sudo cp resnet18.onnx ~/jetson-inference/python/training/classification/models/blocked/")
+os.system("sudo cp Camera.py ~/jetson-inference/python")
 
 os.system("cd ~/jetson-inference")
 os.system("sudo docker/run.sh")
