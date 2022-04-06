@@ -8,7 +8,7 @@ uart = serial.Serial("/dev/ttyTHS1", baudrate=9600, bytesize=serial.EIGHTBITS, p
 	stopbits=serial.STOPBITS_ONE, timeout=10.00)
 
 
-net = jetson.inference.imageNet(argv=['--model=/models/blocked/resnet18.onnx', '--labels=data/Model1_BlockedPath/labels.txt'])
+net = jetson.inference.imageNet(argv=['--model=./models/blocked/resnet18.onnx', '--labels=./data/Model1_BlockedPath/labels.txt', '--input_blob=input_0', '--output_blob=output_0'])
 input = jetson.utils.videoSource("/dev/video0")
 output = jetson.utils.videoOutput("display://0:")
 font = jetson.utils.cudaFont()
@@ -39,10 +39,15 @@ while True:
 	# # print out performance info
 	# net.PrintProfilerTimes()
 
-	if class_desc == 'Blocked':
-
-	message = class_desc + '/n'
-	uart.write(message.encode())
+	if currentState != class_desc:
+		if stateChangeCount < 5:
+			stateChangeCount += 1
+		else:
+			currentState = class_desc
+			print(f"Sending {class_desc} over UART")
+			message = class_desc + '/n'
+			uart.write(message.encode())
+			stateChangeCount = 0
 
 	# exit on input/output EOS
 	if not input.IsStreaming() or not output.IsStreaming():
