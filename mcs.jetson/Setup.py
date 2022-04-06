@@ -10,5 +10,4 @@ os.system("sudo mkdir ~/jetson-inference/python/training/classification/models/b
 os.system("sudo cp resnet18.onnx ~/jetson-inference/python/training/classification/models/blocked/")
 os.system("sudo cp Camera.py ~/jetson-inference/python")
 
-os.system("cd ~/jetson-inference")
-os.system("docker/run.sh")
+os.system("~/jetson-inference/docker/run.sh")
