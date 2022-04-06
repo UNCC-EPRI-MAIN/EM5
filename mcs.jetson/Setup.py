@@ -11,4 +11,4 @@ os.system("sudo cp resnet18.onnx ~/jetson-inference/python/training/classificati
 os.system("sudo cp Camera.py ~/jetson-inference/python")
 
 os.system("cd ~/jetson-inference")
-os.system("sudo docker/run.sh")
+os.system("docker/run.sh")
