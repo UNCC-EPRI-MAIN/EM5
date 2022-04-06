@@ -7,10 +7,14 @@ import serial
 uart = serial.Serial("/dev/ttyTHS1", baudrate=9600, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE,
 	stopbits=serial.STOPBITS_ONE, timeout=10.00)
 
+
 net = jetson.inference.imageNet(argv=['--model=/models/blocked/resnet18.onnx', '--labels=data/Model1_BlockedPath/labels.txt'])
 input = jetson.utils.videoSource("/dev/video0")
 output = jetson.utils.videoOutput("display://0:")
 font = jetson.utils.cudaFont()
+
+stateChangeCount = 0
+currentState = ''
 
 while True:
 	# capture the next image
@@ -34,6 +38,9 @@ while True:
 
 	# # print out performance info
 	# net.PrintProfilerTimes()
+
+	if class_desc == 'Blocked':
+
 	message = class_desc + '/n'
 	uart.write(message.encode())
 
