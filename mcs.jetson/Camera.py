@@ -1,13 +1,13 @@
 import jetson.inference
 import jetson.utils
-import pyserial
+import serial
 #For more information on the imageNet API:
 #https://rawgit.com/dusty-nv/jetson-inference/python/docs/html/python/jetson.inference.html#imageNet
 
-uart = serial.Serial("dev/tty50", baudrate=9600, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE,
+uart = serial.Serial("dev/ttyS0", baudrate=9600, bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE,
 	stopbits=serial.STOPBITS_ONE, timeout=10.00)
 
-net = jetson.inference.imageNet('--model=models/blocked/resnet.18.onnx --lables=data/Model1_BlockedPath/lables.txt')
+net = jetson.inference.imageNet('--model=models/blocked/resnet.18.onnx --lables=data/Model1_BlockedPath/labels.txt')
 input = jetson.utils.videoSource("/dev/video0")
 output = jetson.utils.videoOutput("display://0:")
 font = jetson.utils.cudaFont()
@@ -34,7 +34,7 @@ while True:
 
 	# # print out performance info
 	# net.PrintProfilerTimes()
-	message = class_desc
+	message = class_desc + '/n'
 	uart.write(message.encode())
 
 	# exit on input/output EOS
