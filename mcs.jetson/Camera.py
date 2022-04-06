@@ -48,6 +48,8 @@ while True:
 			message = class_desc + '/n'
 			uart.write(message.encode())
 			stateChangeCount = 0
+	else:
+		stateChangeCount = 0
 
 	# exit on input/output EOS
 	if not input.IsStreaming() or not output.IsStreaming():
