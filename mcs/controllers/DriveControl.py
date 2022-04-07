@@ -189,6 +189,71 @@ def run(globals):
                             leftMotor.stop()
                             rightMotor.stop()
 
+                    ## Makes the robot drive straight for a certain amount of distance.
+                    elif currentState == 'straightDistance':
+
+                        # Start the wheel relay
+                        if enabled and tFlags.wheelRelay_enabled:
+                            if relay.GetState():
+                                relay.enable()
+                            if debug:
+                                print(debugPrefix + ": Turning on the wheel relays")
+
+                        # Set the speed of the robot and start driving.
+                        leftSpeed = CAUTION_DRIVE_SPEED
+                        rightSpeed = CAUTION_DRIVE_SPEED
+
+                        # calculate the encoder count of the distance.
+                        encoder_count = (globals['distance']/DISTANCE_PER_STEP)
+                 
+                        if debug:
+                            print(debugPrefix + f": driving straight for {globals['distance']} cm")
+                        if enabled:
+                            leftMotor.engage(leftSpeed)
+                            rightMotor.engage(rightSpeed)
+                        
+                        rightEncoder.ResetCount()
+                        leftEncoder.ResetCount()
+
+                        leftEncoderCount = 0
+                        rightEncoderCount = 0
+
+                        # Drive straight until the system needs to do something else.
+                        while ((leftEncoderCount < encoder_count) or (rightEncoderCount < encoder_count)):
+
+                            leftEncoderCount = leftEncoder.GetCount()
+                            rightEncoderCount = rightEncoder.GetCount()
+
+                            # if right motor is too fast, speed up the left motor 
+                            if((leftEncoderCount + ENCODER_TOLERANCE) < rightEncoderCount):
+                                leftSpeed += 1
+                                leftMotor.engage(leftSpeed)
+
+                            # if the left motor is too fast.
+                            elif ((rightEncoderCount + ENCODER_TOLERANCE) < leftEncoderCount):
+                                
+                                rightSpeed += 1
+                                rightMotor.engage(rightSpeed)
+
+                            # Reset the robot back to the orginal values.
+                            else:
+                                leftSpeed = NORMAL_DRIVE_SPEED
+                                rightSpeed = NORMAL_DRIVE_SPEED
+
+                                leftMotor.engage(leftSpeed)
+                                rightMotor.engage(rightSpeed)
+
+                        leftSpeed = 0
+                        rightSpeed = 0
+
+                        if debug:
+                            print(debugPrefix + ": not driving straight")
+                        if enabled:
+                            leftMotor.stop()
+                            rightMotor.stop()
+
+                        globals['driveState'] = 'completed'
+
                     ## Slows the robot down when driving straight.
                     elif currentState == 'cautionstraight':
 

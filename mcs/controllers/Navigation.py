@@ -179,6 +179,7 @@ def run(globals):
                             print(debugPrefix + ": Back at base. Shutting down.")
 
                         globals['state'] = 'shutdown'
+                        
             else:
                 reached_waypoint = False
    

@@ -61,6 +61,7 @@ with multiproc.Manager() as manager:
     # Drive settings
     globals['leftSpeed'] = 0
     globals['rightSpeed'] = 0
+    globals['distance'] = 0
     globals['degrees'] = 0
     globals['pivot'] = 'cw'
 
