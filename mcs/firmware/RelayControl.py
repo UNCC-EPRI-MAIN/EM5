@@ -23,6 +23,8 @@ class RelayControl:
         ## Boolean to indicate if this motor should be used. If disabled, program will run but not attempt to operate motors
         self.enabled = enabledFlag
 
+        self.open = True
+
         ## String to differentiate different relays for debugging
         self.debugPrefix = "[RelayControl<" + debugName + ">]"
 
@@ -42,6 +44,7 @@ class RelayControl:
     def enable(self):
         if self.enabled:
             GPIO.output(self.pinNumber, GPIO.HIGH)
+            self.open = False
         if self.debug:
             print(self.debugPrefix + "[enable()] closing relay")
 
@@ -49,5 +52,9 @@ class RelayControl:
     def disable(self):
         if self.enabled:
             GPIO.output(self.pinNumber, GPIO.LOW)
+            self.open = True
         if self.debug:
             print(self.debugPrefix + "[disable()]: opening relay ")
+
+    def GetState(self):
+        return self.open

@@ -11,8 +11,6 @@ bladePWM = 5
 leftMotorPWM = 12
 rightMotorPWM = 13
 
-rtkStatus = 26
-
 # Relays
 wheelRelay = 6
 bladeRelay = 19
@@ -30,3 +28,7 @@ SDA = 2
 # UART
 TX = 14
 RX = 15
+
+# MCU Pins
+LowBattery = 1
+ChargedBattery = 1

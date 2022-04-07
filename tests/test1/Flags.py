@@ -8,8 +8,8 @@
 # ---------- System Controller ----------
 MowBotControl_debug = True
 
-DriveSysControl_debug = False
-DriveSysControl_enabled = False
+DriveSysControl_debug = True
+DriveSysControl_enabled = True
 
 InterruptControl_debug = True
 InterruptControl_enabled = True
@@ -28,16 +28,16 @@ CollisionDetection_debug = True
 CollisionDetection_enabled = True
 
 # Drive Control
-DriveControl_debug = False
-DriveControl_enabled = False
+DriveControl_debug = True
+DriveControl_enabled = True
 
 # Navigation
 Navigation_debug = False
 Navigation_enabled = False
 
 # Remote Control
-RemoteControl_debug = False
-RemoteControl_enabled = False
+RemoteControl_debug = True
+RemoteControl_enabled = True
 
 # Message Handler
 MessageHandler_debug = True
@@ -45,32 +45,32 @@ MessageHandler_enabled = True
 
 # ---------- Firmware ----------
 # AMT103 - Encoders
-leftEncoder_debug = False
-leftEncoder_enabled = False
+leftEncoder_debug = True
+leftEncoder_enabled = True
 
-rightEncoder_debug = False
-rightEncoder_enabled = False
+rightEncoder_debug = True
+rightEncoder_enabled = True
 
 # MD30C - Blade Motor Driver
-MD30C_debug = False
-MD30C_enabled = False
+MD30C_debug = True
+MD30C_enabled = True
 
 # Relay Controls
-wheelRelay_debug = False
-wheelRelay_enabled = False
+wheelRelay_debug = True
+wheelRelay_enabled = True
 
-bladeRelay_debug = False
-bladeRelay_enabled = False
+bladeRelay_debug = True
+bladeRelay_enabled = True
 
-chargeRelay_debug = False
-chargeRelay_enabled = False
+chargeRelay_debug = True
+chargeRelay_enabled = True
 
 # Sabertooth2x60 - Wheel Motors
-leftMotor_debug = False
-leftMotor_enabled = False
+leftMotor_debug = True
+leftMotor_enabled = True
 
-rightMotor_debug = False
-rightMotor_enabled = False
+rightMotor_debug = True
+rightMotor_enabled = True
 
 # Object Detection - LiDar
 rpLiDAR_A2M4_R4_debug = False
@@ -79,7 +79,6 @@ rpLiDAR_A2M4_R4_enabled = False
 # GPS 
 NEO_M8P_debug = False
 NEO_M8P_enabled = False
-NEO_M8P_RTK_enabled = False
 
 # Accelerometer
 accelerometer_debug = True

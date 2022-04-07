@@ -52,16 +52,17 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 
 ## Computer Features
 - [x] Controlling the relays for the blades and wheels motors.
-- [x] Localization with GPS and RTK.
+- [x] Localization with GPS and RTK.  [^3]
 - [x] Turning on and off the blades motors.
 - [x] Controlling the speed of the wheel motors.
 - [x] Use the data from the wheel encoder.
 - [x] Using LiDar for obstacle detection
 - [x] Use bumpers to detect collision.
-- [ ] Tracking the charge of the battery.
+- [x] Tracking the charge of the battery.
 - [ ] Use computer vision for object detection.  [^1]
-- [ ] Use a accelerometer to detect collision.  [^2]
+- [x] Use a accelerometer to detect collision.  [^2]
 - [ ] Use machine learning to detect obstacles.  [^1]
 
 [^1]: These go hand and hand. Right now, this is very broad. As we go through paces of developing software, the feature definition will become narrow. 
 [^2]: This will replace the bumpers. The bumpers are too sensitive.
+[^3]: The board for RTK is not working, so +- 1.5m is the accuracy for right now. It will be fine if the object detection is working.

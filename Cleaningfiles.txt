@@ -10,15 +10,17 @@ Relays
 AMT103
 MD30C
 NEO_M8p
+Camera
 
---Controller Folder--
+--Controller Folder-
 BladeControl
 HMI
 CollisionDetection
 RemoteControl
 DriveControl
+Navigation
 
 --WIP--
-LIDAR
-Navigation
-DriveSysControl
+LIDAR - Detect object 90 FOV in front of the robot.
+DriveSysControl - Need to include the LIDAR pivot
+PinAssignment - Fix the pins.

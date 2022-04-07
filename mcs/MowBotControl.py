@@ -13,7 +13,6 @@ import os
 import threading
 import importlib
 
-
 # Load Initial Modules
 import RPi.GPIO as GPIO
 import mcs.controllers.HMI as HMI
@@ -50,34 +49,31 @@ with multiproc.Manager() as manager:
     globals = manager.dict()
 
     # Super States
-    globals['state1'] = 'startup'
-    globals['state2'] = 'waitForRemote'
+    if not Flags.RemoteControl_enabled:
+        globals['state'] = 'startup'
+    else:
+        globals['state'] = 'waitForRemote'
 
     # Mowbot Control Status
     globals['flagFile'] = flagFile
-    globals['destLat'] = []
-    globals['destLong'] = []
-    globals['destinationHeading'] = 0
-    globals['headingLock'] = False
+    globals['driveState'] = 'stop'
 
-    # Manual Drive Speeds
+    # Drive settings
     globals['leftSpeed'] = 0
     globals['rightSpeed'] = 0
+    globals['distance'] = 0
+    globals['degrees'] = 0
+    globals['pivot'] = 'cw'
 
     # Blade Control
-    globals['bladesOn'] = True
-
-    # Battery Bonitor
-    globals['batteryLevel'] = None
-    globals['batteryCharging'] = None
+    globals['bladesOn'] = False
 
     # Object Detection
-    globals['forwardClearance'] = 200
-    globals['leftTurnClear'] = False
-    globals['rightTurnClear'] = False
-    globals['avoidanceTurnDirection'] = None
+    globals['objectclose'] = False
+    globals['blocked'] = False
 
-    # Gps Data
+    # GPS
+    globals['offcourse'] = False
     globals['lon'] = -1
     globals['lat'] = -1
     globals['heading'] = -1
@@ -106,13 +102,14 @@ with multiproc.Manager() as manager:
 
     # Start Program if remote controller not used
     if not Flags.RemoteControl_enabled:
-        time.sleep(3)
-        globals['state1'] = 'mow'
+        globals['state'] = 'mow'
 
     # Stall until Shutdown Loop
-    while globals['state1'] != 'shutdown':
+    while globals['state'] != 'shutdown':
         time.sleep(2)
     
+    # Shutdown the blades and wheels
+    globals['driveState'] = 'stop'
     globals['bladesOn'] = False
 
     # Wait for threads to end

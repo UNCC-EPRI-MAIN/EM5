@@ -37,8 +37,9 @@ class Sabertooth2x60:
         self.pinNumber = pinNumber
         if self.enabled:
             GPIO.setup(pinNumber, GPIO.OUT)
+            
             ## PWM controller
-            self.motorPWM = GPIO.PWM(pinNumber,207)
+            self.motorPWM = GPIO.PWM(pinNumber, 207)
             self.motorPWM.start(dutyCycle)
 
         if self.debug:
