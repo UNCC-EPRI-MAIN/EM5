@@ -32,12 +32,12 @@ DriveControl_debug = True
 DriveControl_enabled = True
 
 # Navigation
-Navigation_debug = True
-Navigation_enabled = True
+Navigation_debug = False
+Navigation_enabled = False
 
 # Remote Control
-RemoteControl_debug = False
-RemoteControl_enabled = False
+RemoteControl_debug = True
+RemoteControl_enabled = True
 
 # Message Handler
 MessageHandler_debug = True
@@ -52,33 +52,33 @@ rightEncoder_debug = True
 rightEncoder_enabled = True
 
 # MD30C - Blade Motor Driver
-MD30C_debug = False
-MD30C_enabled = False
+MD30C_debug = True
+MD30C_enabled = True
 
 # Relay Controls
-wheelRelay_debug = False
-wheelRelay_enabled = False
+wheelRelay_debug = True
+wheelRelay_enabled = True
 
-bladeRelay_debug = False
-bladeRelay_enabled = False
+bladeRelay_debug = True
+bladeRelay_enabled = True
 
-chargeRelay_debug = False
-chargeRelay_enabled = False
+chargeRelay_debug = True
+chargeRelay_enabled = True
 
 # Sabertooth2x60 - Wheel Motors
-leftMotor_debug = False
-leftMotor_enabled = False
+leftMotor_debug = True
+leftMotor_enabled = True
 
-rightMotor_debug = False
-rightMotor_enabled = False
+rightMotor_debug = True
+rightMotor_enabled = True
 
 # Object Detection - LiDar
 rpLiDAR_A2M4_R4_debug = False
 rpLiDAR_A2M4_R4_enabled = False
 
 # GPS 
-NEO_M8P_debug = True
-NEO_M8P_enabled = True
+NEO_M8P_debug = False
+NEO_M8P_enabled = False
 
 # Accelerometer
 accelerometer_debug = True
