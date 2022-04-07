@@ -1,11 +1,9 @@
-## @package mcs.firmware.RelayControl
-# Controls single GPIO output to drive relay
-#
-# More details
-# @author Keith
-# @note 03/19/2021: Updated documentation -KS
+## @package mcs.firmware
+# The lowest level of the mcs responsible for controling each components.
 
-# standard libraries
+## @file RelayControl.py
+# Controls the wheel and blade motor relays.
+
 import RPi.GPIO as GPIO
 
 ## This class is used to control individual normally open relays.
@@ -18,20 +16,23 @@ class RelayControl:
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out. If false, relays will always be open.
     # @param debugName String to indicate name for debugging information
-    # @param overrideFlag Boolean to indicate module has been overridden 
-    def __init__(self, pinNumber, debugFlag, enabledFlag, overrideFlag, debugName):
+    def __init__(self, pinNumber, debugFlag, enabledFlag, debugName):
         ## Boolean indicating if debug info should be included for this module
         self.debug = debugFlag
+
         ## Boolean to indicate if this motor should be used. If disabled, program will run but not attempt to operate motors
         self.enabled = enabledFlag
+
+        self.open = True
+
         ## String to differentiate different relays for debugging
         self.debugPrefix = "[RelayControl<" + debugName + ">]"
-        if overrideFlag:
-            self.debugPrefix += "[O]"
+
         if self.enabled:
             self.debugPrefix += "[E]"
         else:
             self.debugPrefix += "[D]"
+
         self.pinNumber = pinNumber
         if self.enabled:
             GPIO.setup(pinNumber, GPIO.OUT)
@@ -43,6 +44,7 @@ class RelayControl:
     def enable(self):
         if self.enabled:
             GPIO.output(self.pinNumber, GPIO.HIGH)
+            self.open = False
         if self.debug:
             print(self.debugPrefix + "[enable()] closing relay")
 
@@ -50,5 +52,9 @@ class RelayControl:
     def disable(self):
         if self.enabled:
             GPIO.output(self.pinNumber, GPIO.LOW)
+            self.open = True
         if self.debug:
             print(self.debugPrefix + "[disable()]: opening relay ")
+
+    def GetState(self):
+        return self.open

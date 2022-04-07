@@ -4,13 +4,10 @@
 
 from rplidar import RPLidar as LD
 from math import floor, cos, sin, pi
-
-
-import mcs.testFlags as tFlags
    
 class rpLiDAR_A2M4_R4:
 
-    ##  Constructor for GNSS module 
+    ##  Constructor for GNSS module ????
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out
     def __init__(self, debugFlag, enabledFlag, overrideFlag):
@@ -35,7 +32,7 @@ class rpLiDAR_A2M4_R4:
     def  startup(self):
          up_status = False
          status_string = ''
-         while !up_status:
+         while not up_status:
              self.lidar.connect()
 #              self.lidar.start_motor()  # may not be needed as get_health starts motor i think
              if self.lidar.get_health() != 'Good':
@@ -121,11 +118,11 @@ class rpLiDAR_A2M4_R4:
     # Function to find objects obstructing the path of the robot and returning distance to the objects
     def objectDetection(self, globals):
         if self.enabled:
-            while globals['state1'] != 'shutdown': 
+            while globals['state'] != 'shutdown': 
                 try:
                 # process of getting LiDAR read outs each scan will call the function to analyze the data
                     for scan in self.lidar.iter_scans():
-                        if globals['state1'] == 'shutdown':
+                        if globals['state'] == 'shutdown':
                             break
                         scan_data = [0]*360
                         scan_data_mod = [0]*360

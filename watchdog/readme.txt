@@ -1,3 +1,0 @@
-- Watchdog is a seperate program which will monitor for a B press on the controller.
-- If a B press is detected, all GPIO will be cleared.
-- This program should be run seperately from the main program.

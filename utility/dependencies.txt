@@ -1,6 +1,0 @@
-pip3 install sparkfun-ublox-gps
-pip3 install -U xbox360controller
-sudo pip3 install adafruit-circuitpython-bno055
-    // compass
-pip3 install adafruit-extended-bus
-    // compass

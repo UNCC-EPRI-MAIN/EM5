@@ -1,3 +1,0 @@
-Class RemoteControl:
-
-    def 
