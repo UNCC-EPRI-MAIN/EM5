@@ -14,7 +14,7 @@ class rpLiDAR_A2M4_R4:
     ##  Constructor for GNSS module 
     # @param debugFlag Boolean to indicate if debugging data should be printed
     # @param enabledFlag Boolean to indicate if opeations should be carried out
-    def __init__(self, debugFlag, enabledFlag):
+    def __init__(self, debugFlag, enabledFlag, globals):
         ## Boolean indicating if debug info should be included for this module
         self.debug = debugFlag
         ## Boolean to indicate if the LiDAR should be used. If disabled, program will run but return -1 for all values.
@@ -78,7 +78,11 @@ class rpLiDAR_A2M4_R4:
         count = self.lidar.iter_scans()
         left_angle = 360 - (FOV/2)
         right_angle = (FOV/2)
-        for i, data in enumerate(count): 
+        for i, data in enumerate(count):
+
+            if globals['state'] == 'shutdown':
+                break
+
             data[:1]
             #variables[0] is scan quality, variables[1] is Angle, variables[2] is distance
             for j, variables in enumerate(data):

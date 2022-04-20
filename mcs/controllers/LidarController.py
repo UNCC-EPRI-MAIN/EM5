@@ -68,21 +68,30 @@ def run(globals):
     else:
         debugPrefix += "[D]: "  
     if debug:
-        print(debugPrefix + "init blade controller")
+        print(debugPrefix + "init Lidar controller")
     if enabled:
     # start lidar
         Lidar = rpLiDAR_A2M4_R4(tFlags.rpLiDAR_A2M4_R4_debug, tFlags.rpLiDAR_A2M4_R4_enabled)
 
-    print(Lidar.startup())
-    clear = Lidar.clearance(90, 200)
-    try:
-        while clear:
-            print(clear)
+    # Main loop controlling the drive system.
+    while globals['state'] != 'shutdown':
+        
+        if enabled:
 
-        print('Crash')
-        Lidar.stop_lidar()
-    except (KeyboardInterrupt,SystemExit):
-        Lidar.stop_lidar()
+            if debug:
+                print(Lidar.startup())
+
+            # 90 FOV, 85 inches
+            clear = Lidar.clearance(90, 2159)
+            try:
+                while clear:
+                    print(clear)
+
+                print('Crash')
+                Lidar.stop_lidar()
+                globals['state'] = 'shutdown'
+            except (KeyboardInterrupt,SystemExit):
+                Lidar.stop_lidar()
 
 
 
