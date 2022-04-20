@@ -56,10 +56,10 @@ def run(globals):
     tFlags = importlib.import_module(flagpath)
 
     ## Boolean indicating if debug info should be included for this module
-    debug = tFlags.DriveControl_debug
+    debug = tFlags.Lidar_debug
 
     ## Boolean to indicate if this motor should be used. If disabled, program will run but not attempt to operate motors.
-    enabled = tFlags.DriveControl_enabled
+    enabled = tFlags.Lidar_enabled
 
     ## String used for debugging
     debugPrefix = "[LiDAR]"
@@ -72,8 +72,6 @@ def run(globals):
     if enabled:
     # start lidar
         Lidar = rpLiDAR_A2M4_R4(tFlags.rpLiDAR_A2M4_R4_debug, tFlags.rpLiDAR_A2M4_R4_enabled)
-
-
 
     print(Lidar.startup())
     clear = Lidar.clearance(90, 200)
