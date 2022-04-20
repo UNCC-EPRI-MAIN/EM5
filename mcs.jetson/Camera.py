@@ -45,7 +45,7 @@ while True:
 		else:
 			currentState = class_desc
 			print(f"Sending {class_desc} over UART")
-			message = class_desc + '/n'
+			message = class_desc.strip() + '/n'
 			uart.write(message.encode())
 			stateChangeCount = 0
 	else:
