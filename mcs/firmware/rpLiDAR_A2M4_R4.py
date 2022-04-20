@@ -3,6 +3,7 @@
 
 
 from ast import Global
+from distutils.log import debug
 from turtle import left
 from rplidar import RPLidar as LD
 from math import floor, cos, sin, pi
@@ -92,14 +93,16 @@ class rpLiDAR_A2M4_R4:
                 #Left side of Robot
                 if (left_angle < (variables)[1] < 360 ):
                     if variables[2] < min_distance:
-                #   print("Distance:", variables[2], "Angle:",variables[1])
-                        print('Pivit cw by:',variables[1])
-                        return False
+                #   print("Distance:", variables[2], "Angle:",variables[1])\
+                        if debug:
+                            print('Need to Pivot cw, Found object at:', variables[1])
+                        return variables[1]
                 #Right side of Robot
                 elif (0 < variables[1] < right_angle):
                     if variables[2] < min_distance:
-                        print('Pivit ccw by:',variables[1])
-                        return False
+                        if debug:
+                            print('Need to Pivot ccw, Found object at:', variables[1])
+                        return variables[1]
 
 
             # print(f"Angle: {variables[1]} Distance: {variables[2]}")
