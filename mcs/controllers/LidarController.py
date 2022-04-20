@@ -3,6 +3,7 @@
 
 
 from cmath import exp
+import time
 from dis import dis
 import enum
 from statistics import variance
@@ -99,6 +100,10 @@ def run(globals):
                 
                 if debug:
                     print(debugPrefix + f"Rotating {angle} " + globals['pivot'])
+
+                # Wait until the pivot is done.
+                while globals['driveState'] != 'completed':
+                    time.sleep(2)
 
             except (KeyboardInterrupt,SystemExit):
                 Lidar.stop_lidar()
