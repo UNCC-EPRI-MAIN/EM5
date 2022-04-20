@@ -28,9 +28,9 @@ class rpLiDAR_A2M4_R4:
             self.debugPrefix += "[D]"
         if self.enabled:
             #Lunix
-            #self.lidar = LD('/dev/ttyUSB0')
+            self.lidar = LD('/dev/ttyUSB0')
             #Windows
-            self.lidar = LD('COM9')
+            #self.lidar = LD('COM9')
         if self.debug:
             print(self.debugPrefix + "[__init__()]: LiDAR Initialized]")
     
