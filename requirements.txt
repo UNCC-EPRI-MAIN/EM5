@@ -6,3 +6,4 @@ sparkfun-ublox-gps
 spidev
 geopy
 adafruit-circuitpython-lis331
+rplidar-roboticia
