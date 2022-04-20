@@ -6,7 +6,6 @@ from ast import Global
 from turtle import left
 from rplidar import RPLidar as LD
 from math import floor, cos, sin, pi
-import mcs.testFlags as tFlags
 
 
 
