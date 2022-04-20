@@ -57,36 +57,18 @@ def run(globals):
 
         # Found a object within threshold or the robot is off course
         if globals['objectclose'] == True:
-            ## Length of the robot in cm
-            LENGTH_OF_ROBOT = 30
 
-            ## Angle of rotation
-            pivot_angle = globals['degrees']
-
-            ## CW or CCW
-            next_pivot_type = None
-
-            # First Pivot
             if globals['pivot'] == 'cw':
-                next_pivot_type = 'ccw'
                 globals['driveState'] = 'pivotRight'
 
             elif globals['pivot'] == 'ccw':
-                next_pivot_type = 'cw'
                 globals['driveState'] = 'pivotLeft'
 
-            # Wait until the first pivot is done.
+            # Wait until the pivot is done.
             while globals['driveState'] != 'completed':
                 time.sleep(1)
 
-            globals['distance'] = LENGTH_OF_ROBOT
-            globals['driveState'] = 'straightDistance'
-
-            # Wait until the driving striaght is done.
-            while globals['driveState'] != 'completed':
-                time.sleep(1)
-
-            
+            globals['driveState'] = 'straight'
 
         # If the robot is offcourse according to the GPS
         if globals['offcourse'] == True:
