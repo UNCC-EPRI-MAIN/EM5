@@ -74,18 +74,16 @@ def run(globals):
     if enabled:
     # start lidar
         Lidar = rpLiDAR_A2M4_R4(tFlags.rpLiDAR_A2M4_R4_debug, tFlags.rpLiDAR_A2M4_R4_enabled, globals)
+        status = Lidar.startup()
+        if debug:
+            print(status)
 
     # Main loop controlling the drive system.
     while globals['state'] != 'shutdown':
         
         if enabled:
-
-            if debug:
-                print(Lidar.startup())
-
             
             try:
-    
                 # 90 FOV, 85 inches
                 angle = Lidar.clearance(90, 2159)
                 
