@@ -21,6 +21,9 @@ class rpLiDAR_A2M4_R4:
         self.enabled = enabledFlag
         ## String used for debugging
         self.debugPrefix = "[rpLiDAR_A2M4_R4]"
+
+        self.globals = globals
+        
         if self.enabled:
             self.debugPrefix += "[E]"
         else:
@@ -80,7 +83,7 @@ class rpLiDAR_A2M4_R4:
         right_angle = (FOV/2)
         for i, data in enumerate(count):
 
-            if globals['state'] == 'shutdown':
+            if self.globals['state'] == 'shutdown':
                 break
 
             data[:1]
