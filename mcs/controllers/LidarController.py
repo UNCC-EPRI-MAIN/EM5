@@ -100,6 +100,8 @@ def run(globals):
                 if debug:
                     print(debugPrefix + f"Rotating {angle} " + globals['pivot'])
 
+                Lidar.stop_lidar()
+
             except (KeyboardInterrupt,SystemExit):
                 Lidar.stop_lidar()
 
