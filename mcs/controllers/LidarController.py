@@ -71,7 +71,7 @@ def run(globals):
         print(debugPrefix + "init Lidar controller")
     if enabled:
     # start lidar
-        Lidar = rpLiDAR_A2M4_R4(tFlags.rpLiDAR_A2M4_R4_debug, tFlags.rpLiDAR_A2M4_R4_enabled)
+        Lidar = rpLiDAR_A2M4_R4(tFlags.rpLiDAR_A2M4_R4_debug, tFlags.rpLiDAR_A2M4_R4_enabled, globals)
 
     # Main loop controlling the drive system.
     while globals['state'] != 'shutdown':
