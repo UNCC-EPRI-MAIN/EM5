@@ -48,8 +48,7 @@ import importlib
 # print(list)
 # 
 # ---------------rpLiDAR_A2M4_R4 implementation-------------------------------
-from mcs.firmware.rpLiDAR_A2M4_R4 import rpLiDAR_A2M4_R4 
-import mcs.Flags as tFlags
+from mcs.firmware.rpLiDAR_A2M4_R4 import rpLiDAR_A2M4_R4
 
 def run(globals):
     flagpath = globals['flagFile']
@@ -58,8 +57,11 @@ def run(globals):
     ## Boolean indicating if debug info should be included for this module
     debug = tFlags.Lidar_debug
 
-    ## Boolean to indicate if this motor should be used. If disabled, program will run but not attempt to operate motors.
+    ## Boolean to indicate if the lidar should run.
     enabled = tFlags.Lidar_enabled
+
+    ## The real angle due to frame.
+    realRobotAngle = 17
 
     ## String used for debugging
     debugPrefix = "[LiDAR]"
@@ -81,17 +83,30 @@ def run(globals):
             if debug:
                 print(Lidar.startup())
 
-            # 90 FOV, 85 inches
-            clear = Lidar.clearance(90, 2159)
+            
             try:
-                while clear:
-                    print(clear)
+    
+                # 90 FOV, 85 inches
+                angle = Lidar.clearance(90, 2159)
+                
+                if (angle >= 315):
+                    globals['pivot'] = 'cw'
+                    angle = (360 - angle) + realRobotAngle
 
-                print('Crash')
-                Lidar.stop_lidar()
-                globals['state'] = 'shutdown'
+                elif (angle >= 0 and angle <= 45):
+                    globals['pivot'] = 'ccw'
+                    angle = angle + realRobotAngle
+
+                globals['degrees'] = angle
+                
+                if debug:
+                    print(debugPrefix + f"Rotating {angle} " + globals['pivot'])
+
             except (KeyboardInterrupt,SystemExit):
                 Lidar.stop_lidar()
 
-
+    if enabled:
+        Lidar.stop_lidar()
+    if debug:
+        print(debugPrefix + "Shutting down lidar")
 
