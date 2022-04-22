@@ -5,7 +5,7 @@
 # Find the location of the Mowbot via gps
 
 import serial
-from ublox_gps import UbloxGps
+#from ublox_gps import UbloxGps
 
 # module parameters
 FAILED_READ_ALARM_THRESHOLD = 3

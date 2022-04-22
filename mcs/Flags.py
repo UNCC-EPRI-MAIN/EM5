@@ -9,82 +9,87 @@
 MowBotControl_debug = True
 
 DriveSysControl_debug = False
-DriveSysControl_enabled = True
+DriveSysControl_enabled = False
 
-InterruptControl_debug = False
+InterruptControl_debug = True
 InterruptControl_enabled = True
 
 # ---------- Controllers ----------
 # Battery Monitor
 BatteryMonitor_debug = False
-BatteryMonitor_enabled = True
+BatteryMonitor_enabled = False
 
 # Blade control
 BladeControl_debug = False
-BladeControl_enabled = True
+BladeControl_enabled = False
 
 # Collision Detection
 CollisionDetection_debug = False
-CollisionDetection_enabled = True
+CollisionDetection_enabled = False
 
 # Drive Control
 DriveControl_debug = False
-DriveControl_enabled = True
+DriveControl_enabled = False
 
 # Navigation
 Navigation_debug = False
-Navigation_enabled = True
+Navigation_enabled = False
 
 # Remote Control
 RemoteControl_debug = False
-RemoteControl_enabled = True
+RemoteControl_enabled = False
 
 # Message Handler
 MessageHandler_debug = False
-MessageHandler_enabled = True
+MessageHandler_enabled = False
+MessageHandler_command = False
+
+# Lidar Controller
+Lidar_debug = True
+Lidar_enabled = True
 
 # ---------- Firmware ----------
 # AMT103 - Encoders
 leftEncoder_debug = False
-leftEncoder_enabled = True
+leftEncoder_enabled = False
 
 rightEncoder_debug = False
-rightEncoder_enabled = True
+rightEncoder_enabled = False
 
 # MD30C - Blade Motor Driver
 MD30C_debug = False
-MD30C_enabled = True
+MD30C_enabled = False
 
 # Relay Controls
 wheelRelay_debug = False
-wheelRelay_enabled = True
+wheelRelay_enabled = False
 
 bladeRelay_debug = False
-bladeRelay_enabled = True
+bladeRelay_enabled = False
 
 chargeRelay_debug = False
-chargeRelay_enabled = True
+chargeRelay_enabled = False
 
 # Sabertooth2x60 - Wheel Motors
 leftMotor_debug = False
-leftMotor_enabled = True
+leftMotor_enabled = False
 
 rightMotor_debug = False
-rightMotor_enabled = True
+rightMotor_enabled = False
 
 # Object Detection - LiDar
-rpLiDAR_A2M4_R4_debug = False
+rpLiDAR_A2M4_R4_debug = True
 rpLiDAR_A2M4_R4_enabled = True
 
 # GPS 
 NEO_M8P_debug = False
-NEO_M8P_enabled = True
-NEO_M8P_RTK_enabled = True
+NEO_M8P_enabled = False
+NEO_M8P_RTK_enabled = False
 
 # Accelerometer
 accelerometer_debug = False
-accelerometer_enabled = True
+accelerometer_enabled = False
 
 # UART 
 uart_debug = False
-uart_enabled = True
+uart_enabled = False
