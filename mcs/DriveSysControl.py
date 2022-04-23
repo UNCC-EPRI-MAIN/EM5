@@ -46,6 +46,9 @@ def run(globals):
 
     # main loop, wait for shutdown
     while globals['state'] != 'shutdown':
+        
+        if globals['state'] == 'manual':
+            continue
 
         # Slow the robot down when the camera sees a object.
         if globals['blocked'] == True:
