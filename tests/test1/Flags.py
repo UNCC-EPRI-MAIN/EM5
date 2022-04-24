@@ -46,7 +46,7 @@ MessageHandler_command = False
 
 # Lidar Controller
 Lidar_debug = False
-Lidar_enabled = False
+Lidar_enabled = True
 
 # ---------- Firmware ----------
 # AMT103 - Encoders
@@ -79,7 +79,7 @@ rightMotor_enabled = True
 
 # Object Detection - LiDar
 rpLiDAR_A2M4_R4_debug = False
-rpLiDAR_A2M4_R4_enabled = False
+rpLiDAR_A2M4_R4_enabled = True
 
 # GPS 
 NEO_M8P_debug = False
