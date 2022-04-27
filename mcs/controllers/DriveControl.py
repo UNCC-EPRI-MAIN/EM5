@@ -489,7 +489,6 @@ def run(globals):
                     leftMotor.engage(globals['leftSpeed'])
                     rightMotor.engage(globals['rightSpeed'])
 
-        time.sleep(1)
 
     # Wait for threads to end
     if tFlags.leftEncoder_enabled:

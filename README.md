@@ -1,6 +1,6 @@
 # **A Better Approach to Vegetation Management at Utility-Scale PV Plant**
 
-[This is the documentation page for phase 6.](https://github.com/nguyjd/Mowbot/deployments)  
+[This is the documentation page for phase 6.](https://nguyjd.github.io/Mowbot/)  
 View the "Package" tab at the top for the structure of the project  
 View the "File" tab at the top to see how each files works.  
 
@@ -10,6 +10,12 @@ This phase aims to improve the functionality and autonomy of the existing five-y
 The MowBot will cut vegetation surrounding photovoltaic equipment at solar power facilities. 
 Excess vegetation can decrease the energy efficiency of the solar panels due to sunlight blockages around the bottom of the solar panels, so the vegetation must be effectively maintained.
 The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic facility, and return to its charging station.
+
+## Project Poster
+<p align="center" style="margin-bottom: 0px">
+  <img height="600" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/EPRI_MAIN6_SD2_Poster.png" alt="Current Mowbot" align="center">
+</p>
+<p align="center" >Figure 1: The Project Poster.</p>
 
 ## Team Members
 - Cassidy Holene (Mechanical Engineer)
@@ -29,12 +35,12 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 <p align="center" style="margin-bottom: 0px">
   <img height="400" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/CurrentMowbot.jpg" alt="Current Mowbot" align="center">
 </p>
-<p align="center" >Figure 1: The current mowbot prototype.</p>
+<p align="center" >Figure 2: The current mowbot prototype.</p>
 
 <p align="center" style="margin-bottom: 0px">
   <img height="300" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/newmowbotdesign.png" alt="New CAD Design" align="center">
 </p>
-<p align="center" >Figure 2: The new upscale Mowbot design.</p>
+<p align="center" >Figure 3: The new upscale Mowbot design.</p>
 
 ### The Mowbot will gain new features to improve the autonomous functionality.
 - The new features include: computer-vision-based object detection, Accelerometer, and Re-charging algorithm.
@@ -48,7 +54,7 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 <p align="center" style="margin-bottom: 0px">
   <img height="300" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/modelGazebo.png" alt="CAD model in Gazebo" align="center">
 </p>
-<p align="center" >Figure 3: One of the test CAD model in Gazebo.</p>
+<p align="center" >Figure 4: One of the test CAD model in Gazebo.</p>
 
 ## Computer Features
 - [x] Controlling the relays for the blades and wheels motors.
@@ -59,9 +65,9 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 - [x] Using LiDar for obstacle detection
 - [x] Use bumpers to detect collision.
 - [x] Tracking the charge of the battery.
-- [ ] Use computer vision for object detection.  [^1]
+- [x] Use computer vision for object detection.  [^1]
 - [x] Use a accelerometer to detect collision.  [^2]
-- [ ] Use machine learning to detect obstacles.  [^1]
+- [x] Use machine learning to detect obstacles.  [^1]
 
 [^1]: These go hand and hand. Right now, this is very broad. As we go through paces of developing software, the feature definition will become narrow. 
 [^2]: This will replace the bumpers. The bumpers are too sensitive.

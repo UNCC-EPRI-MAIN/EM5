@@ -20,12 +20,12 @@ BatteryMonitor_debug = False
 BatteryMonitor_enabled = False
 
 # Blade control
-BladeControl_debug = True
-BladeControl_enabled = True
+BladeControl_debug = False
+BladeControl_enabled = False
 
 # Collision Detection
-CollisionDetection_debug = True
-CollisionDetection_enabled = True
+CollisionDetection_debug = False
+CollisionDetection_enabled = False
 
 # Drive Control
 DriveControl_debug = True
@@ -42,18 +42,23 @@ RemoteControl_enabled = True
 # Message Handler
 MessageHandler_debug = True
 MessageHandler_enabled = True
+MessageHandler_command = False
+
+# Lidar Controller
+Lidar_debug = False
+Lidar_enabled = True
 
 # ---------- Firmware ----------
 # AMT103 - Encoders
-leftEncoder_debug = True
-leftEncoder_enabled = True
+leftEncoder_debug = False
+leftEncoder_enabled = False
 
-rightEncoder_debug = True
-rightEncoder_enabled = True
+rightEncoder_debug = False
+rightEncoder_enabled = False
 
 # MD30C - Blade Motor Driver
-MD30C_debug = True
-MD30C_enabled = True
+MD30C_debug = False
+MD30C_enabled = False
 
 # Relay Controls
 wheelRelay_debug = True
@@ -66,24 +71,24 @@ chargeRelay_debug = True
 chargeRelay_enabled = True
 
 # Sabertooth2x60 - Wheel Motors
-leftMotor_debug = True
+leftMotor_debug = False
 leftMotor_enabled = True
 
-rightMotor_debug = True
+rightMotor_debug = False
 rightMotor_enabled = True
 
 # Object Detection - LiDar
 rpLiDAR_A2M4_R4_debug = False
-rpLiDAR_A2M4_R4_enabled = False
+rpLiDAR_A2M4_R4_enabled = True
 
 # GPS 
 NEO_M8P_debug = False
 NEO_M8P_enabled = False
 
 # Accelerometer
-accelerometer_debug = True
-accelerometer_enabled = True
+accelerometer_debug = False
+accelerometer_enabled = False
 
 # UART 
-uart_debug = True
-uart_enabled = True
+uart_debug = False
+uart_enabled = False
