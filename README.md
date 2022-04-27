@@ -11,6 +11,8 @@ The MowBot will cut vegetation surrounding photovoltaic equipment at solar power
 Excess vegetation can decrease the energy efficiency of the solar panels due to sunlight blockages around the bottom of the solar panels, so the vegetation must be effectively maintained.
 The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic facility, and return to its charging station.
 
+## Project Poster
+
 ## Team Members
 - Cassidy Holene (Mechanical Engineer)
 - Dejan Rasuo (Electrical Engineer)
