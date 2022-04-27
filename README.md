@@ -12,6 +12,10 @@ Excess vegetation can decrease the energy efficiency of the solar panels due to 
 The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic facility, and return to its charging station.
 
 ## Project Poster
+<p align="center" style="margin-bottom: 0px">
+  <img height="600" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/EPRI_MAIN6_SD2_Poster.png" alt="Current Mowbot" align="center">
+</p>
+<p align="center" >Figure 1: The Project Poster.</p>
 
 ## Team Members
 - Cassidy Holene (Mechanical Engineer)
@@ -31,12 +35,12 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 <p align="center" style="margin-bottom: 0px">
   <img height="400" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/CurrentMowbot.jpg" alt="Current Mowbot" align="center">
 </p>
-<p align="center" >Figure 1: The current mowbot prototype.</p>
+<p align="center" >Figure 2: The current mowbot prototype.</p>
 
 <p align="center" style="margin-bottom: 0px">
   <img height="300" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/newmowbotdesign.png" alt="New CAD Design" align="center">
 </p>
-<p align="center" >Figure 2: The new upscale Mowbot design.</p>
+<p align="center" >Figure 3: The new upscale Mowbot design.</p>
 
 ### The Mowbot will gain new features to improve the autonomous functionality.
 - The new features include: computer-vision-based object detection, Accelerometer, and Re-charging algorithm.
@@ -50,7 +54,7 @@ The Mowbot will autonomously trim excess vegetation, navigate the photovoltaic f
 <p align="center" style="margin-bottom: 0px">
   <img height="300" src="https://raw.githubusercontent.com/nguyjd/Mowbot/main/images/modelGazebo.png" alt="CAD model in Gazebo" align="center">
 </p>
-<p align="center" >Figure 3: One of the test CAD model in Gazebo.</p>
+<p align="center" >Figure 4: One of the test CAD model in Gazebo.</p>
 
 ## Computer Features
 - [x] Controlling the relays for the blades and wheels motors.
